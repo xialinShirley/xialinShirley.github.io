@@ -71,6 +71,121 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ES6阮一峰教程学习笔记 （4）字符串的扩展" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/24/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%884%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/" class="article-date">
+  <time class="dt-published" datetime="2021-07-24T15:45:13.000Z" itemprop="datePublished">2021-07-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/07/24/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%884%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/">ES6阮一峰教程学习笔记 （4）字符串的扩展</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h3 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a>字符串的扩展</h3><ul>
+<li>字符的Unicode表示法</li>
+</ul>
+<ol>
+<li>ES6将码点放入大括号，即\u{xxxx}，就能正确解读该字符。</li>
+<li>大括号表示法与四字节的UTF-16编码是等价的。</li>
+</ol>
+<ul>
+<li>字符串的遍历器接口</li>
+</ul>
+<ol>
+<li><p>ES6中字符串可以被for…of循环遍历。</p>
+</li>
+<li><p>for…of可以识别0xFFFF的码点，传统的for循环无法识别这样的码点。</p>
+<hr>
+</li>
+</ol>
+<ul>
+<li>直接输入U+2028和U+2029</li>
+</ul>
+<ol>
+<li><p>Javascipt字符串允许直接输入字符，以及输入字符的转义形式。</p>
+</li>
+<li><p>Javascript规定有5个字符，不能在字符串里直接使用，只能使用转义形式。</p>
+<ul>
+<li>U+005C：反斜杠（reverse solidus)</li>
+<li>U+000D：回车（carriage return）</li>
+<li>U+2028：行分隔符（line separator）</li>
+<li>U+2029：段分隔符（paragraph separator）</li>
+<li>U+000A：换行符（line feed）</li>
+</ul>
+</li>
+<li><p>但为了适应JSON模板字符串允许直接输入行/段分隔符，正则表达式依然不允许直接输入这两个字符。</p>
+<hr>
+</li>
+</ol>
+<ul>
+<li>JSON.stringfy()的改造</li>
+</ul>
+<ol>
+<li>为确保返回的是合法的UTF-8字符，ES2019改变了JSON.stringfy()的行为，如果遇到0xD800到0xDFFF之间的单个码点或者不存在的配对形式，将返回转义字符串，留给应用自己决定下一步处理。</li>
+</ol>
+<ul>
+<li>模板字符串</li>
+</ul>
+<ol>
+<li><p>ES6的模板字符串用反引号(`)标识，可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。</p>
+</li>
+<li><p>如果在模板字符串中需要使用反引号，则前面要用反斜杠转义。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> greeting=<span class="string">`\`Yo \` World!`</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。通过trim()方法可以消除换行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#list&#x27;</span>).html(<span class="string">`</span></span><br><span class="line"><span class="string">&lt;ul&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;first&lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;second&lt;/li&gt;</span></span><br><span class="line"><span class="string">&lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>.trim());</span><br></pre></td></tr></table></figure></li>
+<li><p>模板字符串中嵌入变量，需要将变量名写在${}之中。如果大括号中的值不是字符串，将按一般的规则转为字符串。</p>
+</li>
+</ol>
+<ul>
+<li>标签模板</li>
+</ul>
+<ol>
+<li>模板字符串跟在一个函数名后面，该函数将被调用来处理这个模板字符串。这被称为“标签模板”功能。其中“标签”指函数，紧跟在后面的模板字符串是它的参数。</li>
+<li>对于有变量的模板字符串，先将模板字符串处理成多个参数，再调用函数。</li>
+<li>“标签模板”重要应用<ul>
+<li>过滤HTML字符串，防止用户输入恶意内容。</li>
+<li>多语言转换，可以在Javascript语言中嵌入其他语言。</li>
+</ul>
+</li>
+<li>模板处理函数的第一个参数（模板字符串数组），还有一个raw属性，保存的是转义后 的原字符串。比如，strings.raw 数组会将\n为\\和n两个字符，而不是换行符。这是为了方便取得转义之前的原始模板而设计的。</li>
+</ol>
+<ul>
+<li>模板字符串的限制</li>
+</ul>
+<ol>
+<li>ES2018遇到不合法的字符串转义返回undefined，而不是报错，从raw属性上可以得到原始字符串。</li>
+<li>对字符串转义的放松，只在标签模板解析字符串时生效，不是标签模板的场合依然会报错。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/07/24/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%884%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/" data-id="ckrirtriv0000c4ptdnwz6ijz" data-title="ES6阮一峰教程学习笔记 （4）字符串的扩展" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-ES6阮一峰教程学习笔记 （3）变量的解构赋值" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/07/24/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%883%EF%BC%89%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" class="article-date">
@@ -415,6 +530,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/07/24/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%884%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/">ES6阮一峰教程学习笔记 （4）字符串的扩展</a>
+          </li>
         
           <li>
             <a href="/2021/07/24/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%883%EF%BC%89%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/">ES6阮一峰教程学习笔记 （3）变量的解构赋值</a>
