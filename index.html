@@ -133,7 +133,9 @@
 <li>JSON.stringfy()的改造</li>
 </ul>
 <ol>
-<li>为确保返回的是合法的UTF-8字符，ES2019改变了JSON.stringfy()的行为，如果遇到0xD800到0xDFFF之间的单个码点或者不存在的配对形式，将返回转义字符串，留给应用自己决定下一步处理。</li>
+<li><p>为确保返回的是合法的UTF-8字符，ES2019改变了JSON.stringfy()的行为，如果遇到0xD800到0xDFFF之间的单个码点或者不存在的配对形式，将返回转义字符串，留给应用自己决定下一步处理。</p>
+<hr>
+</li>
 </ol>
 <ul>
 <li>模板字符串</li>
@@ -146,20 +148,26 @@
 <li><p>如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。通过trim()方法可以消除换行。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#list&#x27;</span>).html(<span class="string">`</span></span><br><span class="line"><span class="string">&lt;ul&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;first&lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;second&lt;/li&gt;</span></span><br><span class="line"><span class="string">&lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>.trim());</span><br></pre></td></tr></table></figure></li>
 <li><p>模板字符串中嵌入变量，需要将变量名写在${}之中。如果大括号中的值不是字符串，将按一般的规则转为字符串。</p>
+<hr>
 </li>
 </ol>
 <ul>
 <li>标签模板</li>
 </ul>
 <ol>
-<li>模板字符串跟在一个函数名后面，该函数将被调用来处理这个模板字符串。这被称为“标签模板”功能。其中“标签”指函数，紧跟在后面的模板字符串是它的参数。</li>
-<li>对于有变量的模板字符串，先将模板字符串处理成多个参数，再调用函数。</li>
-<li>“标签模板”重要应用<ul>
+<li><p>模板字符串跟在一个函数名后面，该函数将被调用来处理这个模板字符串。这被称为“标签模板”功能。其中“标签”指函数，紧跟在后面的模板字符串是它的参数。</p>
+</li>
+<li><p>对于有变量的模板字符串，先将模板字符串处理成多个参数，再调用函数。</p>
+</li>
+<li><p>“标签模板”重要应用</p>
+<ul>
 <li>过滤HTML字符串，防止用户输入恶意内容。</li>
 <li>多语言转换，可以在Javascript语言中嵌入其他语言。</li>
 </ul>
 </li>
-<li>模板处理函数的第一个参数（模板字符串数组），还有一个raw属性，保存的是转义后 的原字符串。比如，strings.raw 数组会将\n为\\和n两个字符，而不是换行符。这是为了方便取得转义之前的原始模板而设计的。</li>
+<li><p>模板处理函数的第一个参数（模板字符串数组），还有一个raw属性，保存的是转义后 的原字符串。比如，strings.raw 数组会将\n为\\和n两个字符，而不是换行符。这是为了方便取得转义之前的原始模板而设计的。</p>
+<hr>
+</li>
 </ol>
 <ul>
 <li>模板字符串的限制</li>
