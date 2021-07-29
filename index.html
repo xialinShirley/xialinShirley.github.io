@@ -71,6 +71,128 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-《react小书》笔记(11-20)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/27/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(11-20)/" class="article-date">
+  <time class="dt-published" datetime="2021-07-27T09:14:58.000Z" itemprop="datePublished">2021-07-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/07/27/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(11-20)/">《react小书》笔记(11-20)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>配置组件的props</li>
+</ul>
+<ol>
+<li><p>使用defaultProps可以做到默认配置，不需要使用||操作符来实现。</p>
+<p>在类中，写如下例代码来对props中各个属性进行默认配置。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> defaultProps = &#123;</span><br><span class="line"><span class="attr">likedText</span>: <span class="string">&#x27;取消&#x27;</span>,</span><br><span class="line"><span class="attr">unlikedText</span>: <span class="string">&#x27;点赞&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>组件被渲染时传进来的props不能被改变，便于输出确定的UI显示形态。</p>
+</li>
+<li><p>由于setState会导致组件重新渲染，因而可以通过重新渲染的方式来传入新的props从而达到修改显示形态的效果。</p>
+</li>
+</ol>
+<hr>
+<ul>
+<li>state vs props</li>
+</ul>
+<ol>
+<li>state的主要作用是用于组件保存、控制、修改自己的可变状态。state在组件内部初始化，可以被组件自身修改，而外部不能访问也不能修改。可以把state看做是一个局部的、只能被组件自身控制的数据源。state中状态可以通过this.setState方法进行更新。setState会导致组件的重新渲染。</li>
+<li>props的主要作用是让使用该组件的父组件可以传入参数来配置该组件。它是外部传进来的配置参数，组件内部无法控制也无法修改。除非外部组件主动传入新的props，否则组件的props永远保持不变。</li>
+<li>state是让组件控制自己的状态，props是让外部对组件自己进行配置。尽量少使用state，尽量多用props。</li>
+<li>React.js鼓励无状态组件。以前一个组件是通过继承Component来构建，一个子类就是一个组件，而用函数式的组件编写方法一个函数就是一个组件。</li>
+</ol>
+<hr>
+<ul>
+<li>渲染列表数据</li>
+</ul>
+<ol>
+<li>如果往{}放一个数组，React.js会将数组里面一个个元素罗列并且渲染出来。</li>
+<li>React.js的高效依赖所谓的Virtual-DOM策略，通过在列表中加入唯一的key能帮助判断元素位置的交换，从而尽量复用元素内部的结构。（注意key不能直接在props中调用）</li>
+</ol>
+<hr>
+<ul>
+<li>实战部分-评论功能</li>
+</ul>
+<ol>
+<li>在React.js当中必须要用setState才能更新组件的内容。</li>
+<li>类似&lt;input //&gt;、&lt;select //&gt;、&lt;textarea //&gt;这些元素的value值被React.js所控制、渲染的组件，在React.js当中被称为受控组件。对于用户可输入的控件，一般都可以让它们称为受控组件。</li>
+</ol>
+<hr>
+<ul>
+<li>前端应用状态管理–状态提升</li>
+</ul>
+<ol>
+<li>当某个状态被多个组件依赖或者影响的时候，就把该状态提升到这些组件的最近公共父组件中去管理，用props传递数据或者函数来管理这种依赖或者影响的行为。</li>
+<li>input标签中type除了text外还可以填number，toFixed(n)可以将number四舍五入到n位小数。</li>
+</ol>
+<hr>
+<ul>
+<li>挂载阶段的组件生命周期（一）</li>
+</ul>
+<ol>
+<li><p>React.js将组件渲染并且构造DOM元素然后塞入页面的过程称为组件的挂载。</p>
+</li>
+<li><p>挂载的时候，React.js会在组件的render之前调用componentWillMount，在DOM元素塞入页面之后调用componentDidMount。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-&gt; <span class="title">constructor</span>(<span class="params"></span>)</span><br><span class="line">-&gt; <span class="title">componentWillMount</span>(<span class="params"></span>)</span><br><span class="line">-&gt; <span class="title">render</span>(<span class="params"></span>)</span><br><span class="line">// 然后构造 <span class="title">DOM</span> 元素插⼊⻚⾯</span><br><span class="line">-&gt; <span class="title">componentDidMount</span>(<span class="params"></span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>在组件删除之前React.js会调用组件定义的componentWillUnmount。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-&gt; <span class="title">constructor</span>(<span class="params"></span>)</span><br><span class="line">-&gt; <span class="title">componentWillMount</span>(<span class="params"></span>)</span><br><span class="line">-&gt; <span class="title">render</span>(<span class="params"></span>)</span><br><span class="line">// 然后构造 <span class="title">DOM</span> 元素插⼊⻚⾯</span><br><span class="line">-&gt; <span class="title">componentDidMount</span>(<span class="params"></span>)</span><br><span class="line">// ...</span><br><span class="line">// 即将从⻚⾯中删除</span><br><span class="line">-&gt; <span class="title">componentWillUnmount</span>(<span class="params"></span>)</span><br><span class="line">// 从⻚⾯中删除		</span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<ul>
+<li>挂载阶段的组件生命周期（二）</li>
+</ul>
+<ol>
+<li>setState只能在已经挂载或者正在挂载的组件上调用，因为React.js重新构造和销毁组件来达到隐藏和显示的效果，故对于隐藏的组件不能调用。</li>
+<li>一些组件启动的动作，包括Ajax数据的拉取操作、一些定时器的启动，可以放在componentWillMount里面进行</li>
+<li>componentWillUnmount的作用是在组件销毁的时候做例如清除该组件定时器和其他的数据清理的清场工作，不能用this.setState({})进行赋值，要调用另一个函数进行赋值。</li>
+<li>有些组件的启动工作是依赖DOM的，例如动画的启动，而componentWillMount时组件还未挂载完成，因而将这些启动操作放在componentDidMount当中。</li>
+<li>await关键字仅在async function中有效，async函数执行时，如果遇到await就会先暂停执行，等到触发的异步操作完成后，恢复async函数的执行并返回解析值。</li>
+</ol>
+<hr>
+<ul>
+<li>更新阶段的组件生命周期</li>
+</ul>
+<ol>
+<li>更新阶段指React.js重新渲染组件并把组件的变化应用到DOM元素上的过程，是一个组件的变化过程。更新阶段的组件生命周期有：<ul>
+<li>shouldComponentUpdate(nextProps,nextState)：通过这个方法控制组件是否重新渲染。如果返回false组件就不会重新渲染。这个生命周期在React.js性能优化上非常有用。</li>
+<li>componentWillReceiveProps(nextProps)：组件从父组件接收到新的props之前调用。</li>
+<li>componentWillUpdata( )：组件开始渲染之前调用。</li>
+<li>componentDidUpdate( )：组件重新渲染并且把更改变更到真实的DOM以后调用。</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/07/27/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(11-20)/" data-id="ckrojzo3o0000jwpt51mkc371" data-title="《react小书》笔记(11-20)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-《react小书》笔记(1-10)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/07/26/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(1-10)/" class="article-date">
@@ -634,6 +756,10 @@
       <ul>
         
           <li>
+            <a href="/2021/07/27/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(11-20)/">《react小书》笔记(11-20)</a>
+          </li>
+        
+          <li>
             <a href="/2021/07/26/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(1-10)/">《react小书》笔记(1-10)</a>
           </li>
         
@@ -647,10 +773,6 @@
         
           <li>
             <a href="/2021/07/23/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%882%EF%BC%89let%E5%92%8Cconst%E5%91%BD%E4%BB%A4/">ES6阮一峰教程学习笔记 （2）let和const命令</a>
-          </li>
-        
-          <li>
-            <a href="/2021/07/23/hello-world/">Hello World</a>
           </li>
         
       </ul>
