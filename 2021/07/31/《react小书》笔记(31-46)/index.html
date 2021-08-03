@@ -4,20 +4,23 @@
   <meta charset="utf-8">
   
   
-  <title>《react小书》笔记(31-40) | Hexo</title>
+  <title>《react小书》笔记(31-46) | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="动手实现Redux（二）：抽离store和监控数据变化   使用观察者模式，定义数组listeners和新方法subscibe通过store.subscribe(listener)的方式给subscribe传入一个监听函数，这个函数会被push到数组中。  可以通过subscribe传入数据变化的监听函数，每当dispatch的时候，监听函数就会被调用，从而实现在每当数据变化时候进行重新渲染。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="《react小书》笔记(31-40)">
-<meta property="og:url" content="http://example.com/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-40)/index.html">
+<meta property="og:title" content="《react小书》笔记(31-46)">
+<meta property="og:url" content="http://example.com/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-46)/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="动手实现Redux（二）：抽离store和监控数据变化   使用观察者模式，定义数组listeners和新方法subscibe通过store.subscribe(listener)的方式给subscribe传入一个监听函数，这个函数会被push到数组中。  可以通过subscribe传入数据变化的监听函数，每当dispatch的时候，监听函数就会被调用，从而实现在每当数据变化时候进行重新渲染。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://huzidaha.github.io/static/assets/img/posts/6F7A1EE0-9AF4-4AB3-B554-A01E9074FC3C.png">
+<meta property="og:image" content="https://huzidaha.github.io/static/assets/img/posts/170B1159-C690-4DDA-9118-95AF810D40C6.png">
 <meta property="article:published_time" content="2021-07-31T02:47:20.000Z">
-<meta property="article:modified_time" content="2021-08-01T09:33:10.814Z">
+<meta property="article:modified_time" content="2021-08-03T04:24:35.379Z">
 <meta property="article:author" content="John Doe">
 <meta property="article:tag" content="《react小书》学习笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://huzidaha.github.io/static/assets/img/posts/6F7A1EE0-9AF4-4AB3-B554-A01E9074FC3C.png">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -74,9 +77,9 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-《react小书》笔记(31-40)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-《react小书》笔记(31-46)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-40)/" class="article-date">
+    <a href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-46)/" class="article-date">
   <time class="dt-published" datetime="2021-07-31T02:47:20.000Z" itemprop="datePublished">2021-07-31</time>
 </a>
     
@@ -88,7 +91,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      《react小书》笔记(31-40)
+      《react小书》笔记(31-46)
     </h1>
   
 
@@ -157,11 +160,57 @@
 <li>如果一个组件的渲染只依赖于外界传进去的<code>props</code>和自己的<code>state</code>，而并不依赖于其他外界的任何数据，可预测性非常强，对参数（<code>props</code>）以外的数据零依赖，也不产生副作用，称这种组件为Pure Component/Dumb Component，这种组件的可复用性较强。</li>
 <li>用高阶组件把<code>Dumb</code>组件包装一层，高阶组件和<code>context</code>打交道，把里面数据取出来通过<code>props</code>传给<code>Dumb</code>组件。</li>
 </ol>
+<hr>
+<ul>
+<li>使用真正的Redux和React-redux</li>
+</ul>
+<ol>
+<li>从第三方模块<code>redux</code>中可以引入<code>createStore</code>，从第三方<code>react-redux</code>模块中引入<code>Provider</code>和<code>connect</code>。</li>
+<li>mapDispatchToProps中写了需要注入的函数，mapStateToProps中写了需要注入的props。</li>
+</ol>
+<hr>
+<ul>
+<li>Smart组件vsDumb组件</li>
+</ul>
+<ol>
+<li>根据是否需要高度的复用性，把组件划分为Dumb组件和Smart组件，约定俗成地把它们分别放到<code>components</code>和<code>container</code>目录下。</li>
+<li>Smart组件专门做数据相关的应用逻辑，和各种数据打交道、和Ajax打交道，然后把数据通过<code>props</code>传递给Dumb,带领Dumb组件完成了复杂的应用程序逻辑。</li>
+<li>Smart组件不用考虑太多复用性问题，它们就是用来执行特定应用逻辑的。Smart组件并不意味着完全不能复用，Smart组件的复用性是依赖场景的，而Dumb则是可以跨应用场景复用，二者的复用程度、场景不一样。</li>
+<li>如果一个组件是Dumb的，那么它的子组件们都应该是Dumb的才对。</li>
+</ol>
+<hr>
+<ul>
+<li>实战分析：评论功能（七）</li>
+</ul>
+<ol>
+<li>在src下新建三个目录：<code>components</code>、<code>containers</code>、<code>reducers</code>。</li>
+<li>reducer是用来描述数据的形态和相应的变更。</li>
+<li>可以把action封装到一种函数里面帮助构建action，这种函数叫做action creators。这样dispatch的时候只需要传入数据就可以了，同时还可以对传入的数据做统一处理，并且使代码测试更方便。</li>
+<li>写reducer文件顺序：<ul>
+<li>定义action types</li>
+<li>编写reducer</li>
+<li>跟这个reducer相关的action creators</li>
+</ul>
+</li>
+<li>注意函数是在组件内还是通过props从外界传过来的，不犯低级错误。</li>
+</ol>
+<hr>
+<ul>
+<li>评论功能（九）</li>
+</ul>
+<ol>
+<li><p>与MVC、MVP架构模式类比，Dumb组件就是View（负责渲染），Smart组件就是Controller(Presenter)，State就有点类似Model。</p>
+<p><img src="https://huzidaha.github.io/static/assets/img/posts/6F7A1EE0-9AF4-4AB3-B554-A01E9074FC3C.png" alt="img"></p>
+</li>
+<li><p>最后实现的组件树：</p>
+<p><img src="https://huzidaha.github.io/static/assets/img/posts/170B1159-C690-4DDA-9118-95AF810D40C6.png" alt="img"></p>
+</li>
+</ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-40)/" data-id="ckrt0yc7d0000gcpt68733dc7" data-title="《react小书》笔记(31-40)" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-46)/" data-id="ckrvk5nn80000a8pt36roekzh" data-title="《react小书》笔记(31-46)" class="article-share-link">Share</a>
       
       
       
@@ -228,7 +277,7 @@
       <ul>
         
           <li>
-            <a href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-40)/">《react小书》笔记(31-40)</a>
+            <a href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-46)/">《react小书》笔记(31-46)</a>
           </li>
         
           <li>
