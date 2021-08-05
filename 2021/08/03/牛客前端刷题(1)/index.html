@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>牛客前端刷题（1） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="正则表达式基本语法：    元字符 说明 语法 说明    . 匹配除换行符以外的任意字符 * 重复零次或更多次   \w 匹配字母或数字或下划线或汉字 + 重复一次或更多次   \s 匹配任意的空白符 ？ 重复零次或一次   \d 匹配数字 {n} 重复n次   \b 匹配单词的开始或结束 {n,} 重复n次或更多次   ^ 匹配字符串的开始 {n,m} 重复n到m次   $ 匹配字符串的结束">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛客前端刷题（1）">
+<meta property="og:url" content="http://example.com/2021/08/03/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(1)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="正则表达式基本语法：    元字符 说明 语法 说明    . 匹配除换行符以外的任意字符 * 重复零次或更多次   \w 匹配字母或数字或下划线或汉字 + 重复一次或更多次   \s 匹配任意的空白符 ？ 重复零次或一次   \d 匹配数字 {n} 重复n次   \b 匹配单词的开始或结束 {n,} 重复n次或更多次   ^ 匹配字符串的开始 {n,m} 重复n到m次   $ 匹配字符串的结束">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-03T14:06:15.000Z">
+<meta property="article:modified_time" content="2021-08-05T09:03:53.230Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="牛客前端题">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-牛客前端刷题(1)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/03/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(1)/" class="article-date">
+  <time class="dt-published" datetime="2021-08-03T14:06:15.000Z" itemprop="datePublished">2021-08-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      牛客前端刷题（1）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>正则表达式基本语法：</p>
+<table>
+<thead>
+<tr>
+<th>元字符</th>
+<th>说明</th>
+<th>语法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>.</td>
+<td>匹配除换行符以外的任意字符</td>
+<td>*</td>
+<td>重复零次或更多次</td>
+</tr>
+<tr>
+<td>\w</td>
+<td>匹配字母或数字或下划线或汉字</td>
+<td>+</td>
+<td>重复一次或更多次</td>
+</tr>
+<tr>
+<td>\s</td>
+<td>匹配任意的空白符</td>
+<td>？</td>
+<td>重复零次或一次</td>
+</tr>
+<tr>
+<td>\d</td>
+<td>匹配数字</td>
+<td>{n}</td>
+<td>重复n次</td>
+</tr>
+<tr>
+<td>\b</td>
+<td>匹配单词的开始或结束</td>
+<td>{n,}</td>
+<td>重复n次或更多次</td>
+</tr>
+<tr>
+<td>^</td>
+<td>匹配字符串的开始</td>
+<td>{n,m}</td>
+<td>重复n到m次</td>
+</tr>
+<tr>
+<td>$</td>
+<td>匹配字符串的结束</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+</li>
+<li><p><code>void 0</code>是为了得到javascript中的undefined值，不直接写undefined值是为了兼容IE8以下的浏览器旧版本。</p>
+</li>
+<li><p>对于DOM中的节点，使用<code>node.parentNode.nodeName</code>可以得到其父节点的名称，使用<code>node1.contains(node2)</code>可以得到一个布尔值判断node1是否是node2的父节点。</p>
+</li>
+<li><p>看清是getElement<code>s</code>ByClassName,注意返回的是一个元素还是多个元素。</p>
+</li>
+<li><p>在JS中，只有0,-0,NaN,””,null,undefined这六个值转布尔值时，结果为false。</p>
+<ul>
+<li>y=Boolean(0)是对0进行类型转换</li>
+<li>y=new Boolean(0)得到的y是一个Boolean类型的对象，if(obj)得到的值为true</li>
+</ul>
+</li>
+<li><p>Date().setMonth()操作接受0-11的参数。length是数组属性而不是方法，调用时不加圆括号。</p>
+</li>
+<li><p>js实现继承的方式</p>
+<ul>
+<li><p>原型链继承：将父类的实例作为子类的原型。</p>
+</li>
+<li><p>构造函数继承：使用父类的构造函数来增强子类，等于是复制父类的实例属性给子类（没用到原型）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="built_in">this</span>);<span class="comment">//通过call多个父类对象可以实现多继承</span></span><br><span class="line">  <span class="built_in">this</span>.name = name || <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>实例继承：为父类实例添加新特性，作为子类实例返回。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> instance = <span class="keyword">new</span> Animal();</span><br><span class="line">  instance.name = name || <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>拷贝继承</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> animal = <span class="keyword">new</span> Animal();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> p <span class="keyword">in</span> animal)&#123;</span><br><span class="line">    Cat.prototype[p] = animal[p];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">this</span>.name = name || <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>组合继承：通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="built_in">this</span>);</span><br><span class="line">  <span class="built_in">this</span>.name = name || <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line">Cat.prototype = <span class="keyword">new</span> Animal();</span><br><span class="line">Cat.prototype.constructor = Cat;</span><br></pre></td></tr></table></figure></li>
+<li><p>寄生组合式继承：通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法/属性，避免组合继承的缺点。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="built_in">this</span>);</span><br><span class="line">  <span class="built_in">this</span>.name = name || <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 创建一个没有实例方法的类</span></span><br><span class="line">  <span class="keyword">var</span> Super = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">  Super.prototype = Animal.prototype;</span><br><span class="line">  <span class="comment">//将实例作为子类的原型</span></span><br><span class="line">  Cat.prototype = <span class="keyword">new</span> Super();</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>cookie的有效时间默认为-1，如果不进行设置的话，就会默认在浏览器会话关闭时结束。可以通过<code>setMaxAge()</code>方法设置cookie的生命期，当<code>setMaxAge(0)</code>表示立刻删除该浏览器上指定的cookie。</p>
+</li>
+<li><p>在函数中声明的与函数外同名var变量会被提升到函数头部，但是赋值操作不会被提升。</p>
+</li>
+<li><p>一个数据结构只要具有Symbol.iterator属性，就可以认为是“可遍历的”(iterable)。原生具备Iterator接口的数据结构有：Array、Map、Set、String、TypedArray、函数的arguments对象、NodeList对象。</p>
+</li>
+<li><p>函数提升优先级高于变量提升。</p>
+</li>
+<li><p>IIFE（立即调用函数表达式）是一个在定义时就会立即执行的js函数。其中的匿名函数不仅避免了外界访问此IIFE中的变量，而且又不会污染全局作用域。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> name=<span class="string">&quot;Barry&quot;</span> </span><br><span class="line">&#125;)()</span><br><span class="line"><span class="comment">//无法从外部访问变量name</span></span><br><span class="line">name<span class="comment">//抛出错误：&quot;Uncaught ReferenceError：name is not defined&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/03/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(1)/" data-id="ckrz4e2550003t4pt4uda667m" data-title="牛客前端刷题（1）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/08/04/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(2)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          牛客前端刷题（2）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/08/03/github%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F(1)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">github前端面经（1）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">ES6阮一峰教程学习笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 13.33px;">牛客前端题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/08/04/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(2)/">牛客前端刷题（2）</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/03/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(1)/">牛客前端刷题（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/03/github%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F(1)/">github前端面经（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-46)/">《react小书》笔记(31-46)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(21-30)/">《react小书》笔记(21-30)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
