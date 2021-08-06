@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>牛客前端刷题（3） | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="var a&#x3D;b&#x3D;5相当于拆解成var a&#x3D;b;b&#x3D;5;然后b&#x3D;5前面没有var，相当于声明为全局变量（这种方式在严格模式下会报错）。  AMD和CMD都是浏览器端的js模块化规范，分别由require.js和sea.js实现。CommonJS是服务器端的js模块化规范，由NodeJs实现。AMD依赖前置，CMD依赖就近。  Readonly只针对input(text&#x2F;password)和text">
+<meta property="og:type" content="article">
+<meta property="og:title" content="牛客前端刷题（3）">
+<meta property="og:url" content="http://example.com/2021/08/06/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(3)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="var a&#x3D;b&#x3D;5相当于拆解成var a&#x3D;b;b&#x3D;5;然后b&#x3D;5前面没有var，相当于声明为全局变量（这种方式在严格模式下会报错）。  AMD和CMD都是浏览器端的js模块化规范，分别由require.js和sea.js实现。CommonJS是服务器端的js模块化规范，由NodeJs实现。AMD依赖前置，CMD依赖就近。  Readonly只针对input(text&#x2F;password)和text">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-08-06T03:22:23.000Z">
+<meta property="article:modified_time" content="2021-08-06T14:15:47.116Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="牛客前端题">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-牛客前端刷题(3)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/06/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(3)/" class="article-date">
+  <time class="dt-published" datetime="2021-08-06T03:22:23.000Z" itemprop="datePublished">2021-08-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      牛客前端刷题（3）
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>var a=b=5相当于拆解成var a=b;b=5;然后b=5前面没有var，相当于声明为全局变量（这种方式在严格模式下会报错）。</p>
+</li>
+<li><p>AMD和CMD都是浏览器端的js模块化规范，分别由require.js和sea.js实现。CommonJS是服务器端的js模块化规范，由NodeJs实现。AMD依赖前置，CMD依赖就近。</p>
+</li>
+<li><p>Readonly只针对input(text/password)和textarea有效，而disabled对于所有的表单元素有效，包括select,eadio.checkbox,button等。</p>
+</li>
+<li><p>JS全局函数：</p>
+<ul>
+<li>编码相关：escape、unescape、encodeURL、decodeURL、encodeURLComponent、decodeURLComponent</li>
+<li>数据处理：Number、String</li>
+<li>数字相关：parseFloat、parseInt、isFinite、isNaN</li>
+<li>特殊：eval</li>
+</ul>
+</li>
+<li><p>tagName是只读的属性，可以赋值，但赋值无效。加号优先级高于三目运算，低于括号。</p>
+</li>
+<li><p>length返回浏览器历史列表中的URL数量；back加载history列表中的前一个URL；forward加载history列表中的后一个URL，go加载history列表中某个具体页面。</p>
+</li>
+<li><p>不能冒泡的事件：load,unload,abort,resize,error,focus,blur,mouseenter,mouseleave。</p>
+</li>
+<li><p>语法：<code>window.open([URL],[窗口名称],[参数字符串])</code>,open()方法可以查找一个已经存在或者新建的浏览器窗口。</p>
+</li>
+<li><p>两个特殊的typeof:  typeof []=object; typeof null=object。</p>
+</li>
+<li><p>Promise.all(iterable)方法返回一个Promise对象，Array.prototype.join方法返回一个数组。</p>
+</li>
+<li><p>hasOwnProperty只会检查属性是否在myObject对象中，不会检查[[Prototype]]链。</p>
+</li>
+<li><p>onpageshow在用户浏览网页时即onload后触发，onpagehide在unload事件前触发。</p>
+</li>
+<li><p>JS中实现跨域的方式总结：</p>
+<ul>
+<li>jsonp请求：jsonp的原理是利用<code>&lt;script&gt;</code>标签的跨域特性，可以不受限制地从其他域中加载资源，类似的标签还有<code>&lt;img&gt;</code>。</li>
+<li>document.domain：这种方式用在主域名相同子域名不同的跨域访问中。</li>
+<li>window.name：window的name属性有个特征，在一个窗口(window)的生命周期内，窗口载入的所有的页面都是共享一个<code>window.name</code>的，每个页面对window.name都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的，并不会因新页面的载入而进行重置。</li>
+<li>window.postMessage:<code>window.pastMessage</code>是html5中实现跨域访问的一种新方式，可以使用它来向其他的window对象发送消息，无论这个window对象是属于同源或不同源。</li>
+<li>CORS(跨域资源共享)：CORS背后的基本思想，就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是应该失败。</li>
+<li>web sockets(双向信息传输)：web sockets原理：在JS创建了web socket之后，会有一个HTTP请求发送到浏览器以发起连接。取得服务器响应后，建立的连接会使用HTTP升级从HTTP协议交换为web socket协议。</li>
+</ul>
+</li>
+<li><p><code>noscript</code>元素用来定义在脚本未被执行时的替代内容（文本）。</p>
+</li>
+<li><p>可以用来判断是否为array的：</p>
+<ul>
+<li><p>Array.isArray()</p>
+</li>
+<li><p>instanceof   (typeof不行，因为<strong>object、array、null</strong>的变量都返回object)</p>
+</li>
+<li><p>Object.prototype.toString为Object对象的实例方法，默认情况下(即不重写该方法)，返回参数的类型字符串。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call([<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line"><span class="comment">//&quot;[object Array]&quot;</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//&quot;[object Number]&quot;</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line"><span class="comment">//&quot;[object String]&quot;</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">false</span>)</span><br><span class="line"><span class="comment">//&quot;[object Boolean]&quot;</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">Symbol</span>())</span><br><span class="line"><span class="comment">//&quot;[object Symbol]&quot;</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/06/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(3)/" data-id="cks0e81pt0000f4ptb3rt42ih" data-title="牛客前端刷题（3）" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/08/04/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(2)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">牛客前端刷题（2）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">ES6阮一峰教程学习笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/08/06/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(3)/">牛客前端刷题（3）</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/04/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(2)/">牛客前端刷题（2）</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/03/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(1)/">牛客前端刷题（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2021/08/03/github%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F(1)/">github前端面经（1）</a>
+          </li>
+        
+          <li>
+            <a href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-46)/">《react小书》笔记(31-46)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

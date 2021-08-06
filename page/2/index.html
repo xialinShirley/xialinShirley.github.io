@@ -71,6 +71,127 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ES6阮一峰教程学习笔记 （2）let和const命令" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/07/23/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%882%EF%BC%89let%E5%92%8Cconst%E5%91%BD%E4%BB%A4/" class="article-date">
+  <time class="dt-published" datetime="2021-07-23T14:08:13.000Z" itemprop="datePublished">2021-07-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/07/23/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%882%EF%BC%89let%E5%92%8Cconst%E5%91%BD%E4%BB%A4/">ES6阮一峰教程学习笔记 （2）let和const命令</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="let-和const-命令"><a href="#let-和const-命令" class="headerlink" title="let 和const 命令"></a>let 和const 命令</h2><ul>
+<li>let命令</li>
+</ul>
+<ol>
+<li><p>for 循环设置循环变量的部分是父作用域，循环体内部是子作用域。同一作用域不可使用let重复声明同一个变量。</p>
+</li>
+<li><p>var存在变量提升的情况，在未声明时值为undefined，而相同情况let则会报错。</p>
+</li>
+<li><p>let声明的变量“绑定”这个区域，可能会导致“暂时性死区”(TDZ)的出现,也可能导致typeof报错（在变量没有声明时返回“undefined”）。<strong>TDZ的本质是</strong>：只要一进入当前作用域，所要使用的 变量就已经存在了，但是不可获取，只有等到声明变量的那一行代码出现，才可以获取和使用该变量。</p>
+</li>
+<li><p>不能在函数内部重新声明参数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> arg;</span><br><span class="line">&#125;</span><br><span class="line">func()<span class="comment">//报错</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">    &#123;<span class="keyword">let</span> arg;&#125;</span><br><span class="line">&#125;</span><br><span class="line">func()<span class="comment">//不报错</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+<hr>
+<ul>
+<li>块级作用域</li>
+</ul>
+<ol>
+<li><p>考虑到环境差异较大，应该避免在块级作用域内声明函数。如果确实需要，应该写成函数表达式而不是函数声明语句。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//块级作用域内部的函数声明语句，建议不要使用</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a=<span class="string">&#x27;secret&#x27;</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//块级作用域内部，优先使用函数表达式</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">let</span> a=<span class="string">&#x27;secret&#x27;</span>;</span><br><span class="line">    <span class="keyword">let</span> f=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> a;  </span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>ES6的块状作用域必须有大括号，let和函数声明只能出现在当前作用域的顶层。</p>
+<hr>
+</li>
+</ol>
+<ul>
+<li>const命令</li>
+</ul>
+<ol>
+<li><p>const一旦声明变量就必须立即初始化，变量不提升，存在TDZ，只能声明后位置使用，不能重复声明。（类似let性质）</p>
+</li>
+<li><p>const保证的是变量指向的那个内存地址所保存的数据不得改动，对于对象和数组等复合型数据进行常量声明时必须非常小心。</p>
+</li>
+<li><p>ES6有6种声明对象的方法：var,function（ES5包含）,let,const,class,import。</p>
+<hr>
+</li>
+</ol>
+<ul>
+<li>顶层对象的属性</li>
+</ul>
+<ol>
+<li><p>顶层对象，在浏览器环境指的是window对象，在Node中指的是global对象。</p>
+</li>
+<li><p>var命令和function命令声明的全局变量依旧是顶层对象的属性，let命令、const命令、class命令声明的全局变量不属于顶层对象的属性。</p>
+<hr>
+</li>
+</ol>
+<ul>
+<li>globalThis对象</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>浏览器</th>
+<th>浏览器和Web Worker</th>
+<th>Node</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>顶层对象名</td>
+<td>window</td>
+<td>self</td>
+<td>global</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>全局环境</th>
+<th>Node.js</th>
+<th>ES6</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>this返回</td>
+<td>顶层对象</td>
+<td>当前模块</td>
+<td>undefined</td>
+</tr>
+</tbody></table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/07/23/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%882%EF%BC%89let%E5%92%8Cconst%E5%91%BD%E4%BB%A4/" data-id="ckrhksf0n0000z4pt3u2p3ynq" data-title="ES6阮一峰教程学习笔记 （2）let和const命令" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-hello-world" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/07/23/hello-world/" class="article-date">
@@ -150,7 +271,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">ES6阮一峰教程学习笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 13.33px;">牛客前端题</a>
+      <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">ES6阮一峰教程学习笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a>
     </div>
   </div>
 
@@ -172,6 +293,10 @@
       <ul>
         
           <li>
+            <a href="/2021/08/06/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(3)/">牛客前端刷题（3）</a>
+          </li>
+        
+          <li>
             <a href="/2021/08/04/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(2)/">牛客前端刷题（2）</a>
           </li>
         
@@ -185,10 +310,6 @@
         
           <li>
             <a href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-46)/">《react小书》笔记(31-46)</a>
-          </li>
-        
-          <li>
-            <a href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(21-30)/">《react小书》笔记(21-30)</a>
           </li>
         
       </ul>
