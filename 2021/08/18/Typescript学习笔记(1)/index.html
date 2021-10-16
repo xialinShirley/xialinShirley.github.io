@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Typescript学习笔记(1) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="‘TS的类型检查’与‘生成JS’是两个独立的过程，类型检查出错不影响生成Javascript代码！  类型系统：  结构类型系统：通过类型的实际结构确定两个类型是否相等或兼容。如：Typescript,Haskell,OCaml,Go 名义类型系统：通过类型的名称确定两个类型是否相等。如：C,Cpp,Java,C#,Rust   TS类型注解放在后面，加单冒号。 1function log(me">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Typescript学习笔记(1)">
+<meta property="og:url" content="http://example.com/2021/08/18/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(1)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="‘TS的类型检查’与‘生成JS’是两个独立的过程，类型检查出错不影响生成Javascript代码！  类型系统：  结构类型系统：通过类型的实际结构确定两个类型是否相等或兼容。如：Typescript,Haskell,OCaml,Go 名义类型系统：通过类型的名称确定两个类型是否相等。如：C,Cpp,Java,C#,Rust   TS类型注解放在后面，加单冒号。 1function log(me">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20210818174408939.png">
+<meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20210818181057498.png">
+<meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20210819102213274.png">
+<meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20210819102526681.png">
+<meta property="og:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20210819102647971.png">
+<meta property="article:published_time" content="2021-08-18T05:45:44.000Z">
+<meta property="article:modified_time" content="2021-08-19T02:36:39.664Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Typescript笔记">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:/Users/Administrator/AppData/Roaming/Typora/typora-user-images/image-20210818174408939.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Typescript学习笔记(1)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/18/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(1)/" class="article-date">
+  <time class="dt-published" datetime="2021-08-18T05:45:44.000Z" itemprop="datePublished">2021-08-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Typescript学习笔记(1)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>‘TS的类型检查’与‘生成JS’是两个独立的过程，类型检查出错不影响生成Javascript代码！</p>
+</li>
+<li><p>类型系统：</p>
+<ul>
+<li>结构类型系统：通过类型的<strong>实际结构</strong>确定两个类型是否相等或兼容。如：Typescript,Haskell,OCaml,Go</li>
+<li>名义类型系统：通过类型的<strong>名称</strong>确定两个类型是否相等。如：C,Cpp,Java,C#,Rust</li>
+</ul>
+</li>
+<li><p>TS类型注解放在后面，加单冒号。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">message: <span class="built_in">string</span></span>):<span class="title">void</span></span></span><br></pre></td></tr></table></figure></li>
+<li><p>类型与集合的关系：<img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210818174408939.png" alt="image-20210818174408939"></p>
+</li>
+<li><p>类型别名：在TS中，可以用type为类型声明别名，类型别名和let变量类似，也采用块级作用域。所以，同一个作用域内不能重名。内层类型别名会隐藏外层同名类型。</p>
+</li>
+<li><p>类型拓宽，类型收窄：</p>
+<ul>
+<li>类型拓宽：把字面量赋值给let、var类型时，TS不用字面量类型（单元素集合）作为该变量的类型，而是从字面量类型拓宽到相应的更宽泛的类型。这个过程叫做类型拓宽。</li>
+<li>类型收窄：在某些情况下，TS可以更加确定变量的类型，此时它会将变量类型收窄。</li>
+<li>即TS试图在类型确定性与灵活性之间取得平衡。TS提供了一系列方法来帮助收窄类型，以提高类型的确定度。</li>
+</ul>
+</li>
+<li><p>值空间和类型空间：只包含类型声明的namespace不会产生JS代码，不会引入变量。instanceof操作符只作用于<strong>值空间</strong>。</p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210818181057498.png" alt="image-20210818181057498"></p>
+<p>判断符号在哪个空间：</p>
+<ul>
+<li><p>转译后消失的符号：类型空间。</p>
+</li>
+<li><p>作为类型注解、别名的符号：类型空间。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> T=<span class="keyword">typeof</span> Person;<span class="keyword">const</span> p:Person</span><br></pre></td></tr></table></figure></li>
+<li><p>类型断言后的符号：类型空间（target as/is <u>HTMLElement</u>）</p>
+</li>
+</ul>
+</li>
+<li><p>[]（索引访问操作符）：在值空间，val[field]或var.field返回val对应属性的值；在类型空间，Type[T]返回对应T的TS类型。</p>
+</li>
+<li><p>any比较特殊，既是Top Type又是Bottom Type，也是就说any类型的变量/常量和任何其他类型的变量/常量可以互相赋值。但any是类型<u>不安全的</u>、<u>无语言服务的</u>，所以应该<u>尽量避免使用</u>。</p>
+</li>
+<li><p>如果无法预知类型，不要用any，用unknown，收窄类型后再使用。</p>
+</li>
+<li><p>在TS中，number包括：整数、浮点数、+-Infinity(正负无穷)，<strong>NaN</strong>。</p>
+</li>
+<li><p>bigint不能和number混合运算，需要显示转换。</p>
+</li>
+<li><p>let、var声明的变量推导成symbol类型，unique symbol必须是const常量。const常量推导成unique symbol，也可以显示注解成unique symbol。unique symbol不是一个类型，而是一组类型。比如unique symbol b1和unique symbol b1x是两个类型。</p>
+</li>
+<li><p>symbol：</p>
+<ul>
+<li>将unique symbol赋值给另一个const时，类型会拓宽为symbol。如果不希望拓宽，需要显示注解为对应常量的typeof。</li>
+<li>Symbol的第一个参数是描述，不是符号名，也不是符号ID。每次调用Symbol都会返回一个全新的符号，即便描述相同。</li>
+<li>Symbol.for在内部维护了一个字典，如果之前没有创建过对应描述的符号，就返回一个新的符号，如果创建过，就返回已创建的符号。</li>
+</ul>
+</li>
+<li><p>Array：数组有两种注解方式：1.T[]  2.Array&lt;T&gt;接口泛型。</p>
+<ul>
+<li>const数组不会收窄，因为收窄就变成tuple类型了。</li>
+<li>TS无法推断空数组的类型，只能推断为any[]。</li>
+<li>但是，当离开作用域时TS可以分析代码，推断出数组的类型。</li>
+</ul>
+</li>
+<li><p>tuple：元组是数组的子类型。元组各索引位上的元素类型是确定的。</p>
+<ul>
+<li>因为元组的创建方法和数组是一样的，所以元组必须显示注解。</li>
+<li>元组支持可选操作符(?)和rest(…)操作符。</li>
+<li>[…string[]]等价于string[]，但[string, …string[]]不等价于string[]，前者至少包含一个元素。</li>
+</ul>
+</li>
+<li><p>Enum：枚举本质上是一种映射。会在值空间产生一个包含该映射的对象。</p>
+<ul>
+<li>未显式赋值的枚举值自动从0自增赋值和显示赋值为整数的枚举都存在双向映射。显式赋值字符串的枚举不存在反向映射。</li>
+<li>常量枚举不会在值空间创建变量，所有引用常量枚举的地方都被替换成对应的值。(但是可以通过preserveConstEnum编译器选项来控制)</li>
+</ul>
+</li>
+<li><p>null,undefined,void,never：</p>
+<ul>
+<li>JS中：Undefined={undefined}，表示已声明，未赋值。Null={null}，表示已声明，值为null或者值为空。</li>
+<li>JS中，void是一个一元操作符，它执行后面的表达值，然后无条件返回undefined。</li>
+<li>TS中：函数没有显式返回值得到void类型，函数无法返回得到never类型。</li>
+</ul>
+</li>
+<li><p>接口(Interface) 与类型别名(Type aliases)可以认为是同一概念的两种语法，类比函数定义与函数表达式。</p>
+</li>
+<li><p>映射类型对比：</p>
+<table>
+<thead>
+<tr>
+<th>值空间</th>
+<th>类型空间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>函数参数和默认值</td>
+<td>泛型参数和默认值</td>
+</tr>
+<tr>
+<td>for-in遍历</td>
+<td>key-in遍历</td>
+</tr>
+<tr>
+<td>if-else判断</td>
+<td>条件类型判断</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210819102213274.png" alt="image-20210819102213274"></p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210819102526681.png" alt="image-20210819102526681"></p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210819102647971.png" alt="image-20210819102647971"></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/18/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(1)/" data-id="ckutzsf4f00108spta5xc6b6h" data-title="Typescript学习笔记(1)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/08/19/%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4-%E5%B8%B8%E7%94%A8/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          操作指令-常用
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/08/11/PromisesA+%E6%A0%87%E5%87%86%E7%BF%BB%E8%AF%91/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Promises/A+标准翻译</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">CSS笔记</a> <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">ES6阮一峰教程学习笔记</a> <a href="/tags/Javascript%E7%AC%94%E8%AE%B0/" style="font-size: 18.33px;">Javascript笔记</a> <a href="/tags/Typescript%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">Typescript笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">前端动画实现</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" style="font-size: 10px;">前端技术</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" style="font-size: 11.67px;">前端知识积累</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 10px;">字节青训营</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a> <a href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">自用说明</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

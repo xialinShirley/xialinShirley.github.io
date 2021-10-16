@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Javascript学习笔记(8) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Object对象的原生方法分成两类：Object本身的方法与Object的实例方法。  Object对象本身的方法。所谓“本身的方法”就是直接定义在Object对象的方法。 Object的实例方法。所谓实例方法就是定义在Object原型对象Object.prototype上的方法。它可以被Object实例直接使用。   instanceof运算符用来验证，一个对象是否为指定的构造函数的实例。如果">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript学习笔记(8)">
+<meta property="og:url" content="http://example.com/2021/10/12/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(8)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Object对象的原生方法分成两类：Object本身的方法与Object的实例方法。  Object对象本身的方法。所谓“本身的方法”就是直接定义在Object对象的方法。 Object的实例方法。所谓实例方法就是定义在Object原型对象Object.prototype上的方法。它可以被Object实例直接使用。   instanceof运算符用来验证，一个对象是否为指定的构造函数的实例。如果">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-12T05:59:35.000Z">
+<meta property="article:modified_time" content="2021-10-12T12:49:38.052Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Javascript笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Javascript学习笔记(8)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/12/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(8)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-12T05:59:35.000Z" itemprop="datePublished">2021-10-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Javascript学习笔记(8)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p><code>Object</code>对象的原生方法分成两类：<code>Object</code>本身的方法与<code>Object</code>的实例方法。</p>
+<ul>
+<li><strong><code>Object</code>对象本身的方法</strong>。所谓“本身的方法”就是直接定义在<code>Object</code>对象的方法。</li>
+<li><strong><code>Object</code>的实例方法</strong>。所谓实例方法就是定义在<code>Object</code>原型对象<code>Object.prototype</code>上的方法。它可以被<code>Object</code>实例直接使用。</li>
+</ul>
+</li>
+<li><p><code>instanceof</code>运算符用来验证，一个对象是否为指定的构造函数的实例。如果参数是原始类型的值，<code>Object</code>方法将其转为对应的包装对象的实例。如果<code>Object</code>方法的参数是一个对象，它总是返回该对象，即不用转换。利用这一点，可以写一个判断变量是否为对象的函数。</p>
+</li>
+<li><p><code>Object(value)</code>与<code>new Object(value)</code>两者的语义是不同的，<code>Object(value)</code>表示将<code>value</code>转成一个对象，<code>new Object(value)</code>则表示新生成一个对象，它的值是<code>value</code>。</p>
+</li>
+<li><p><code>Object.keys</code>方法只返回可枚举的属性，<code>Object.getOwnPropertyNames</code>方法还返回不可枚举的属性名。一般情况下，几乎总是使用<code>Object.keys</code>方法，遍历对象的属性。</p>
+</li>
+<li><p>实例方法：<code>valueOf</code>方法的作用是返回一个对象的“值”，默认情况下返回对象本身。<code>toString</code>方法的作用是返回一个对象的字符串形式，默认情况下返回类型字符串。</p>
+</li>
+<li><p>数组、字符串、函数、Date 对象都分别部署了自定义的<code>toString</code>方法，覆盖了<code>Object.prototype.toString</code>方法。直接使用<code>Object.prototype.toString</code>方法。通过函数的<code>call</code>方法，可以在任意值上调用这个方法，帮助我们判断这个值的类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(value)</span><br></pre></td></tr></table></figure></li>
+<li><p>这个方法的主要作用是留出一个接口，让各种不同的对象实现自己版本的<code>toLocaleString</code>，用来返回针对某些地域的特定的值。Array,Number,Date的prototype自定义了<code>toLocaleString</code>方法。</p>
+</li>
+<li><p><code>Object.prototype.hasOwnProperty</code>方法接受一个字符串作为参数，返回一个布尔值，表示该实例对象自身是否具有该属性。</p>
+</li>
+<li><p>JavaScript 提供了一个内部数据结构，用来描述对象的属性，控制它的行为，比如该属性是否可写、可遍历等等。这个内部数据结构称为“属性描述对象”（attributes object）。</p>
+</li>
+<li><p>属性描述对象提供6个元属性。包括：value、writable(针对value)、enumerable、configurable(除value外其他元属性)、set、get。</p>
+</li>
+<li><p><code>Object.getOwnPropertyDescriptor()</code>方法可以获取属性描述对象。它的第一个参数是目标对象，第二个参数是一个字符串，对应目标对象的某个属性名。这一方法只能用于对象自身的属性，不能用于继承的属性。</p>
+</li>
+<li><p><code>Object.getOwnPropertyNames</code>方法返回一个数组，成员是参数对象自身的全部属性的属性名，不管该属性是否可遍历</p>
+</li>
+<li><p>注意，一旦定义了取值函数<code>get</code>（或存值函数<code>set</code>），就不能将<code>writable</code>属性设为<code>true</code>，或者同时定义<code>value</code>属性，否则会报错。</p>
+</li>
+<li><p><code>Object.defineProperty()</code>和<code>Object.defineProperties()</code>参数里面的属性描述对象，<code>writable</code>、<code>configurable</code>、<code>enumerable</code>这三个属性的默认值都为<code>false</code>。</p>
+</li>
+<li><p>实例对象的<code>propertyIsEnumerable()</code>方法返回一个布尔值，用来判断某个属性是否可遍历。注意，这个方法只能用于判断对象自身的属性，对于继承的属性一律返回<code>false</code>。</p>
+</li>
+<li><p><code>value</code>属性是目标属性的值。<code>writable</code>属性是一个布尔值，决定了目标属性的值（value）是否可以被改变。</p>
+</li>
+<li><p>如果原型对象的某个属性的<code>writable</code>为<code>false</code>，那么子对象将无法自定义这个属性。，有一个规避方法，就是通过覆盖属性描述对象，绕过这个限制。原因是这种情况下，原型链会被完全忽视。</p>
+</li>
+<li><p>具体来说，如果一个属性的<code>enumerable</code>为<code>false</code>，下面三个操作不会取到该属性。</p>
+<ul>
+<li><code>for..in</code>循环</li>
+<li><code>Object.keys</code>方法</li>
+<li><code>JSON.stringify</code>方法</li>
+</ul>
+<p>因此，<code>enumerable</code>可以用来设置“秘密”属性。</p>
+</li>
+<li><p>注意，<code>for...in</code>循环包括继承的属性，<code>Object.keys</code>方法不包括继承的属性。如果需要获取对象自身的所有属性，不管是否可遍历，可以使用<code>Object.getOwnPropertyNames</code>方法。</p>
+</li>
+<li><p>另外，<code>JSON.stringify</code>方法会排除<code>enumerable</code>为<code>false</code>的属性，有时可以利用这一点。如果对象的 JSON 格式输出要排除某些属性，就可以把这些属性的<code>enumerable</code>设为<code>false</code>。</p>
+</li>
+<li><p><code>configurable</code>为<code>false</code>时，<code>writable</code>、<code>enumerable</code>和<code>configurable</code>都不能被修改了。注意，<code>writable</code>属性只有在<code>false</code>改为<code>true</code>时会报错，<code>true</code>改为<code>false</code>是允许的。</p>
+</li>
+<li><p><code>value</code>属性的情况比较特殊。只要<code>writable</code>和<code>configurable</code>有一个为<code>true</code>，就允许改动<code>value</code>。可配置性决定了目标属性是否可以被删除（delete）。</p>
+</li>
+<li><p>注意，取值函数<code>get</code>不能接受参数，存值函数<code>set</code>只能接受一个参数（即属性的值）。存取器往往用于，属性的值依赖对象内部数据的场合。</p>
+</li>
+<li><p>对象的拷贝可以通过<code>Object.defineProperty</code>方法来拷贝属性。</p>
+</li>
+<li><p>有时需要冻结对象的读写状态，防止对象被改变。JavaScript 提供了三种冻结方法，最弱的一种是<code>Object.preventExtensions</code>，其次是<code>Object.seal</code>，最强的是<code>Object.freeze</code>。</p>
+</li>
+<li><p><code>Object.preventExtensions</code>方法可以使得一个对象无法再添加新的属性，也无法删除旧属性。<code>Object.isExtensible</code>方法用于检查一个对象是否使用了<code>Object.preventExtensions</code>方法。也就是说，检查是否可以为一个对象添加属性。</p>
+</li>
+<li><p><code>Object.seal</code>方法使得一个对象既无法添加新属性，也无法删除旧属性，并不影响修改某个属性的值。<code>Object.seal</code>实质是把属性描述对象的<code>configurable</code>属性设为<code>false</code>，因此属性描述对象不再能改变了。</p>
+</li>
+<li><p><code>Object.isSealed</code>方法用于检查一个对象是否使用了<code>Object.seal</code>方法。seal后，<code>Object.isExtensible</code>方法也返回<code>false</code>。</p>
+</li>
+<li><p><code>Object.freeze</code>方法可以使得一个对象无法添加新属性、无法删除旧属性、也无法改变属性的值，使得这个对象实际上变成了常量。</p>
+</li>
+<li><p>使用<code>Object.freeze</code>方法以后，<code>Object.isSealed</code>将会返回<code>true</code>，<code>Object.isExtensible</code>返回<code>false</code>。</p>
+</li>
+<li><p><code>Object.isFrozen</code>的一个用途是，确认某个对象没有被冻结后，再对它的属性赋值。</p>
+</li>
+<li><p>上面的三个方法锁定对象的可写性有一个漏洞：可以通过改变原型对象，来为对象增加属性。一种解决方案是，把<code>obj</code>的原型也冻结住。另外一个局限是，如果属性值是对象，上面这些方法只能冻结属性指向的对象，而不能冻结对象本身的内容。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/12/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(8)/" data-id="ckutzsf4b000r8spt2ct03nki" data-title="Javascript学习笔记(8)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/10/12/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(9)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Javascript学习笔记(9)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/10/11/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(7)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Javascript学习笔记(7)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">CSS笔记</a> <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">ES6阮一峰教程学习笔记</a> <a href="/tags/Javascript%E7%AC%94%E8%AE%B0/" style="font-size: 18.33px;">Javascript笔记</a> <a href="/tags/Typescript%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">Typescript笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">前端动画实现</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" style="font-size: 10px;">前端技术</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" style="font-size: 11.67px;">前端知识积累</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 10px;">字节青训营</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a> <a href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">自用说明</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

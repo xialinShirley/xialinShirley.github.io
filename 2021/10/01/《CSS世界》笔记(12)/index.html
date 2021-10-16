@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>《CSS世界》笔记(12) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="当absolute和float同时存在的时候，float属性是无任何效果的。元素一旦position属性值为absolute或fixed，其display计算值就是block或table。  absolute的自适应最大宽度往往不是由父元素决定的，而是由与众不同的“包含块”决定的。包含块(containing block)指元素用来计算和定位的一个框。  根元素（很多场景下可以看成是&lt;ht">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《CSS世界》笔记(12)">
+<meta property="og:url" content="http://example.com/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(12)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="当absolute和float同时存在的时候，float属性是无任何效果的。元素一旦position属性值为absolute或fixed，其display计算值就是block或table。  absolute的自适应最大宽度往往不是由父元素决定的，而是由与众不同的“包含块”决定的。包含块(containing block)指元素用来计算和定位的一个框。  根元素（很多场景下可以看成是&lt;ht">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-01T07:18:54.000Z">
+<meta property="article:modified_time" content="2021-10-01T11:47:30.581Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="CSS笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-《CSS世界》笔记(12)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(12)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-01T07:18:54.000Z" itemprop="datePublished">2021-10-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      《CSS世界》笔记(12)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>当absolute和float同时存在的时候，float属性是无任何效果的。元素一旦position属性值为absolute或fixed，其display计算值就是block或table。</p>
+</li>
+<li><p>absolute的自适应最大宽度往往不是由父元素决定的，而是由与众不同的“包含块”决定的。包含块(containing block)指元素用来计算和定位的一个框。</p>
+<ul>
+<li><p>根元素（很多场景下可以看成是<code>&lt;html&gt;</code>）被称为“初始包含块”，其尺寸等同于浏览器可视窗口的大小。</p>
+</li>
+<li><p>对于其他元素，如果该元素的position是relative或者static，则“包含块”由其最近的块容器祖先盒的content box边界形成。</p>
+</li>
+<li><p>如果元素position:fixed，则“包含块”是”初始包含块“。</p>
+</li>
+<li><p>如果元素position:absolute，则”包含块“由最近的position不为static的祖先元素建立：</p>
+<p>如果该祖先元素是纯inline元素：</p>
+<ul>
+<li>假设给内联元素的前后各生成一个宽度为0的内联盒子(inline box)，则这两个内联盒子的padding box外面的包围盒就是内联元素的“包含块”。</li>
+<li>如果该内联元素被跨行分割了，则“包含块”是未定义的，则浏览器自行发挥。</li>
+</ul>
+<p>否则，“包含块”由该祖先的padding box边界形成。</p>
+<p>若无符合条件的祖先元素，则“包含块”是“初始包含块”。</p>
+</li>
+</ul>
+</li>
+<li><p>内联元素的“包含块”是由“生成的”前后内联盒子决定的，与里面的内联盒子细节没有任何关系，可以受::first-line伪元素影响，但不受::first-letter伪元素影响。</p>
+</li>
+<li><p>对于绝对定位元素，height100%是第一个具有定位属性值的祖先元素的高度，而height:inherit则是单纯的父元素的高度继承。</p>
+</li>
+<li><p>修复绝对定位元素“一柱擎天”的问题：改变默认的宽度显示类型，添加white-space:nowrap，让宽度表现从“包裹性”变成“最大可用宽度”。</p>
+</li>
+<li><p>在列表或模块右上角显示标签直接用数值0定位在列表的右上角即可，因为是相对于padding box，如果定位在内容边缘，则用透明的border撑开，注意此时尽量不要设置overflow:hidden。</p>
+</li>
+<li><p>absolute是非常独立的CSS属性值，其样式和行为表现不依赖其他任何CSS属性就可以完成。将没有设置left/top/right/bottom属性值的绝对定位称为“无依赖绝对定位”，可以视作不占据CSS流的尺寸空间的“相对定位”。</p>
+</li>
+<li><p>“无依赖绝对定位”的妙用（建议只用在静态交互效果上）：</p>
+<ul>
+<li>各类图标定位：使用position:absolute，然后简单margin偏移实现。</li>
+<li>超越常规布局的排版：注册表单的提示信息，既在输入框后显示，又跳出来容器宽度的限制，同时显隐不会影响原先的布局。</li>
+<li>下拉表单的定位：实现静态下拉效果。</li>
+<li>占位符效果模拟：IE9及以下浏览器不支持placeholder占位符效果，使用<code>&lt;label&gt;</code>标签和输入框关联并覆盖在输入框上面。也可以使用“无依赖绝对定位”完成覆盖，好处是组件化的时候适用性更广，因为不会对父级元素进行定位属性限制。</li>
+<li>进一步深入“无依赖绝对定位”：<ul>
+<li>虽说元素position:absolute后的display计算值都是块状，但是其定位的位置和未设置position:absolute时候的位置相关。</li>
+<li>“浮动”和“无依赖绝对定位”相遇时，各浏览器表现不同。若想统一，需要在“无依赖绝对定位”元素外层嵌套一层标签并浮动，注意是外层标签，绝对定位元素本身设置浮动是没有任何效果的。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(12)/" data-id="ckutzsf5g001r8sptcgwya7xf" data-title="《CSS世界》笔记(12)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(13)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          《CSS世界》笔记(13)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/09/30/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(11)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">《CSS世界》笔记(11)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">CSS笔记</a> <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">ES6阮一峰教程学习笔记</a> <a href="/tags/Javascript%E7%AC%94%E8%AE%B0/" style="font-size: 18.33px;">Javascript笔记</a> <a href="/tags/Typescript%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">Typescript笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">前端动画实现</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" style="font-size: 10px;">前端技术</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" style="font-size: 11.67px;">前端知识积累</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 10px;">字节青训营</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a> <a href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">自用说明</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

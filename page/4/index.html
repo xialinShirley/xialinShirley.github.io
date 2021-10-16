@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/4/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-《CSS世界》笔记(6)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/25/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(6)/" class="article-date">
+  <time class="dt-published" datetime="2021-09-25T01:12:41.000Z" itemprop="datePublished">2021-09-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/25/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(6)/">《CSS世界》笔记(6)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>可以用margin负值实现等高布局。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.column-box</span> &#123;</span><br><span class="line"> <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.column-left</span>,</span><br><span class="line"><span class="selector-class">.column-right</span> &#123;</span><br><span class="line"> <span class="attribute">margin-bottom</span>: -<span class="number">9999px</span>;</span><br><span class="line"> <span class="attribute">padding-bottom</span>: <span class="number">9999px</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li><p>border和table-cell的优缺点：前者优势在于兼容性好，没有锚点定位的隐患，不足在于最多3栏，且由于border不支持百分比宽度，因此只能实现至少一侧定宽的布局；table-cell的优点是天然等高，不足之处在于IE8及以上版本浏览器才支持。</p>
+</li>
+<li><p>和padding不同，内联元素垂直margin是没有任何影响的水平，margin只影响外部尺寸。</p>
+</li>
+<li><p>块级元素的上外边距(margin-top)与下外边距(margin-bottom)有时会合并为单个外边距，这样的现象称为“margin合并”。</p>
+<ul>
+<li>块级元素：不包括可以让元素块状化的浮动和绝对定位。</li>
+<li>只发生在垂直方向：只发生在和当前文档流方向相垂直的方向上，由于默认文档流是水平流，因此发生margin合并的就是垂直方向。</li>
+</ul>
+</li>
+<li><p>margin合并的3种场景：</p>
+<ul>
+<li><p>相邻兄弟元素margin合并。</p>
+</li>
+<li><p>父元素和第一个/最后一个子元素。</p>
+<p>此时，使用getComputedStyle方法获取父元素的margin-top值还是CSS属性中设置值，并非margin合并的表现值。</p>
+<p>阻止合并：1.父元素设置为块状格式化上下文元素</p>
+<p>​                    2.父元素设置对应的border/padding值</p>
+<p>​                    3.在合并元素间添加内联元素进行分隔。</p>
+<p>​                    4.对于margin-bottom，父元素设置height、min-height、max-                    height。</p>
+<p>使用jQuery的$().slideUp()/$().slideDown()方法若跳动，则说明存在margin合并，向对象添加的overflow:hidden设置会阻止margin合并。</p>
+</li>
+<li><p>空块级元素的margin合并。</p>
+<p>阻止空<code>&lt;div&gt;</code>元素的margin合并：</p>
+<p>​    1.设置垂直方向的border/padding。</p>
+<p>​    2.里面添加内联元素（直接Space键空格是没用的）。</p>
+<p>​    3.设置height或者min-height。</p>
+</li>
+</ul>
+</li>
+<li><p>margin合并的计算规则：</p>
+<ul>
+<li>正正取大值。</li>
+<li>正负值相加。</li>
+<li>负负最负值。</li>
+</ul>
+</li>
+<li><p>margin:auto的填充规则如下：</p>
+<ul>
+<li><p>如果一侧定值，一侧auto，则auto为剩余空间大小。</p>
+<p>由于margin的初始值大小为0，当margin-right缺失，margin-left为auto时，实现的是块级元素的右对齐效果。</p>
+</li>
+<li><p>如果两侧均是auto，则平分空间。</p>
+</li>
+</ul>
+</li>
+<li><p>触发margin:auto计算有一个前提条件，就是width或height为auto时，元素是具有对应方向的自动填充特性的。</p>
+</li>
+<li><p>垂直方向margin实现居中，方法有：</p>
+<ul>
+<li><p>使用writing-mode改变文档流的方向。</p>
+</li>
+<li><p>绝对定位元素的margin:auto居中。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>; <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">position</span>:relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span> &#123; </span><br><span class="line">    <span class="attribute">position</span>: absolute; </span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>这一居中实现方式在IE8及以上版本浏览器才支持，对于替换元素，如果设置display:block，则margin:auto的计算规则同样适合。</p>
+</li>
+<li><p>margin无效情形：</p>
+<ul>
+<li><p>display计算值inline的非替换元素的垂直margin是无效的。对于内联替换元素，垂直margin有效，并且没有margin合并的问题，所以不会发生margin合并。</p>
+</li>
+<li><p>表格中的<code>&lt;tr&gt; &lt;td&gt;</code>元素或者设置display计算值是table-cell或table-row的元素的margin都是无效的。但是，如果计算值是table-caption、table或者inline-table则没有此问题，可以通过margin控制外间距，甚至::first-letter伪元素也可以解析margin。</p>
+</li>
+<li><p>margin合并的时候，更改margin值可能无效，如大大取大。</p>
+</li>
+<li><p>绝对定位元素非定位方位的margin值“无效”。绝对定位元素独立渲染，其margin不影响兄弟元素定位。但实际margin是作用了的，绝对定位元素任意方位的margin值不论在什么场景下都一直有效。</p>
+</li>
+<li><p>定高容器的子元素的margin-bottom或者宽度定死的子元素的margin-right的定位“失效”。若想使用margin属性改变自身的位置，必须是和当前元素定位方向一样的margin属性才可以，否则，margin只能影响后面的元素或者父元素。</p>
+<p>例如，一个普通元素，在默认流下，其定位方向是左侧以及上方，此时只有margin-left和margin-top可以影响元素的定位。但是，如果通过一些属性改变了定位方向，如float:right或者绝对定位元素的right右侧定位，则反过来margin-right可以影响元素的定位，margin-left只能影响兄弟元素。</p>
+</li>
+<li><p>鞭长莫及导致的margin无效。</p>
+</li>
+<li><p>内联特性导致的margin无效。</p>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/25/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(6)/" data-id="ckutzsf6c002n8spt4wigdo51" data-title="《CSS世界》笔记(6)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(5)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/22/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(5)/" class="article-date">
+  <time class="dt-published" datetime="2021-09-22T11:29:09.000Z" itemprop="datePublished">2021-09-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/22/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(5)/">《CSS世界》笔记(5)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>padding指盒子的内补间。内联元素没有可视宽度和可视高度的说法（clientHeight和clientWidth永远是0），垂直方向的行为表现完全受line-height和vertical-align的影响。</li>
+<li>不影响其他元素布局而是出现层叠效果分为两类：一类是纯视觉层叠，不影响外部尺寸；另一类则会影响外部尺寸。盒阴影box-shadow以及outline属于前者，inline元素的padding层叠属于后者。判断方法：父容器<code>overflow:auto</code>，层叠区域超出父容器的时候，有无滚动条出现。</li>
+<li>对于非替换元素的内联元素，不仅padding不会加入行盒高度的计算，margin和border也都是如此，都是不计算高度，但实际上在内联盒周围发生了渲染。</li>
+<li>padding的百分比值：<ul>
+<li>与margin属性不同，padding属性不支持负值</li>
+<li>padding支持百分比值，且无论是水平方向还是垂直方向均是相对于宽度计算的。因为CSS默认的是水平流，计算值一直会有效。</li>
+</ul>
+</li>
+<li>内联元素默认的高度完全受font-size大小控制，因此将font-size置0可以让“幽灵空白点”高度变为0。</li>
+<li>标签元素内置的padding：ol/ul列表内置padding-left，但单位是px不是em。当font-size是12px至14px时，22px是比较好的一个paddding-left设定值。</li>
+<li>很多表单元素都内置padding。使用<code>&lt;label&gt;</code>元素的for属性值和<code>&lt;button&gt;</code>元素的id值对应即可。能保证按钮高度固定且保留了<code>&lt;button&gt;</code>元素的行为。</li>
+<li>使用padding属性和background-clip属性配合，可以在有限的标签下实现一些CSS图形绘制效果。</li>
+<li>元素尺寸的相关概念：<ul>
+<li>元素尺寸：元素的border box的尺寸。在原生DOM API中写作offsetWidth和offsetHeight，有时候也称为“元素偏移尺寸”。</li>
+<li>元素内部尺寸：元素的padding box的尺寸。在原生的DOM API中写作clientWidth和clientHeight，有时候也称为“元素可视尺寸”。</li>
+<li>元素外部尺寸：元素的margin box的尺寸。没有相对应的原生DOM API。</li>
+</ul>
+</li>
+<li>对于padding，元素设定了width或者保持“包裹性”的时候，会改变元素的可视尺寸。而只有元素是“充分利用可用空间”状态的时候，margin才可以改变元素的可视尺寸。</li>
+<li>对于普通流体元素，margin只能改变元素水平方向尺寸，但对于具有拉伸特性的绝对定位元素，则水平或垂直方向都可以。</li>
+<li>如果容器可以滚动，在IE和Firefox浏览器下是会忽略padding-bottom值的，Chrome等浏览器则不会。本质原因在于：Chrome浏览器是子元素超过content box尺寸触发滚动条显示，而IE和Firefox浏览器是超过padding box尺寸触发滚动条显示。</li>
+<li>由于兼容性问题，使用子元素的margin-bottom来实现滚动容器的底部留白。</li>
+<li>当margin-top/left为负值的时候与参考线的距离减少，当margin-right/bottom为负值的时候与参考线就向左、上面移动。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/22/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(5)/" data-id="ckutzsf69002h8spt0p6nadhd" data-title="《CSS世界》笔记(5)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(4)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/21/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(4)/" class="article-date">
+  <time class="dt-published" datetime="2021-09-21T14:03:12.000Z" itemprop="datePublished">2021-09-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/21/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(4)/">《CSS世界》笔记(4)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>Web开发的时候，为了提高加载性能以及节约带宽费用，首屏以下的图片会通过滚屏加载的方式异步加载，直接使用裸<code>&lt;img&gt;</code>占位，当图片的src属性缺省时，图片不会有任何请求。</p>
+</li>
+<li><p>在CSS重置时加上<code>img&#123;display:inline-block；&#125;</code>可以修复Firefox浏览器，同时对其他浏览器的图片表现没有任何影响。</p>
+</li>
+<li><p>适配方式可以通过object-fit属性进行更改，图片的content替换内容默认的适配方式是填充(fill)，也就是说尺寸变化的本质不是改变固有尺寸，而是采用了填充作为适配HTML尺寸和CSS尺寸的方式。</p>
+</li>
+<li><p>替换元素和非替换元素之间只隔了一个src属性。基于伪元素的图片内容生成技术：对<code>&lt;img&gt;</code>使用::before和::after伪元素进行内容生成以及样式构建。需要注意：</p>
+<ul>
+<li><p>不能有src属性。</p>
+</li>
+<li><p>不能使用content属性生成图片。</p>
+</li>
+<li><p>需要有alt属性并有值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line"> <span class="comment">/* 生成 alt 信息 */</span></span><br><span class="line"> <span class="attribute">content</span>: <span class="built_in">attr</span>(alt);</span><br><span class="line"> <span class="comment">/* 尺寸和定位 */</span></span><br><span class="line"> <span class="attribute">position</span>: absolute; <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line"> <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"> <span class="attribute">background-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">5</span>);</span><br><span class="line"> <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">100%</span>);</span><br><span class="line"> <span class="comment">/* 来点过渡动画效果 */</span></span><br><span class="line"> <span class="attribute">transition</span>: transform .<span class="number">2s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">img</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">::after</span> &#123;</span><br><span class="line"> <span class="comment">/* alt 信息显示 */</span></span><br><span class="line"> <span class="attribute">transform</span>: <span class="built_in">translateY</span>(<span class="number">0</span>);</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>替换元素和非替换元素之间只隔了一个CSS content属性。使用content属性可以实现鼠标悬停时改变图片显示。</p>
+</li>
+<li><p>在移动端为了清晰度使用svg。使用content替换h1内容，可以不用隐藏文字。</p>
+</li>
+<li><p>content生成内容的特点：</p>
+<ul>
+<li><p>文字无法选中。</p>
+</li>
+<li><p>不能左右:empty伪类。</p>
+</li>
+<li><p>content动态生成值无法获取：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.total</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>:<span class="built_in">counter</span>(icecream);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>content内容生成技术：</p>
+<ul>
+<li><p>content辅助元素生成：</p>
+<p>a.  清除浮动带来的影响:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clear</span>:after&#123;</span><br><span class="line">	content:<span class="string">&#x27;&#x27;</span>;</span><br><span class="line">    <span class="attribute">display</span>:table;<span class="comment">/*也可以是&#x27;block&#x27;*/</span></span><br><span class="line">    <span class="attribute">clear</span>:both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>b.  辅助实现“两端对齐”以及“垂直居中/上/下边缘对齐”。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line"> <span class="attribute">width</span>: <span class="number">256px</span>; <span class="attribute">height</span>: <span class="number">256px</span>;</span><br><span class="line"> <span class="comment">/* 两端对齐关键 */</span></span><br><span class="line"> <span class="attribute">text-align</span>: justify;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span>:before &#123; content: <span class="string">&quot;&quot;</span>;</span><br><span class="line"> <span class="attribute">display</span>: inline-block;</span><br><span class="line"> <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box</span>:after &#123;</span><br><span class="line"> content: <span class="string">&quot;&quot;</span>;</span><br><span class="line"> <span class="attribute">display</span>: inline-block;</span><br><span class="line"> <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bar</span> &#123;</span><br><span class="line"> <span class="attribute">display</span>: inline-block;</span><br><span class="line"> <span class="attribute">width</span>: <span class="number">20px</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li><p>content字符内容生成：</p>
+<p>a.   配合@font-face规则实现图标字体效果。</p>
+<p>b.   插入Unicode字符来实现某些布局或者效果。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">正在加载中&lt;dot&gt;...&lt;/dot&gt;</span><br><span class="line">dot &#123;</span><br><span class="line"> <span class="attribute">display</span>: inline-block;</span><br><span class="line"> <span class="attribute">height</span>: <span class="number">1em</span>;</span><br><span class="line"> <span class="attribute">line-height</span>: <span class="number">1</span>;</span><br><span class="line"> <span class="attribute">text-align</span>: left;</span><br><span class="line"> <span class="attribute">vertical-align</span>: -.<span class="number">25em</span>;</span><br><span class="line"> <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line">dot<span class="selector-pseudo">::before</span> &#123;</span><br><span class="line"> <span class="attribute">display</span>: block;</span><br><span class="line"> <span class="attribute">content</span>: <span class="string">&#x27;...\A..\A.&#x27;</span>;</span><br><span class="line"> <span class="attribute">white-space</span>: pre-wrap;</span><br><span class="line"> <span class="attribute">animation</span>: dot <span class="number">3s</span> infinite step-start both;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">@keyframes</span> dot &#123;</span><br><span class="line"> <span class="number">33%</span> &#123; <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">2em</span>); &#125;</span><br><span class="line"> <span class="number">66%</span> &#123; <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">1em</span>); &#125;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure>
+
+<p>‘\A’（LF）是不区分大小写的；’\D’（CR）也能实现换行效果，但是，要想上下行对齐，需要用在:before伪元素上，因为CR是将光标移动到当前行的开头，而LF是将光标“垂直”移动到下一行。</p>
+</li>
+<li><p>content图片生成：伪元素中的图片使用background-image模拟，只有生成的图片是base64URL地址时使用content。</p>
+</li>
+<li><p>了解content开启闭合符号生成：比较鸡肋，直接“字符生成”即可。</p>
+</li>
+<li><p>content attr属性值内容生成：content:attr(属性值名称)不用加引号。</p>
+</li>
+<li><p>content内容生成的混合特性：指的是各种content内容生成语法是可以混合在一起使用的，可以同时显示图片和文字排列效果。</p>
+</li>
+<li><p>深入理解content计数器：</p>
+<p>a.   属性conter-reset：为计数器命名，并告知计数起点，默认起点为0，还可以多个计数器同时命名。e.g.</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 计数器名称是&#x27;wangxiaoer&#x27;, 并且默认起始值是 2 */</span></span><br><span class="line"><span class="selector-class">.xxx</span> &#123; <span class="attribute">counter-reset</span>: wangxiaoer <span class="number">2</span>  wangxiaosan <span class="number">3</span>;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>b.   属性counter-increment。值为content-reset的1个或多个关键字，后面可以跟表示每次家属的变化值的数字，默认值为1。也可以同时增两个。</p>
+<p>“普照规则”：普照源(counter-reset)唯一，每普照(counter-increment)一次，普照源增加一次计数值。</p>
+<p>计数器的数值变化遵循HTML渲染顺序，遇到一个Increment计数器就变化，什么时候counter输出就输出此时的计数值。</p>
+<p>c.   方法counter()/counters()。<code>counter(name,style)</code>，style为计数使用的类型，如lower-noman。</p>
+<p>couters()实现嵌套计数。基本用法为<code>counters(name,string)</code>，string参数为字符串（需要引号包围的，是必需参数），表示子序号的连接字符串。注意一定要是父子形式嵌套，因为一个容器的counter-reset是唯一的。</p>
+<p>显示content计数值的那个DOM元素在文档流中的位置一定要在counter-increment元素的后面，否则没有技术效果。</p>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/21/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(4)/" data-id="ckutzsf67002f8spt1ouuhvud" data-title="《CSS世界》笔记(4)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(3)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/19/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(3)/" class="article-date">
+  <time class="dt-published" datetime="2021-09-19T15:31:13.000Z" itemprop="datePublished">2021-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/19/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(3)/">《CSS世界》笔记(3)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>min-width/max-width只出现于自适应布局或者流体布局中，因为它们是具有边界行为的属性。限制图片使用max-width：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">img</span>&#123;</span><br><span class="line">    <span class="attribute">max-width</span>:<span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>:auto<span class="meta">!important</span>;//可以确保图片比例压缩</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>width/height的默认值是auto，min-width/height的初始值是auto，max-width/height的初始值是none，因为max-width会覆盖width，子元素不能设置得比父元素宽/长。</p>
+</li>
+<li><p>超越!important指的是max-width会覆盖width，&gt; !important权重&gt;直接在元素的style属性中设置CSS声明。超越最大指的是min-width比max-width大时，会将其覆盖。</p>
+</li>
+<li><p>任意高度元素的展开收起动画技术：设置z足够安全的max-height最小值，以减小用户延迟体验。</p>
+</li>
+<li><p>内联元素的内联特指“外在盒子”，包含了“display为inline的元素”。浮动元素不是内联级别的，浮动元素已经在文档流之外了。</p>
+</li>
+<li><p>内联盒子分为“内联盒子”和“匿名内联盒子”。如果外部含内联标签（<code>&lt;span&gt;</code>、<code>&lt;a&gt;</code>和<code>&lt;em&gt;</code>等），则属于“内联盒子”。inline box组成line box，line box组成containing box。</p>
+</li>
+<li><p>在HTML5文档声明中，内联元素的所有解析和渲染表现就如同每个行框盒子前面有一个不占任何宽度的“空白节点”一样。</p>
+</li>
+<li><p>通过修改某个属性值呈现的内容就可以被替换的元素就称为“替换元素”。<code>&lt;img&gt; &lt;object&gt; &lt;video&gt; &lt;iframe&gt;</code>或者表单元素<code>&lt;textarea&gt; &lt;input&gt;</code>都是典型的替换元素。特点如下：</p>
+<ul>
+<li>内容的外观不受页面上的CSS的影响。</li>
+<li>有自己的尺寸。（和浏览器有关。）</li>
+<li>在很多CSS属性上有自己的一套表现规则。例如：vertical-align。</li>
+</ul>
+</li>
+<li><p><code>&lt;input&gt;</code>和<code>&lt;button&gt;</code>按钮的区别在于两种按钮默认的white-space值不一样，前者是pre，后者是normal，故按钮文字够多时只有后者会自动换行。</p>
+</li>
+<li><p>替换元素的display是inline、block和inline-block中的任意一个，其尺寸计算规则都是一样的。</p>
+</li>
+<li><p>替换元素的尺寸：</p>
+<ul>
+<li>固有尺寸：指的是替换内容原本的尺寸。</li>
+<li>HTML尺寸：HTML尺寸只能通过HTML原生属性改变，包括<code>&lt;img&gt;</code>的width和height属性、<code>&lt;input&gt;</code>的size属性、<code>&lt;textarea&gt;</code>的cols和rows属性等。</li>
+<li>CSS尺寸特指可以通过CSS的width和height或者max-width/min-width和max-height/min-height设置的尺寸，对应盒尺寸中的content box。</li>
+</ul>
+</li>
+<li><p>如果CSS中仅仅设置了width，但替换元素本身具有特定宽高比例，height会等比例计算。若三个都未设置，则最终尺寸表现为300px*150px。内联替换元素和块级替换元素使用相同的尺寸计算规则。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/19/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(3)/" data-id="ckutzsf62002d8spt0e4gbpah" data-title="《CSS世界》笔记(3)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(2)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/19/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(2)/" class="article-date">
+  <time class="dt-published" datetime="2021-09-19T05:53:58.000Z" itemprop="datePublished">2021-09-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/19/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(2)/">《CSS世界》笔记(2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>盒模型示意图：<img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210919192429255.png" alt="image-20210919192429255"></p>
+</li>
+<li><p>background-origin规定背景定位，background-clip规定背景绘制范围。</p>
+</li>
+<li><p>content box环绕着width和height给定的矩形，即width作用与content box。</p>
+</li>
+<li><p>CSS流体布局下的宽度分离原则：CSS中width属性不与影响宽度的padding/border（有时候包括margin）属性共存。正确的写法是：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>:<span class="number">180px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span>&#123;</span><br><span class="line">    <span class="attribute">margin</span>:<span class="number">0</span> <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">padding</span>:<span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">border</span>:<span class="number">1px</span> solid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>box-sizing属性的作用是改变width的作用细节。<code>&lt;textarea&gt;</code>为替换元素，替换元素的特性之一就是尺寸由内部元素决定，无视display。</p>
+</li>
+<li><p>box-sizing 被发明出来最大的初衷是解决替换元素宽度自适应问题。因此CSS重置应使用：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span>,<span class="selector-tag">textarea</span>,<span class="selector-tag">img</span>,<span class="selector-tag">video</span>,<span class="selector-tag">object</span>&#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>:border-box;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>height和width一个明显区别是对百分比单位的支持。对于width属性，就算父元素width为auto，其百分比值也是支持的；但父元素height为auto时，只要子元素在文档流中，其百分比值完全就被忽略了。</p>
+</li>
+<li><p>浏览器渲染的基本原理：首先，先下载文档内容，加载头部样式资源（如果有的话），然后按照从上而下、由外而内的顺序渲染DOM内容。</p>
+</li>
+<li><p>如何让元素支持height:100%效果：</p>
+<ul>
+<li>设定显式的高度值。</li>
+<li>使用绝对定位。绝对定位元素的百分比计算和非绝对定位元素百分比计算是有区别的，绝对定位的宽高百分比计算会把padding大小值计算在内，但是，非绝对定位元素则是相对于content box计算的。</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/19/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(2)/" data-id="ckutzsf5y00298spthm68b9q7" data-title="《CSS世界》笔记(2)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Less学习笔记" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/31/Less%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="article-date">
+  <time class="dt-published" datetime="2021-08-31T15:03:55.000Z" itemprop="datePublished">2021-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/31/Less%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Less学习笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>算术运算符<code>+</code>、<code>-</code>、<code>*</code>、<code>/</code>可以对任何数字、颜色或变量进行运算。计算的结果以最左侧操作数的单位类型为准。如果单位换算无效或失去意义，则忽略单位。</p>
+</li>
+<li><p>乘法和除法Less按数字原样进行操作，并为计算结果指定明确的单位类型。</p>
+</li>
+<li><p>为了与CSS兼容，<code>calc()</code>并不对数学表达式进行计算，但是在嵌套函数中会计算变量和数学公式的值。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">@var:</span> <span class="number">50vh</span>/<span class="number">2</span>;</span><br><span class="line"><span class="attribute">width</span>:cal(<span class="number">50%</span>+(<span class="variable">@var-20px</span>));<span class="comment">//结果是calc(50%+(25vh-20px))</span></span><br></pre></td></tr></table></figure></li>
+<li><p>转义允许使用任意字符串作为属性或变量值。任何<code>~&quot;anything&quot;</code>或<code>~&#39;anything&#39;</code>形式的内容都将按原样输出，除非有插补文字。在Less 3.5+版本中，许多以前需要“引号转义”的情况就不再需要了。</p>
+</li>
+<li><p>从Less 3.5版本开始，可以将混合（mixins）和规则集（rulesets）作为一组值的映射（map）使用。</p>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#colors</span>() &#123;</span><br><span class="line">  primary: blue;</span><br><span class="line">  secondary: green;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.button</span> &#123;</span><br><span class="line">  <span class="attribute">color</span>: #colors[primary];</span><br><span class="line">  <span class="attribute">border</span>: <span class="number">1px</span> solid #colors[secondary];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>作用域：Less中的作用域与CSS中的作用域非常类似。首先在本地查找变量和混合（mixins），如果找不到，则从“父”级作用域继承。与CSS自定义属性一样，混合（mixins）的变量不必在引用之前事先定义。</p>
+</li>
+<li><p><code>//+anything</code>是行注释，<code>/*anything */</code>是块注释。如果导入的文件是<code>.less</code>扩展名，则可以将扩展名省略掉。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/31/Less%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" data-id="ckutzsf4d000v8sptattsf610" data-title="Less学习笔记" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Typescript学习笔记(8)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/31/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(8)/" class="article-date">
+  <time class="dt-published" datetime="2021-08-31T07:06:39.000Z" itemprop="datePublished">2021-08-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/31/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(8)/">Typescript学习笔记(8)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>泛型(Generics)是指在定义函数、接口或类的时候，不预先指定具体的类型，而在使用的时候再指定类型的一种特性。</p>
+</li>
+<li><p>简单例子：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createArray</span>&lt;<span class="title">T</span>&gt;(<span class="params">length: <span class="built_in">number</span>, value: T</span>): <span class="title">Array</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result: T[] = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        result[i] = value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">createArray&lt;<span class="built_in">string</span>&gt;(<span class="number">3</span>, <span class="string">&#x27;x&#x27;</span>); <span class="comment">// [&#x27;x&#x27;, &#x27;x&#x27;, &#x27;x&#x27;]</span></span><br></pre></td></tr></table></figure>
+
+<p>在函数名后添加<code>&lt;T&gt;</code>，其中<code>T</code>用来指代任意输入的类型，在后面的输入<code>value:T</code>和输出<code>Array&lt;T&gt;</code>即可使用了。</p>
+</li>
+<li><p>定义泛型的时候，可以一次定义多个类型参数。在函数内部使用泛型变量时，由于事先不知道它是哪种类型，所以不能随意操作它的属性或方法，这时，可以对泛型进行约束。</p>
+</li>
+<li><p>多个类型参数之间可以互相约束：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">copyFields</span>&lt;<span class="title">T</span> <span class="title">extends</span> <span class="title">U</span>, <span class="title">U</span>&gt;(<span class="params">target: T, source: U</span>): <span class="title">T</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> id <span class="keyword">in</span> source) &#123;</span><br><span class="line">        target[id] = (&lt;T&gt;source)[id];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> target;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> x = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>, <span class="attr">c</span>: <span class="number">3</span>, <span class="attr">d</span>: <span class="number">4</span> &#125;;</span><br><span class="line"></span><br><span class="line">copyFields(x, &#123; <span class="attr">b</span>: <span class="number">10</span>, <span class="attr">d</span>: <span class="number">20</span> &#125;);</span><br></pre></td></tr></table></figure>
+
+<p>上例使用两个类型参数，其中要求<code>T</code> 继承<code>U</code>这样就保证了<code>U</code>上不会出现<code>T</code>中不存在的字段。</p>
+</li>
+<li><p>可以使用泛型接口定义函数形状。将泛型参数提前到接口名时，需要定义泛型的类型。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> CreateArrayFunc&lt;T&gt; &#123;</span><br><span class="line">    (length: <span class="built_in">number</span>, <span class="attr">value</span>: T): <span class="built_in">Array</span>&lt;T&gt;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> createArray: CreateArrayFunc&lt;<span class="built_in">any</span>&gt;;</span><br><span class="line">createArray = <span class="function"><span class="keyword">function</span>&lt;<span class="title">T</span>&gt;(<span class="params">length: <span class="built_in">number</span>, value: T</span>): <span class="title">Array</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result: T[] = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        result[i] = value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">createArray(<span class="number">3</span>, <span class="string">&#x27;x&#x27;</span>); <span class="comment">// [&#x27;x&#x27;, &#x27;x&#x27;, &#x27;x&#x27;]</span></span><br></pre></td></tr></table></figure></li>
+<li><p>在Typescript2.3以后，可以为泛型中的类型参数指定默认参数。当使用泛型时没有在代码中直接指定参数，从实际值参数中也无法推测出时，这个默认类型就会起作用。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createArray</span>&lt;<span class="title">T</span> = <span class="title">string</span>&gt;(<span class="params">length: <span class="built_in">number</span>, value: T</span>): <span class="title">Array</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> result: T[] = [];</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; length; i++) &#123;</span><br><span class="line">        result[i] = value;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>声明合并</p>
+<ul>
+<li>函数合并：重载定义多个函数类型。</li>
+<li>接口合并：合并的属性必须是唯一的。</li>
+</ul>
+</li>
+<li><p>Typescript的代码检查方案是<code>typescript-eslint</code>。EsLint的安装教程和Prettier的使用：<a target="_blank" rel="noopener" href="https://ts.xcatliu.com/engineering/lint.html%E3%80%82%E4%BB%A5%E4%B8%BA%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5%E6%98%AF%E9%A1%B9%E7%9B%AE%E7%9A%84%E9%87%8D%E8%A6%81%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86%EF%BC%8C%E6%89%80%E4%BB%A5%E4%B8%80%E8%88%AC%E5%B0%86%60ESLint%60%E5%AE%89%E8%A3%85%E5%9C%A8%E5%BD%93%E5%89%8D%E9%A1%B9%E7%9B%AE%E4%B8%AD%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E4%BD%BF%E7%94%A8%E5%85%A8%E5%B1%80%E7%9A%84%60eslint%60%E8%84%9A%E6%9C%AC%E3%80%82">https://ts.xcatliu.com/engineering/lint.html。以为代码检查是项目的重要组成部分，所以一般将`ESLint`安装在当前项目中，而不是使用全局的`eslint`脚本。</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/31/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(8)/" data-id="ckutzsf53001h8spt1sz81kfl" data-title="Typescript学习笔记(8)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Typescript学习笔记(7)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/28/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(7)/" class="article-date">
+  <time class="dt-published" datetime="2021-08-28T09:53:56.000Z" itemprop="datePublished">2021-08-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/28/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(7)/">Typescript学习笔记(7)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>ES6类的用法：</p>
+<ul>
+<li><p>使用 getter 和 setter 可以改变属性的赋值和读取行为。</p>
+</li>
+<li><p>使用<code>static</code>修饰符修饰的方法称为静态方法，它们不需要实例化，而是直接通过类来调用。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="keyword">static</span> <span class="function"><span class="title">isAnimal</span>(<span class="params">a</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a <span class="keyword">instanceof</span> Animal;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="keyword">new</span> Animal(<span class="string">&#x27;Jack&#x27;</span>);</span><br><span class="line">Animal.isAnimal(a); <span class="comment">// true</span></span><br><span class="line">a.isAnimal(a); <span class="comment">// TypeError: a.isAnimal is not a function</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>ES7实例中的属性可以直接在类里面定义。同时可以使用<code>static</code>定义一个静态属性。</p>
+</li>
+<li><p>TypeScript可以使用三种修饰符(Access Modifiers)，分别是<code>public</code>、<code>private</code>和<code>protected</code>。</p>
+<ul>
+<li><p><code>public</code>修饰的属性或方法是公有的，可以在任何地方被访问到，默认所有的属性和方法都是<code>public</code>的。</p>
+</li>
+<li><p><code>private</code>修饰的属性或方法是私有的，不能在声明它的类的外部访问。</p>
+</li>
+<li><p><code>protected</code>修饰的属性或方法是受保护的，它和<code>private</code>类似，区别是它在子类中也是允许被访问的。</p>
+<p>当构造函数修饰为<code>private</code>时，该类不允许被继承或者实例化。当构造函数修饰为<code>protected</code>时，该类只允许被继承。</p>
+</li>
+</ul>
+</li>
+<li><p>修饰符和<code>readonly</code>还可以使用在构造函数参数中，等同于类中定义该属性同时给该属性赋值，使代码更简洁。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;</span><br><span class="line">  <span class="comment">// public name: string;</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="title">constructor</span>(<span class="params"><span class="keyword">public</span> name</span>)</span> &#123;</span><br><span class="line">    <span class="comment">// this.name = name;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>readonly为只读属性关键字，只允许出现在属性声明或索引签名或构造函数中。如果<code>readonly</code>和其他访问修饰符同时存在的话，需要写在其后面。</p>
+</li>
+<li><p><code>abstract</code>用于定义抽象类和其中的抽象方法。抽象类是不允许被实例化的，且抽象类中的抽象方法必须被子类实现。即使是抽象方法，typescript的编译结果中，仍然会存在这个类。</p>
+</li>
+<li><p>接口除了可以用于对对象的形状(shape)进行描述外，还可以对类的一部分行为进行抽象。</p>
+</li>
+<li><p>实现(implements)是面向对象中的一个重要概念。一般来讲，一个类只能继承自另一个类，有时候不同类之间可以有一些共有的特性，这时候就可以把特性提取成接口(interfaces)，用<code>implements</code>关键字来实现。这个特性大大提高了面向对象的灵活性。</p>
+</li>
+<li><p>类能实现接口，一个类可以实现多个接口。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Alarm &#123;</span><br><span class="line">    alert(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">interface</span> Light &#123;</span><br><span class="line">    lightOn(): <span class="built_in">void</span>;</span><br><span class="line">    lightOff(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span> <span class="title">implements</span> <span class="title">Alarm</span>, <span class="title">Light</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="title">alert</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;Car alert&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">lightOn</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;Car light on&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="title">lightOff</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;Car light off&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>接口可以继承接口。接口也可以继承类，常见的面向对象语言中，接口是不能继承类的，但是在Typescript中却是可以。因为在声明类的同时会创建一个同名的只包含其中的实例属性和实例方法的实例类型，因而接口继承类实际上也是接口继承接口，不继承构造函数、静态属性或静态方法。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/28/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(7)/" data-id="ckutzsf4x001c8spteffjhlrs" data-title="Typescript学习笔记(7)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-前端游戏相关" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/27/%E5%89%8D%E7%AB%AF%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3/" class="article-date">
+  <time class="dt-published" datetime="2021-08-27T13:11:07.000Z" itemprop="datePublished">2021-08-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/27/%E5%89%8D%E7%AB%AF%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3/">前端游戏相关</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>游戏分类：<img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210827211303795.png" alt="image-20210827211303795"></p>
+</li>
+<li><p>The NVL Maker——文字冒险游戏制作器：No Code</p>
+<p>前端库：AVG.js Project</p>
+<p>galgame制作</p>
+</li>
+<li><p>RPG Maker——关卡类型游戏：Low Code</p>
+</li>
+<li><p>Web游戏引擎：</p>
+<p>利用Canvas和WebGL为底层技术抽象的图像绘制库</p>
+<ul>
+<li>Cocos</li>
+<li>Laya</li>
+<li>Egret</li>
+<li>CreateJS &amp; Phaser（没有可视化界面）</li>
+</ul>
+</li>
+<li><p>功能引擎：<img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210827213614903.png" alt="image-20210827213614903"></p>
+</li>
+<li><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210827223318661.png" alt="image-20210827223318661"></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/27/%E5%89%8D%E7%AB%AF%E6%B8%B8%E6%88%8F%E7%9B%B8%E5%85%B3/" data-id="ckutzsf6d002r8sptbyrk3ozf" data-title="前端游戏相关" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-设计模式学习" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time class="dt-published" datetime="2021-08-26T01:45:37.000Z" itemprop="datePublished">2021-08-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/">article</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>单例模式：唯一&amp;全局访问。保证一个类仅有一个实例，并提供一个它的全局访问点。</li>
+<li>策略模式：定义一系列的算法，把它们一个个封装起来，并且使它们可以相互替换。把看似毫无联系的代码提取封装、复用，使之更容易被理解和扩展。</li>
+<li>代理模式：为一个对象提供一个代用品或占位符，以便控制对它的访问。替身对象可对请求预先进行处理，再决定是否转交给本体对象。</li>
+<li>发布订阅模式：对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都将得到通知。</li>
+<li>命令模式：执行某些特定事件的指令，主要应用于富文本编辑器工具栏。</li>
+<li>组合模式：用小的子对象来构建更大的对象，将对象组合成树形结构，以表示“部分-整体”的层次结构。</li>
+<li>装饰器模式：能够在不改变对象自身的基础上，在程序运行期间给对象动态地添加职责。用于数据上报和统计函数执行时间。</li>
+<li>适配器模式：解决两个软件实体间的借口不兼容问题，不需要改变已有的接口，就能使它们协同作用。</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/26/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" data-id="ckutzsf6k002y8sptgpuf8pga" data-title="article" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">CSS笔记</a> <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">ES6阮一峰教程学习笔记</a> <a href="/tags/Javascript%E7%AC%94%E8%AE%B0/" style="font-size: 18.33px;">Javascript笔记</a> <a href="/tags/Typescript%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">Typescript笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">前端动画实现</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" style="font-size: 10px;">前端技术</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" style="font-size: 11.67px;">前端知识积累</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 10px;">字节青训营</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a> <a href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">自用说明</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

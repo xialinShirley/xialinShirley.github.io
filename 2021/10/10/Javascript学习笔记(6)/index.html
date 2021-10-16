@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Javascript学习笔记(6) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="如果一个运算子是字符串，另一个运算子是非字符串，这时非字符串会转成字符串，再连接在一起。  加法运算符是在运行时决定，到底是执行相加，还是执行连接。也就是说，运算子的不同，导致了不同的语法行为，这种现象称为“重载”（overload）。  如果运算子是一个Date对象的实例，那么会优先执行toString方法。一般来说，对象的valueOf方法总是返回对象自身，这时再自动调用对象的toStrin">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Javascript学习笔记(6)">
+<meta property="og:url" content="http://example.com/2021/10/10/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(6)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="如果一个运算子是字符串，另一个运算子是非字符串，这时非字符串会转成字符串，再连接在一起。  加法运算符是在运行时决定，到底是执行相加，还是执行连接。也就是说，运算子的不同，导致了不同的语法行为，这种现象称为“重载”（overload）。  如果运算子是一个Date对象的实例，那么会优先执行toString方法。一般来说，对象的valueOf方法总是返回对象自身，这时再自动调用对象的toStrin">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-10T15:35:35.000Z">
+<meta property="article:modified_time" content="2021-10-11T14:02:56.332Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="Javascript笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Javascript学习笔记(6)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/10/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(6)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-10T15:35:35.000Z" itemprop="datePublished">2021-10-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Javascript学习笔记(6)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>如果一个运算子是字符串，另一个运算子是非字符串，这时非字符串会转成字符串，再连接在一起。</p>
+</li>
+<li><p>加法运算符是在运行时决定，到底是执行相加，还是执行连接。也就是说，运算子的不同，导致了不同的语法行为，这种现象称为“重载”（overload）。</p>
+</li>
+<li><p>如果运算子是一个<code>Date</code>对象的实例，那么会优先执行<code>toString</code>方法。一般来说，对象的<code>valueOf</code>方法总是返回对象自身，这时再自动调用对象的<code>toString</code>方法，将其转为字符串。</p>
+</li>
+<li><p>余数运算符（<code>%</code>）运算结果的正负号由第一个运算子的正负号决定。数值运算符（<code>+</code>）同样使用加号，但它是一元运算符（只需要一个操作数），数值运算符的作用在于可以将任何值转为数值（与<code>Number</code>函数的作用相同）。</p>
+</li>
+<li><p>运算之后，变量的值发生变化，这种效应叫做运算的副作用（side effect）。自增和自减运算符是仅有的两个具有副作用的运算符，其他运算符都不会改变变量的值。</p>
+</li>
+<li><p>对于非相等的比较，算法是先看两个运算子是否都是字符串，如果是的，就按照字典顺序比较（实际上是比较 Unicode 码点）；否则，将两个运算子都转成数值，再比较数值的大小。</p>
+</li>
+<li><p>如果两个运算子之中，至少有一个不是字符串，需要分成以下两种情况:</p>
+<ul>
+<li><strong>原始类型值</strong>。如果两个运算子都是原始类型的值，则是先转成数值再比较。任何值（包括<code>NaN</code>本身）与<code>NaN</code>使用非相等运算符进行比较，返回的都是<code>false</code>。</li>
+<li><strong>对象</strong>。如果运算子是对象，会转为原始类型的值，再进行比较。对象转换成原始类型的值，算法是先调用<code>valueOf</code>方法；如果返回的还是对象，再接着调用<code>toString</code>方法</li>
+</ul>
+</li>
+<li><p>需要注意的是，<code>NaN</code>与任何值都不相等（包括自身）。两个复合类型（对象、数组、函数）的数据比较时，不是比较它们的值是否相等，而是比较它们是否指向同一个地址。</p>
+</li>
+<li><p>注意，对于两个对象的比较，严格相等运算符比较的是地址，而大于或小于运算符比较的是值。<code>undefined</code>和<code>null</code>与自身严格相等。</p>
+</li>
+<li><p>==：原始类型的值会转换成数值再进行比较。<code>undefined</code>和<code>null</code>只有与自身比较，或者互相比较时，才会返回<code>true</code>；与其他类型的值比较时，结果都为<code>false</code>。</p>
+</li>
+<li><p>建议不要使用相等运算符（<code>==</code>），最好只使用严格相等运算符（<code>===</code>）。</p>
+</li>
+<li><p>以下六个值取反后为<code>true</code>，其他值都为<code>false</code>。</p>
+<ul>
+<li><code>undefined</code></li>
+<li><code>null</code></li>
+<li><code>false</code></li>
+<li><code>0</code></li>
+<li><code>NaN</code></li>
+<li>空字符串（<code>&#39;&#39;</code>）</li>
+</ul>
+</li>
+<li><p>如果对一个值连续做两次取反运算，等于将其转为对应的布尔值，与<code>Boolean</code>函数的作用相同。这是一种常用的类型转换的写法。</p>
+</li>
+<li><p>这种只通过第一个表达式的值，控制是否运行第二个表达式的机制，就称为“短路”（short-cut）。||和&amp;&amp;都存在类似的短路机制。或运算符常用于为一个变量设置默认值。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">saveText</span>(<span class="params">text</span>) </span>&#123;</span><br><span class="line">  text = text || <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 或者写成</span></span><br><span class="line">saveText(<span class="built_in">this</span>.text || <span class="string">&#x27;&#x27;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>二进制否运算符</strong>（not）：符号为<code>~</code>，表示对一个二进制位取反。</p>
+<p><strong>异或运算符</strong>（xor）：符号为<code>^</code>，表示若两个二进制位不相同，则结果为1，否则为0。</p>
+</li>
+<li><p>做位运算的时候，是以32位带符号的整数进行运算的，并且返回值也是一个32位带符号的整数。~可以简单记忆成，一个数与自身的取反值相加，等于-1。</p>
+</li>
+<li><p>使用二进制否运算取整，是所有取整方法中最快的一种。二进制否运算先用<code>Number</code>转为数值，然后再进行处理。</p>
+</li>
+<li><p>“异或运算”有一个特殊运用，连续对两个数<code>a</code>和<code>b</code>进行三次异或运算，<code>a^=b; b^=a; a^=b;</code>，可以<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/XOR_swap_algorithm">互换</a>它们的值。</p>
+</li>
+<li><p>右移运算可以模拟 2 的整除运算。左右移时，符号位都参与移动。</p>
+</li>
+<li><p><code>&gt;&gt;&gt;</code>这个运算实际上将一个值转为32位无符号整数。查看一个负整数在计算机内部的储存形式，最快的方法就是使用这个运算符。</p>
+</li>
+<li><p><code>void</code>运算符的作用是执行一个表达式，然后不返回任何值，或者说返回<code>undefined</code>。<code>void</code>运算符的优先性很高，如果不使用括号，容易造成错误的结果。</p>
+</li>
+<li><p><code>void</code>运算符的主要用途是浏览器的书签工具（Bookmarklet），以及在超级链接中插入代码防止网页跳转。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;javascript: void(document.form.submit())&quot;</span>&gt;</span></span><br><span class="line">  提交</span><br><span class="line"><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>逗号运算符用于对两个表达式求值，并返回后一个表达式的值。逗号运算符的一个用途是，在返回一个值之前，进行一些辅助操作。</p>
+</li>
+<li><p>圆括号不是运算符，而是一种语法结构。它一共有两种用法：一种是把表达式放在圆括号之中，提升运算的优先级；另一种是跟在函数的后面，作用是调用函数。</p>
+</li>
+<li><p>圆括号之中，只能放置表达式，如果将语句放在圆括号之中，就会报错。</p>
+</li>
+<li><p>JavaScript 语言的大多数运算符是“左结合”，少数运算符是“右结合”，其中最主要的是赋值运算符（<code>=</code>）和三元条件运算符（<code>?:</code>）。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/10/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(6)/" data-id="ckutzsf45000n8spt8du08lo5" data-title="Javascript学习笔记(6)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/10/11/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(7)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Javascript学习笔记(7)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/10/10/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(5)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Javascript学习笔记(5)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">CSS笔记</a> <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">ES6阮一峰教程学习笔记</a> <a href="/tags/Javascript%E7%AC%94%E8%AE%B0/" style="font-size: 18.33px;">Javascript笔记</a> <a href="/tags/Typescript%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">Typescript笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">前端动画实现</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" style="font-size: 10px;">前端技术</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" style="font-size: 11.67px;">前端知识积累</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 10px;">字节青训营</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a> <a href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">自用说明</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

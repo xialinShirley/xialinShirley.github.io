@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>《CSS世界》笔记(10) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="浮动的本质就是为了实现文字环绕效果。  float的各种特性：  包裹性：包裹和自适应性。  块状化并格式化上下文 元素一旦float的属性值不为none，则其display计算值就是block或者table。除了inline-table计算为table外，其他全都是block。  破坏文档流  没有任何margin合并    “行框盒子和浮动元素的不可重叠性”，指的是“行框盒子如果和浮动元素的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《CSS世界》笔记(10)">
+<meta property="og:url" content="http://example.com/2021/09/29/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(10)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="浮动的本质就是为了实现文字环绕效果。  float的各种特性：  包裹性：包裹和自适应性。  块状化并格式化上下文 元素一旦float的属性值不为none，则其display计算值就是block或者table。除了inline-table计算为table外，其他全都是block。  破坏文档流  没有任何margin合并    “行框盒子和浮动元素的不可重叠性”，指的是“行框盒子如果和浮动元素的">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-09-29T10:50:18.000Z">
+<meta property="article:modified_time" content="2021-09-30T08:21:34.206Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="CSS笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-《CSS世界》笔记(10)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/29/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(10)/" class="article-date">
+  <time class="dt-published" datetime="2021-09-29T10:50:18.000Z" itemprop="datePublished">2021-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      《CSS世界》笔记(10)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>浮动的本质就是为了实现文字环绕效果。</p>
+</li>
+<li><p>float的各种特性：</p>
+<ul>
+<li><p>包裹性：包裹和自适应性。</p>
+</li>
+<li><p>块状化并格式化上下文</p>
+<p>元素一旦float的属性值不为none，则其display计算值就是block或者table。除了inline-table计算为table外，其他全都是block。</p>
+</li>
+<li><p>破坏文档流</p>
+</li>
+<li><p>没有任何margin合并</p>
+</li>
+</ul>
+</li>
+<li><p>“行框盒子和浮动元素的不可重叠性”，指的是“行框盒子如果和浮动元素的垂直高度有重叠，则行框盒子在正常定位状态下只会跟随浮动元素，而不会发生重叠。”这里的“行框盒子”指每行内联元素所在的盒子，而非外部的块状盒子。</p>
+</li>
+<li><p>“文字环绕效果”是由“父级高度塌陷”和“行框盒子区域限制”共同作用的结果。定高只能解决前者。</p>
+</li>
+<li><p>“浮动锚点”(float anchor)是float元素所在的“流”中的一个点，这个点本身并不浮动，就表现而言更像一个没有margin、border和padding的空的内联元素。而“浮动参考”指的是浮动元素对齐参考的实体。</p>
+</li>
+<li><p>float元素的“浮动参考”是“行框盒子”。若浮动元素前后全是块元素，则利用“浮动锚点”产生的“行框盒子”进行对齐。</p>
+</li>
+<li><p>利用浮动可以实现一侧定宽一侧自适应，可为百分比宽度；同样适用于多栏布局。</p>
+</li>
+<li><p>clear：“元素盒子的边不能和前面的浮动元素相邻。”控制的是设置了clear属性的元素自身。对于“后面的”浮动元素不闻不问。</p>
+</li>
+<li><p>claer属性只有块级元素才有效，而::after等伪元素默认都是内联水平，因此借助伪元素清除浮动影响时需要设置display属性值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clear</span>:after &#123;</span><br><span class="line">content: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="attribute">display</span>: table; // 也可以是&#x27;block&#x27;，或者是&#x27;list-item&#x27;</span><br><span class="line"><span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>clear:both的作用本质是不让自己和float元素在一行显示，并不是真正意义上的清除浮动。</p>
+</li>
+<li><p>BFC：block formatting context，中文为“块状格式化上下文”。BFC元素的子元素不会受外部元素影响，也不会影响外部元素。触发BFC的常见情况：</p>
+<ul>
+<li><code>&lt;html&gt;</code>根元素</li>
+<li>float的值不为none</li>
+<li>overflow的值为auto、scroll或hidden</li>
+<li>position的值不为relative和static</li>
+</ul>
+</li>
+<li><p>普通流体元素在设置了overflow:hidden后，会自动填满容器中除了浮动元素以外的剩余空间，形成自适应布局效果。使用border或者padding来调整成合适的间距，一般在浮动元素上设置margin。</p>
+</li>
+<li><p>布局及与BFC的适配：</p>
+<ul>
+<li><p>float:left。不太适配。</p>
+</li>
+<li><p>position:absolute。不太适配。</p>
+</li>
+<li><p>overflow:hidden/auto。较为适配，在溢出时不适用。</p>
+</li>
+<li><p>display:inline-block。仅对IE6、IE7能够适配BFC并保留流体特性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.float-left</span> &#123;</span><br><span class="line"><span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bfc-content</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>display:tabel-cell。IE8及以上版本支持。把BFC元素宽度设成9999px就和block水平元素自动适应容器空间效果一样了。比overflow:hidden适用更广泛，但应付连续英文字符换行较为吃力。</p>
+</li>
+</ul>
+</li>
+<li><p>总结起来，IE7及以上版本适配的自适应解决方案有以下两种，且多栏自适应可以通过嵌套方式实现。</p>
+<ul>
+<li><p>借助overflow属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.lbf-content</span> &#123; <span class="attribute">overflow</span>: hidden; &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>融合display:table-cell和display:inline-block。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.lbf-content</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: table-cell; <span class="attribute">width</span>: <span class="number">9999px</span>;</span><br><span class="line"><span class="comment">/* 如果不需要兼容 IE7，下面样式可以省略 */</span></span><br><span class="line">*<span class="attribute">display</span>: inline-block; *<span class="attribute">width</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*解决连续英文字符无法换行的问题*/</span></span><br><span class="line"><span class="selector-class">.word-break</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: table;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"><span class="attribute">table-layout</span>: fixed;</span><br><span class="line"><span class="attribute">word-break</span>: break-all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/29/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(10)/" data-id="ckutzsf5c001m8spt0gmhhpfi" data-title="《CSS世界》笔记(10)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/09/30/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(11)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          《CSS世界》笔记(11)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/09/28/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(9)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">《CSS世界》笔记(9)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">CSS笔记</a> <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">ES6阮一峰教程学习笔记</a> <a href="/tags/Javascript%E7%AC%94%E8%AE%B0/" style="font-size: 18.33px;">Javascript笔记</a> <a href="/tags/Typescript%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">Typescript笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">前端动画实现</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" style="font-size: 10px;">前端技术</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" style="font-size: 11.67px;">前端知识积累</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 10px;">字节青训营</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a> <a href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">自用说明</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>《CSS世界》笔记(16) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="vertical-align推荐使用与font-size密切相关的ex单位，这样垂直居中效果不会受line-height变化影响。  em就是“中”等汉字的高度。在CSS中，1em的计算值等同于当前元素所在的font-size计算值，可以将其想象成当前元素中（如果有）汉字的高度。  rem(root em)是指根元素em大小。em相对于当前元素，rem相对于根元素，本质差别在于当前元素是多变的，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《CSS世界》笔记(16)">
+<meta property="og:url" content="http://example.com/2021/10/03/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(16)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="vertical-align推荐使用与font-size密切相关的ex单位，这样垂直居中效果不会受line-height变化影响。  em就是“中”等汉字的高度。在CSS中，1em的计算值等同于当前元素所在的font-size计算值，可以将其想象成当前元素中（如果有）汉字的高度。  rem(root em)是指根元素em大小。em相对于当前元素，rem相对于根元素，本质差别在于当前元素是多变的，">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-03T14:53:19.000Z">
+<meta property="article:modified_time" content="2021-10-05T10:28:59.788Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="CSS笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-《CSS世界》笔记(16)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/03/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(16)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-03T14:53:19.000Z" itemprop="datePublished">2021-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      《CSS世界》笔记(16)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>vertical-align推荐使用与font-size密切相关的ex单位，这样垂直居中效果不会受line-height变化影响。</p>
+</li>
+<li><p>em就是“中”等汉字的高度。在CSS中，1em的计算值等同于当前元素所在的font-size计算值，可以将其想象成当前元素中（如果有）汉字的高度。</p>
+</li>
+<li><p>rem(root em)是指根元素em大小。em相对于当前元素，rem相对于根元素，本质差别在于当前元素是多变的，根元素是固定的。也就是说，rem使得计算值不会受当前元素font-size大小的影响。因此使用rem实现带有缩放性质的弹性布局是最佳策略。</p>
+</li>
+<li><p>适用于em的场景：图文内容展示</p>
+<ul>
+<li><code>&lt;h1&gt;</code>~`<h6><code>以及</code><p>`等文本内容展示的元素的margin都是用em作为单位。</li>
+<li>使用SVG矢量图标设置宽高。</li>
+</ul>
+</li>
+<li><p>font-size除了支持长度值和百分比值外，还支持关键字属性值：</p>
+<ul>
+<li>相对尺寸关键字。指相对于当前元素font-size计算。不同浏览器差异大。<ul>
+<li>larger：是<code>&lt;big&gt;</code>默认font-size值。</li>
+<li>smaller：是<code>&lt;small&gt;</code>默认font-size值。</li>
+</ul>
+</li>
+<li>绝对尺寸关键字。与当前元素font-size无关，仅受浏览器设置的字号的影响。<ul>
+<li>xx-large：同<code>&lt;h1&gt;</code>。</li>
+<li>x-large：同<code>&lt;h2&gt;</code>。</li>
+<li>large：近似<code>&lt;h3&gt;</code>。</li>
+<li>medium：同<code>&lt;h4&gt;</code>。是font-size的初始值。可能因为重置，继承font-size属性。</li>
+<li>small：近似<code>&lt;h5&gt;</code>。</li>
+<li>x-small：近似<code>&lt;h6&gt;</code>。</li>
+<li>xx-small：无对应HTML元素。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>如果是像素单位font-size，用户改变浏览器的默认字号后，页面会纹丝不动；如果是百分比值font-size，则字号会相应放大。</p>
+</li>
+<li><p>权衡“易于实现维护”“视觉还原”“可访问性”三者：</p>
+<ul>
+<li><p>即使是定宽的传统桌面端网页，也要做响应式处理，1200像素得响应到800像素，此时可忽略是否需要响应浏览器的字号设置。</p>
+</li>
+<li><p>如果困于各种原因无法做响应式处理，只需要在图文内容为主的重要局部区域使用可缩放的font-size处理即可。采用下面的实践策略：</p>
+<ul>
+<li><p>容器设置font-size:medium。</p>
+</li>
+<li><p>容器内的文字字号全部使用相对单位，如百分比值或者em都可以，然后基于16px进行转换。同时使用自适应流体布局。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.article</span> &#123;</span><br><span class="line"><span class="attribute">font-size</span>: medium;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.article</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line"><span class="attribute">margin</span>: .<span class="number">875em</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.article</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">87.5%</span>; <span class="comment">/* 默认字号下计算值是 14px */</span></span><br><span class="line"><span class="attribute">margin</span>: <span class="number">1em</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>桌面浏览器Chrome中文字的font-size计算值不能小于12px，当然可以设置成0，此时文字会直接被隐藏掉（text-indent也能缩进隐藏）。</p>
+</li>
+<li><p>font-familiy默认值由操作系统和浏览器共同决定，支持两类属性值，一类是“字体名”，一类是“字体族”。移动端Web直接使用无衬线sans-serif。</p>
+</li>
+<li><p>等宽字体的应用场景：</p>
+<ul>
+<li>代码呈现。</li>
+<li>图形呈现。原生的<code>&lt;select&gt;</code>的<code>&lt;option&gt;</code>元素的innerHTML只能是纯text字符，将字符规整可以使用等宽字体。</li>
+<li>与ch一起实现布局。ch也是相对单位，1ch表示一个0字符的宽度。</li>
+</ul>
+</li>
+<li><p>要想使用中文字体，就必须要知道其对应的英文名称。微软正黑用于繁体中文系统，微软雅黑用于中国大陆地区。OS X也就是苹果操作系统中“SC”指“简体”，“TC”指“繁体”。</p>
+</li>
+<li><p>font-weight支持的</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 平常用的最多的 */</span></span><br><span class="line"><span class="attribute">font-weight</span>: normal;</span><br><span class="line"><span class="attribute">font-weight</span>: bold;</span><br><span class="line"><span class="comment">/* 相对于父级元素 */</span></span><br><span class="line"><span class="attribute">font-weight</span>: lighter;</span><br><span class="line"><span class="attribute">font-weight</span>: bolder;</span><br><span class="line"><span class="comment">/* 字重的精细控制 */</span></span><br><span class="line"><span class="comment">/* 100~900的整百数 */</span></span><br></pre></td></tr></table></figure></li>
+<li><p>400和700是文字粗细与否的重要临界点，加上最小的100和最大的900，就构成了font-weight完整的字重临界点。lighter和bolder这两个具有相对特性的关键字就是基于这4个临界点进行渲染和解析的。</p>
+</li>
+<li><p>font-style表示文字造型是斜还是正，italic是使用当前字体的斜体字体，而oblique只是单纯地让文字倾斜。不需要使用oblique。</p>
+</li>
+<li><p>font属性缩写时font-size和font-family是必需的，不可省略。font缩写会破坏部分属性的继承性，如重置line-height成normal。不写font-family的办法：</p>
+<ul>
+<li>找个不存在的字体名占位，再设置font-family:inherit来重置这个占位字体。</li>
+<li>利用@font face规则将字体列表重定义为一个字体。</li>
+</ul>
+</li>
+<li><p>在使用font属性时，要避开caption、icon和message-box这3个关键字。为保证系统兼容，一般使用：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123; <span class="attribute">font</span>: menu/small-caption/status-bar; &#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123; <span class="attribute">font-size</span>: <span class="number">16px</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用font关键字属性字可以让网站字体与时俱进。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/03/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(16)/" data-id="ckutzsf5s00218spt17leexau" data-title="《CSS世界》笔记(16)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/10/05/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(17)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          《CSS世界》笔记(17)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/10/02/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(15)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">《CSS世界》笔记(15)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">CSS笔记</a> <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">ES6阮一峰教程学习笔记</a> <a href="/tags/Javascript%E7%AC%94%E8%AE%B0/" style="font-size: 18.33px;">Javascript笔记</a> <a href="/tags/Typescript%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">Typescript笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">前端动画实现</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" style="font-size: 10px;">前端技术</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" style="font-size: 11.67px;">前端知识积累</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 10px;">字节青训营</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a> <a href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">自用说明</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

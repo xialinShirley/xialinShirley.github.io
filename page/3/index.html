@@ -1,0 +1,1150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-《CSS世界》笔记(16)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/03/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(16)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-03T14:53:19.000Z" itemprop="datePublished">2021-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/10/03/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(16)/">《CSS世界》笔记(16)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>vertical-align推荐使用与font-size密切相关的ex单位，这样垂直居中效果不会受line-height变化影响。</p>
+</li>
+<li><p>em就是“中”等汉字的高度。在CSS中，1em的计算值等同于当前元素所在的font-size计算值，可以将其想象成当前元素中（如果有）汉字的高度。</p>
+</li>
+<li><p>rem(root em)是指根元素em大小。em相对于当前元素，rem相对于根元素，本质差别在于当前元素是多变的，根元素是固定的。也就是说，rem使得计算值不会受当前元素font-size大小的影响。因此使用rem实现带有缩放性质的弹性布局是最佳策略。</p>
+</li>
+<li><p>适用于em的场景：图文内容展示</p>
+<ul>
+<li><code>&lt;h1&gt;</code>~`<h6><code>以及</code><p>`等文本内容展示的元素的margin都是用em作为单位。</li>
+<li>使用SVG矢量图标设置宽高。</li>
+</ul>
+</li>
+<li><p>font-size除了支持长度值和百分比值外，还支持关键字属性值：</p>
+<ul>
+<li>相对尺寸关键字。指相对于当前元素font-size计算。不同浏览器差异大。<ul>
+<li>larger：是<code>&lt;big&gt;</code>默认font-size值。</li>
+<li>smaller：是<code>&lt;small&gt;</code>默认font-size值。</li>
+</ul>
+</li>
+<li>绝对尺寸关键字。与当前元素font-size无关，仅受浏览器设置的字号的影响。<ul>
+<li>xx-large：同<code>&lt;h1&gt;</code>。</li>
+<li>x-large：同<code>&lt;h2&gt;</code>。</li>
+<li>large：近似<code>&lt;h3&gt;</code>。</li>
+<li>medium：同<code>&lt;h4&gt;</code>。是font-size的初始值。可能因为重置，继承font-size属性。</li>
+<li>small：近似<code>&lt;h5&gt;</code>。</li>
+<li>x-small：近似<code>&lt;h6&gt;</code>。</li>
+<li>xx-small：无对应HTML元素。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>如果是像素单位font-size，用户改变浏览器的默认字号后，页面会纹丝不动；如果是百分比值font-size，则字号会相应放大。</p>
+</li>
+<li><p>权衡“易于实现维护”“视觉还原”“可访问性”三者：</p>
+<ul>
+<li><p>即使是定宽的传统桌面端网页，也要做响应式处理，1200像素得响应到800像素，此时可忽略是否需要响应浏览器的字号设置。</p>
+</li>
+<li><p>如果困于各种原因无法做响应式处理，只需要在图文内容为主的重要局部区域使用可缩放的font-size处理即可。采用下面的实践策略：</p>
+<ul>
+<li><p>容器设置font-size:medium。</p>
+</li>
+<li><p>容器内的文字字号全部使用相对单位，如百分比值或者em都可以，然后基于16px进行转换。同时使用自适应流体布局。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.article</span> &#123;</span><br><span class="line"><span class="attribute">font-size</span>: medium;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.article</span> <span class="selector-tag">h1</span> &#123;</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">2em</span>;</span><br><span class="line"><span class="attribute">margin</span>: .<span class="number">875em</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.article</span> <span class="selector-tag">p</span> &#123;</span><br><span class="line"><span class="attribute">font-size</span>: <span class="number">87.5%</span>; <span class="comment">/* 默认字号下计算值是 14px */</span></span><br><span class="line"><span class="attribute">margin</span>: <span class="number">1em</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>桌面浏览器Chrome中文字的font-size计算值不能小于12px，当然可以设置成0，此时文字会直接被隐藏掉（text-indent也能缩进隐藏）。</p>
+</li>
+<li><p>font-familiy默认值由操作系统和浏览器共同决定，支持两类属性值，一类是“字体名”，一类是“字体族”。移动端Web直接使用无衬线sans-serif。</p>
+</li>
+<li><p>等宽字体的应用场景：</p>
+<ul>
+<li>代码呈现。</li>
+<li>图形呈现。原生的<code>&lt;select&gt;</code>的<code>&lt;option&gt;</code>元素的innerHTML只能是纯text字符，将字符规整可以使用等宽字体。</li>
+<li>与ch一起实现布局。ch也是相对单位，1ch表示一个0字符的宽度。</li>
+</ul>
+</li>
+<li><p>要想使用中文字体，就必须要知道其对应的英文名称。微软正黑用于繁体中文系统，微软雅黑用于中国大陆地区。OS X也就是苹果操作系统中“SC”指“简体”，“TC”指“繁体”。</p>
+</li>
+<li><p>font-weight支持的</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 平常用的最多的 */</span></span><br><span class="line"><span class="attribute">font-weight</span>: normal;</span><br><span class="line"><span class="attribute">font-weight</span>: bold;</span><br><span class="line"><span class="comment">/* 相对于父级元素 */</span></span><br><span class="line"><span class="attribute">font-weight</span>: lighter;</span><br><span class="line"><span class="attribute">font-weight</span>: bolder;</span><br><span class="line"><span class="comment">/* 字重的精细控制 */</span></span><br><span class="line"><span class="comment">/* 100~900的整百数 */</span></span><br></pre></td></tr></table></figure></li>
+<li><p>400和700是文字粗细与否的重要临界点，加上最小的100和最大的900，就构成了font-weight完整的字重临界点。lighter和bolder这两个具有相对特性的关键字就是基于这4个临界点进行渲染和解析的。</p>
+</li>
+<li><p>font-style表示文字造型是斜还是正，italic是使用当前字体的斜体字体，而oblique只是单纯地让文字倾斜。不需要使用oblique。</p>
+</li>
+<li><p>font属性缩写时font-size和font-family是必需的，不可省略。font缩写会破坏部分属性的继承性，如重置line-height成normal。不写font-family的办法：</p>
+<ul>
+<li>找个不存在的字体名占位，再设置font-family:inherit来重置这个占位字体。</li>
+<li>利用@font face规则将字体列表重定义为一个字体。</li>
+</ul>
+</li>
+<li><p>在使用font属性时，要避开caption、icon和message-box这3个关键字。为保证系统兼容，一般使用：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123; <span class="attribute">font</span>: menu/small-caption/status-bar; &#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123; <span class="attribute">font-size</span>: <span class="number">16px</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用font关键字属性字可以让网站字体与时俱进。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/03/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(16)/" data-id="ckutzsf5s00218spt17leexau" data-title="《CSS世界》笔记(16)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(15)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/02/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(15)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-02T14:38:34.000Z" itemprop="datePublished">2021-10-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/10/02/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(15)/">《CSS世界》笔记(15)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>当元素发生层叠的时候，其覆盖关系遵循下面两条准则：</p>
+<ul>
+<li>谁大谁上：当具有明显的层叠水平标识的时候，如生效的z-index属性值，在同一个层叠上下文领域，层叠水平值大的覆盖小的那一个。</li>
+<li>后来居上：当元素的层叠水平一致、层叠顺序相同的时候，在DOM流中处于后面的元素会覆盖前面的元素。</li>
+</ul>
+</li>
+<li><p>层叠上下文元素有如下特性：</p>
+<ul>
+<li>层叠上下文的层叠水平要比普通元素高。</li>
+<li>层叠上下文可以阻断元素的混合模式。</li>
+<li>层叠上下文可以嵌套，内部层叠上下文及其所有子元素均受制于外部的“层叠上下文”。</li>
+<li>每个层叠上下文和兄弟元素独立，也就是说，当进行层叠变化或渲染的时候，只要考虑后代元素。</li>
+<li>每个层叠上下文是自成体系的，当元素发生层叠的时候，整个元素被认为是在父层叠上下文的层叠顺序中。</li>
+</ul>
+</li>
+<li><p>创建层叠上下文：</p>
+<ul>
+<li><p>天生派：页面根元素天生具有层叠上下文，称为根层叠上下文。</p>
+<p>可以看成是<code>&lt;html&gt;</code>元素，因此，页面中的所有元素一定处于至少一个“层叠结界”中。</p>
+</li>
+<li><p>正统派：z-index值为数值的定位元素的传统“层叠上下文”。</p>
+<ul>
+<li>对于position值为relative/absolute以及Firefox/IE浏览器（不包括Chrome浏览器）下含有position:fixed声明的定位元素，当其z-index值不是auto的时候，会创建层叠上下文。</li>
+<li>发现z-index嵌套错乱时，看是不是受父级的层叠上下文元素干扰了。</li>
+</ul>
+</li>
+<li><p>扩招派：其他CSS3属性。可能影响的属性有：</p>
+<ul>
+<li>元素为flex布局元素（父元素display:flex|inline-flex)，同时z-index值不是auto。</li>
+<li>元素的opacity值不是1。</li>
+<li>元素的transform值不是none。</li>
+<li>元素的mix-blend-mode值不是normal。</li>
+<li>元素的filter值不是none。</li>
+<li>元素的isolation值是isolate。</li>
+<li>元素的will-change属性值为上面2~6的任意一个（如will-change:opacity、transform等）</li>
+<li>元素的-webkit-overflow-scrolling设为touch。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>层叠顺序：</p>
+<ul>
+<li>如果层叠上下文元素不依赖z-index数值，则其层叠顺序是z-index:auto，可以看成z-index:0级别。</li>
+<li>如果层叠上下文元素依赖z-index数值，则其层叠顺序由z-index值决定。</li>
+</ul>
+</li>
+<li><p>层叠上下文元素和定位元素是一个层叠顺序的，当他们发生层叠的时候，遵循的是“后来居上”准则。解决这一问题的两个方法：</p>
+<ul>
+<li>调整DOM流的先后顺序。</li>
+<li>调整层叠顺序，例如：设置z-index：1。</li>
+</ul>
+</li>
+<li><p>z-index负值的最终表现并不是单一的，而是与“层叠上下文”和“层叠顺序”密切相关。z-index虽然名为负数层级，但依然无法突破当前层叠上下文包裹的小世界。</p>
+</li>
+<li><p>可以说，z-index负值渲染的过程就是一个寻找第一个层叠上下文元素的过程，然后层叠顺序止步于这个层叠上下文元素。应用：</p>
+<ul>
+<li>可访问性隐藏：在层叠上下文内的某一个父元素加个背景色。</li>
+<li>IE8下的多背景模拟：为absolute伪元素设置z-index负值。</li>
+<li>定位在元素的后面：底部设定position:relative;z-index:0创建层叠上下文。中间仅有position:relative，算z-index:auto程度的定位元素。阴影设置z-index:-1。</li>
+</ul>
+</li>
+<li><p>对于非浮层元素，避免设置z-index值，z-index值没有任何道理需要超过2。</p>
+<ul>
+<li>定位元素一旦设置了z-index值，就从普通定位元素变成了层叠上下文元素，相互间的层叠顺序就发生了根本性的变化。</li>
+<li>避免z-index“一山更比一山高”的样式混乱问题。</li>
+</ul>
+</li>
+<li><p>对于在页面上飘来飘去的元素定位，弹框、出错提示、一些下拉效果，不受这一准则限制。对于这类 JavaScript驱动的浮层组件，借助“层级计数器”进行管理。</p>
+</li>
+<li><p>总结：页面上主体元素遵循z-index“不犯二”准则，浮层元素适用z-index“层级计数器”。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/02/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(15)/" data-id="ckutzsf5r001z8sptdcrq22gu" data-title="《CSS世界》笔记(15)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(14)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(14)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-01T15:25:01.000Z" itemprop="datePublished">2021-10-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(14)/">《CSS世界》笔记(14)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>relative的定位有两大特性：一是相对自身，也称“相对定位”；二是无侵入，当relative进行定位偏移的时候，一般情况下不会影响周围元素的布局。</p>
+</li>
+<li><p>相对定位元素的left/top/right/bottom的百分比值是相对于包含块计算的，而不是自身。</p>
+</li>
+<li><p>top/bottom这两个垂直方向的百分比值计跟height的百分比值是一样的，都是相对高度计算的。如果父元素没有设定高度或者不是“格式化高度”，那么relative类似top:20%的代码等同于top:0.</p>
+</li>
+<li><p>当相对定位元素同时应用对立方向定位值的时候，只有一个方向的定位属性会起作用，和文档流顺序有关，默认的文档流是自上而下，从左往右。</p>
+</li>
+<li><p>relative的最小化影响原则：</p>
+<ul>
+<li>尽量不使用relative，如果想定位某些元素，看看能否使用“无依赖的绝对定位”。</li>
+<li>如果场景受限，一定要使用relative，则该relative务必最小化。用<code>&lt;div&gt;</code>包起来，不影响不必要之处。因为relative能够提高层叠顺序。</li>
+</ul>
+</li>
+<li><p>position:fixed固定定位元素的“包含块”是根元素，可以近似看作<code>&lt;html&gt;</code>元素，即唯一可以限制固定定位元素的就是<code>&lt;html&gt;</code>·根元素。可以使用“无依赖的固定定位”将目标元素定位到想要的位置。</p>
+</li>
+<li><p>利用页面的滚动使用普通元素替代的原理，可以使用position:absolute对fixed进行模拟。但将网页的窗体滚动变成内部滚动，会产生不必要的麻烦，需要谨慎使用。</p>
+</li>
+<li><p>实现蒙层弹窗时锁定背景可以让页面滚动条由内部的普通元素产生，如果网站的滚动结构不方便调整，则需要借助JavaScript来实现锁定。</p>
+</li>
+<li><p>如果是移动端项目，阻止touchmove事件的默认行为可以防止滚动；如果是桌面端项目，可以让根元素直接overflow:hidden。避免晃动，消失的滚动条使用同等宽度的透明边框填充：</p>
+<p>在蒙层显示时，执行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> widthBar = <span class="number">17</span>, root = <span class="built_in">document</span>.documentElement;</span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> <span class="built_in">window</span>.innerWidth == <span class="string">&#x27;number&#x27;</span>) &#123;</span><br><span class="line">widthBar = <span class="built_in">window</span>.innerWidth - root.clientWidth;</span><br><span class="line">&#125;</span><br><span class="line">root.style.overflow = <span class="string">&#x27;hidden&#x27;</span>;</span><br><span class="line">root.style.borderRight = widthBar + <span class="string">&#x27;px solid transparent&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>隐藏的时候，执行：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> root = <span class="built_in">document</span>.documentElement;</span><br><span class="line">root.style.overflow = <span class="string">&#x27;&#x27;</span>;</span><br><span class="line">root.style.borderRight = <span class="string">&#x27;&#x27;</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>层叠上下文(stacking context)是HTML中一个三维的概念，如果一个元素含有层叠上下文，可以理解这个元素在z轴上就“高人一等”。</p>
+</li>
+<li><p>层叠水平(stacking level)决定了同一个层叠上下文中元素在z轴上的显示顺序。尽管某些情况下z-index确实可以影响层叠水平，但是只限于定位元素以及flex盒子的孩子元素，而层叠水平所有的元素都存在。</p>
+</li>
+<li><p>层叠顺序(stacking order)表示元素发生层叠时有着特定的垂直显示顺序。前两个是概念，这个是规则。CSS3之前规则如图所示：<img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20211002215103979.png" alt="image-20211002215103979"></p>
+<ul>
+<li>每一个层叠顺序规则仅适用于当前层叠上下文元素的小世界。</li>
+<li>inline水平盒子指的是包括inline/inline-block/inline-table元素的“层叠顺序”，它们都是同等级别的。</li>
+<li>单纯从层叠水平上看，实际上z-index:0和z-index:auto是可以看成是一样的。但两者在层叠上下文领域有着根本性的差异。</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(14)/" data-id="ckutzsf5k001w8spt5ucq7zi2" data-title="《CSS世界》笔记(14)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(13)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(13)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-01T11:47:53.000Z" itemprop="datePublished">2021-10-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(13)/">《CSS世界》笔记(13)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>控制内联元素对齐的text-align属性是通过影响“幽灵空白节点”对“无依赖绝对定位”元素产生影响的。可以通过插入显示的内联字符，如空格\2002，实现所有浏览器下的一致表现。</p>
+</li>
+<li><p>利用text-align控制absolute元素的定位最适合的使用场景是主窗体右侧的“返回顶部”以及“反馈”等小布局的实现。</p>
+</li>
+<li><p>如果overflow不是定位元素，同时绝对定位元素和overflow容器之间也没有定位元素，则overflow无法对absolute元素进行剪裁。</p>
+</li>
+<li><p>如果overflow的属性值不是hidden而是auto或者scroll。即使绝对定位元素高宽比overflow元素高宽还要大，也都不会出现滚动条。</p>
+</li>
+<li><p>由于position:fixed固定定位元素的包含块是根元素，因此，除非是窗体滚动，否则上面讨论的所有overflow剪裁规则对固定定位都不适用。可以利用overflow滚动absolute元素不滚动的特性来实现表头固定的效果。</p>
+</li>
+<li><p>transform除了改变overflow属性原有规则，对层叠上下文以及position:fixed的渲染都有影响。</p>
+</li>
+<li><p>剪裁属性clip要想起作用，元素必须是绝对定位或者固定定位，也就是position属性值必须是absolute或者fixed。clip属性语法为：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">clip</span>:<span class="built_in">rect</span>(top right bottom left)</span><br></pre></td></tr></table></figure></li>
+<li><p>clip剪裁不可替代的两种场景：</p>
+<ul>
+<li>fixed固定定位的剪裁。</li>
+<li>最佳可访问性隐藏。“可访问性隐藏”指的是虽然内容肉眼看不见，但是其他辅助设备却能够进行识别和访问的隐藏。如隐藏logo下的网站名称，有以下几种技术选型：<ul>
+<li>下策是display:none或者visibility:hidden隐藏，因为屏幕阅读设备会忽略这里的文字。</li>
+<li>text-indent缩进是中策，但文字如果缩进过大，大到屏幕之外，屏幕阅读设备也是不会读取的。</li>
+<li>color:transparent是移动端上策，但却是桌面端中策，因为原生IE浏览器并不支持它。color:transparent声明，很难用简单的方式阻止文本被框选。</li>
+<li>clip剪裁隐藏是上策，既满足视觉上的隐藏，屏幕阅读设备等辅助设备也支持得很好。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>如果<code>&lt;form&gt;</code>表单元素里面有一个type为submit或者image类型的按钮，那么表单自动有回车提交行为。因此使用clip就地剪裁，这样不会有“页面跳动”的体验问题。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">form</span>&gt;</span><br><span class="line">&lt;<span class="selector-tag">input</span> type=&quot;submit&quot; id=&quot;someID&quot; class=&quot;<span class="attribute">clip</span>&quot;&gt;</span><br><span class="line">&lt;<span class="selector-tag">label</span> for=&quot;someID&quot;&gt;提交&lt;/<span class="selector-tag">label</span>&gt;</span><br><span class="line">&lt;/<span class="selector-tag">form</span>&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p>使用clip进行剪裁的元素其clientWidth和clientHeight包括样式计算的宽高都还是原来的大小，但隐藏的区域是无法影响点击行为的。总结：clip隐藏仅仅是决定了哪部分是可见的，非可见部分无法响应点击事件；虽然视觉上隐藏，但元素的尺寸依然是原本的尺寸。</p>
+</li>
+<li><p>absolute元素在只设置了一个方向的绝对定位时，该方向绝对定位，但另一方向依然保持了相对特性。</p>
+</li>
+<li><p>当一个绝对定位元素，其对立定位方向属性同时有具体定位数值的时候，流体特性就发生了。可以利用这一特性实现宽高自适应于包含块。</p>
+</li>
+<li><p>处于流体状态时：绝对定位元素的margin:auto的填充规则和普通流体元素一模一样，区别在于前者从IE8浏览器才开始支持。利用绝对定位元素的流体特性和margin:auto的自动分配特性实现水平垂直居中。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span> &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">300px</span>; <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line"><span class="attribute">position</span>: absolute;</span><br><span class="line"><span class="attribute">left</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>; <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line"><span class="attribute">margin</span>: auto;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(13)/" data-id="ckutzsf5j001u8spt9r4nf9dk" data-title="《CSS世界》笔记(13)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(12)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(12)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-01T07:18:54.000Z" itemprop="datePublished">2021-10-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(12)/">《CSS世界》笔记(12)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>当absolute和float同时存在的时候，float属性是无任何效果的。元素一旦position属性值为absolute或fixed，其display计算值就是block或table。</p>
+</li>
+<li><p>absolute的自适应最大宽度往往不是由父元素决定的，而是由与众不同的“包含块”决定的。包含块(containing block)指元素用来计算和定位的一个框。</p>
+<ul>
+<li><p>根元素（很多场景下可以看成是<code>&lt;html&gt;</code>）被称为“初始包含块”，其尺寸等同于浏览器可视窗口的大小。</p>
+</li>
+<li><p>对于其他元素，如果该元素的position是relative或者static，则“包含块”由其最近的块容器祖先盒的content box边界形成。</p>
+</li>
+<li><p>如果元素position:fixed，则“包含块”是”初始包含块“。</p>
+</li>
+<li><p>如果元素position:absolute，则”包含块“由最近的position不为static的祖先元素建立：</p>
+<p>如果该祖先元素是纯inline元素：</p>
+<ul>
+<li>假设给内联元素的前后各生成一个宽度为0的内联盒子(inline box)，则这两个内联盒子的padding box外面的包围盒就是内联元素的“包含块”。</li>
+<li>如果该内联元素被跨行分割了，则“包含块”是未定义的，则浏览器自行发挥。</li>
+</ul>
+<p>否则，“包含块”由该祖先的padding box边界形成。</p>
+<p>若无符合条件的祖先元素，则“包含块”是“初始包含块”。</p>
+</li>
+</ul>
+</li>
+<li><p>内联元素的“包含块”是由“生成的”前后内联盒子决定的，与里面的内联盒子细节没有任何关系，可以受::first-line伪元素影响，但不受::first-letter伪元素影响。</p>
+</li>
+<li><p>对于绝对定位元素，height100%是第一个具有定位属性值的祖先元素的高度，而height:inherit则是单纯的父元素的高度继承。</p>
+</li>
+<li><p>修复绝对定位元素“一柱擎天”的问题：改变默认的宽度显示类型，添加white-space:nowrap，让宽度表现从“包裹性”变成“最大可用宽度”。</p>
+</li>
+<li><p>在列表或模块右上角显示标签直接用数值0定位在列表的右上角即可，因为是相对于padding box，如果定位在内容边缘，则用透明的border撑开，注意此时尽量不要设置overflow:hidden。</p>
+</li>
+<li><p>absolute是非常独立的CSS属性值，其样式和行为表现不依赖其他任何CSS属性就可以完成。将没有设置left/top/right/bottom属性值的绝对定位称为“无依赖绝对定位”，可以视作不占据CSS流的尺寸空间的“相对定位”。</p>
+</li>
+<li><p>“无依赖绝对定位”的妙用（建议只用在静态交互效果上）：</p>
+<ul>
+<li>各类图标定位：使用position:absolute，然后简单margin偏移实现。</li>
+<li>超越常规布局的排版：注册表单的提示信息，既在输入框后显示，又跳出来容器宽度的限制，同时显隐不会影响原先的布局。</li>
+<li>下拉表单的定位：实现静态下拉效果。</li>
+<li>占位符效果模拟：IE9及以下浏览器不支持placeholder占位符效果，使用<code>&lt;label&gt;</code>标签和输入框关联并覆盖在输入框上面。也可以使用“无依赖绝对定位”完成覆盖，好处是组件化的时候适用性更广，因为不会对父级元素进行定位属性限制。</li>
+<li>进一步深入“无依赖绝对定位”：<ul>
+<li>虽说元素position:absolute后的display计算值都是块状，但是其定位的位置和未设置position:absolute时候的位置相关。</li>
+<li>“浮动”和“无依赖绝对定位”相遇时，各浏览器表现不同。若想统一，需要在“无依赖绝对定位”元素外层嵌套一层标签并浮动，注意是外层标签，绝对定位元素本身设置浮动是没有任何效果的。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/01/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(12)/" data-id="ckutzsf5g001r8sptcgwya7xf" data-title="《CSS世界》笔记(12)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(11)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/30/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(11)/" class="article-date">
+  <time class="dt-published" datetime="2021-09-30T08:22:04.000Z" itemprop="datePublished">2021-09-30</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/30/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(11)/">《CSS世界》笔记(11)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>一个设置了overflow:hidden声明的元素，假设同时存在border属性和padding属性，当子元素内容超出容器宽度限制时，剪裁的边界是border box的内边缘。</p>
+</li>
+<li><p>综上所述,clientHeight与height的区别是如果有滚动条时应减去滚动条的17px不可用部分,offsetHeight与Height的区别是增加了boder的高度,scrollHeihgt与Height的区别是火狐下与offsetHeight一致,IE下指这个对象它所包含的对象的高度加上boder的高度和marging,如果它里面没有包含对象或者这个对象的高度值未设置,那么它的值将为15。</p>
+</li>
+<li><p>要尽量避免滚动容器设置padding-bottom值，除了样式表现不一样外，还会导致scrollHreight值不一样。</p>
+</li>
+<li><p>overflow-x和overflow-y支持的属性：</p>
+<ul>
+<li><p>visible：默认值。</p>
+</li>
+<li><p>hidden：剪裁。</p>
+</li>
+<li><p>scroll：滚动条区域一直在。</p>
+</li>
+<li><p>auto：不足以滚动时没有滚动条，可以滚动时滚动条出现。</p>
+<p>除非overflow-x和overflow-y的属性值都是visible，否则visible会当成auto来解析。即：永远不可能实现一个方向溢出剪裁或滚动，另一方向溢出显示的效果。但scroll、auto和hidden这3个属性值是可以共存的。</p>
+</li>
+</ul>
+</li>
+<li><p>HTML中有两个标签是默认可以产生滚动条的，一个是根元素<code>&lt;html&gt;</code>，另一个是文本域<code>&lt;textarea&gt;</code>，因为其默认值不为visible，IE8开始，使用auto作为默认值。</p>
+</li>
+<li><p>在PC端，无论什么浏览器，默认滚动条均来自<code>&lt;html&gt;</code>。滚动条会占用容器的可用宽度或高度，IE7及以上版本IE、Chorome、Firefox浏览器滚动栏占据的宽度均是17px。</p>
+</li>
+<li><p>滚动栏占据宽度的特性最大的问题就是页面加载的时候水平居中的布局可能会产生晃动。避免页面滚动条产生晃动的方法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span> &#123;</span><br><span class="line"><span class="attribute">overflow-y</span>: scroll; <span class="comment">/* for IE8 */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-pseudo">:root</span> &#123;</span><br><span class="line"><span class="attribute">overflow-y</span>: auto;</span><br><span class="line"><span class="attribute">overflow-x</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-pseudo">:root</span> <span class="selector-tag">body</span> &#123;</span><br><span class="line"><span class="attribute">position</span>: absolute;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">100vw</span>;</span><br><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Chrome浏览器自定义滚动条，常用属性：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">::-webkit-scrollbar &#123; /* 血槽宽度 */</span><br><span class="line">width: <span class="number">8px</span>; <span class="attribute">height</span>: <span class="number">8px</span>;</span><br><span class="line">&#125;</span><br><span class="line">::-webkit-scrollbar-thumb &#123; /* 拖动条 */</span><br><span class="line">background-color: <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,.<span class="number">3</span>);</span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">6px</span>;</span><br><span class="line">&#125;</span><br><span class="line">::-webkit-scrollbar-track &#123; /* 背景槽 */</span><br><span class="line">background-color: <span class="number">#ddd</span>;</span><br><span class="line"><span class="attribute">border-radius</span>: <span class="number">6px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>单行文字溢出点点点效果实现必需的3个声明：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.ell</span> &#123;</span><br><span class="line"><span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line"><span class="attribute">white-space</span>: nowrap;</span><br><span class="line"><span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>支持-webkit-私有前缀的浏览器还可以实现多行文字打点效果，如最多显示2行内容，再多就打点：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.ell-rows-2</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: -webkit-box;</span><br><span class="line">-webkit-box-orient: vertical;</span><br><span class="line">-webkit-line-clamp: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>锚点是可以让页面定位到某个位置的点。基于URL地址的锚链实现锚点跳转的方法有两种：一是<code>&lt;a&gt;</code>标签以及name属性；二是使用标签的id属性。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;#1&quot;</span>&gt;</span>发展历程&gt;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">//方法一</span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">name</span>=<span class="string">&quot;1&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">//方法二</span><br><span class="line"><span class="tag">&lt;<span class="name">h2</span> <span class="attr">id</span>=<span class="string">&quot;1&quot;</span>&gt;</span>发展历程<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>触发锚点定位行为的发生：</p>
+<ul>
+<li><p>URL地址新的锚链与锚点元素对应并有交互行为。</p>
+<p>如果锚链就是一个很简单的#，则定位行为发生时，页面定位到顶部。</p>
+</li>
+<li><p>可focus的锚点元素处于focus状态。</p>
+<p>“focus锚点定位”指的是类似链接或者按钮、输入框等可以被focus的元素在被focus时发生的页面重定位现象。</p>
+</li>
+<li><p>前者是让元素定位在浏览器窗体的上边缘，而后者是让元素在浏览器窗体范围内显示即可，不一定在上边缘。</p>
+</li>
+</ul>
+</li>
+<li><p>锚点定位行为的发生，本质上是通过改变容器滚动高度或宽度来实现的。</p>
+<ul>
+<li>锚点定位可以发生在普通的容器元素上，而且定位行为的发生是由内而外的。“由内而外”指的是，普通元素和窗体同时可滚动时，会由内而外触发所有可滚动窗体的锚点定位行为。</li>
+<li>设置了overflow:hidden的元素也是可滚动的，与auto和scroll的差别仅在于有无滚动条。</li>
+<li>锚点定位本质是改变了scrollTop或scrollLeft值。可以基于URL地址的锚链触发锚点定位实现选项卡切换效果，但页面会发生跳动。</li>
+<li>基于“focus描点定位“时，只要定位的元素在浏览器窗体内，就不会触发窗体的滚动。但这一技术只适用于高度固定的选项卡效果。</li>
+</ul>
+</li>
+<li><p>推荐基于父容器自身的scrollTop值改变来实现自定义滚动条效果。</p>
+<ul>
+<li>实现简单，无须做边界判断。</li>
+<li>可与原生的scroll实践天然集成。</li>
+<li>无须改变子元素的结构。</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/30/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(11)/" data-id="ckutzsf5d001p8spt86sk95o1" data-title="《CSS世界》笔记(11)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(10)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/29/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(10)/" class="article-date">
+  <time class="dt-published" datetime="2021-09-29T10:50:18.000Z" itemprop="datePublished">2021-09-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/29/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(10)/">《CSS世界》笔记(10)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>浮动的本质就是为了实现文字环绕效果。</p>
+</li>
+<li><p>float的各种特性：</p>
+<ul>
+<li><p>包裹性：包裹和自适应性。</p>
+</li>
+<li><p>块状化并格式化上下文</p>
+<p>元素一旦float的属性值不为none，则其display计算值就是block或者table。除了inline-table计算为table外，其他全都是block。</p>
+</li>
+<li><p>破坏文档流</p>
+</li>
+<li><p>没有任何margin合并</p>
+</li>
+</ul>
+</li>
+<li><p>“行框盒子和浮动元素的不可重叠性”，指的是“行框盒子如果和浮动元素的垂直高度有重叠，则行框盒子在正常定位状态下只会跟随浮动元素，而不会发生重叠。”这里的“行框盒子”指每行内联元素所在的盒子，而非外部的块状盒子。</p>
+</li>
+<li><p>“文字环绕效果”是由“父级高度塌陷”和“行框盒子区域限制”共同作用的结果。定高只能解决前者。</p>
+</li>
+<li><p>“浮动锚点”(float anchor)是float元素所在的“流”中的一个点，这个点本身并不浮动，就表现而言更像一个没有margin、border和padding的空的内联元素。而“浮动参考”指的是浮动元素对齐参考的实体。</p>
+</li>
+<li><p>float元素的“浮动参考”是“行框盒子”。若浮动元素前后全是块元素，则利用“浮动锚点”产生的“行框盒子”进行对齐。</p>
+</li>
+<li><p>利用浮动可以实现一侧定宽一侧自适应，可为百分比宽度；同样适用于多栏布局。</p>
+</li>
+<li><p>clear：“元素盒子的边不能和前面的浮动元素相邻。”控制的是设置了clear属性的元素自身。对于“后面的”浮动元素不闻不问。</p>
+</li>
+<li><p>claer属性只有块级元素才有效，而::after等伪元素默认都是内联水平，因此借助伪元素清除浮动影响时需要设置display属性值。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.clear</span>:after &#123;</span><br><span class="line">content: <span class="string">&#x27;&#x27;</span>;</span><br><span class="line"><span class="attribute">display</span>: table; // 也可以是&#x27;block&#x27;，或者是&#x27;list-item&#x27;</span><br><span class="line"><span class="attribute">clear</span>: both;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>clear:both的作用本质是不让自己和float元素在一行显示，并不是真正意义上的清除浮动。</p>
+</li>
+<li><p>BFC：block formatting context，中文为“块状格式化上下文”。BFC元素的子元素不会受外部元素影响，也不会影响外部元素。触发BFC的常见情况：</p>
+<ul>
+<li><code>&lt;html&gt;</code>根元素</li>
+<li>float的值不为none</li>
+<li>overflow的值为auto、scroll或hidden</li>
+<li>position的值不为relative和static</li>
+</ul>
+</li>
+<li><p>普通流体元素在设置了overflow:hidden后，会自动填满容器中除了浮动元素以外的剩余空间，形成自适应布局效果。使用border或者padding来调整成合适的间距，一般在浮动元素上设置margin。</p>
+</li>
+<li><p>布局及与BFC的适配：</p>
+<ul>
+<li><p>float:left。不太适配。</p>
+</li>
+<li><p>position:absolute。不太适配。</p>
+</li>
+<li><p>overflow:hidden/auto。较为适配，在溢出时不适用。</p>
+</li>
+<li><p>display:inline-block。仅对IE6、IE7能够适配BFC并保留流体特性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.float-left</span> &#123;</span><br><span class="line"><span class="attribute">float</span>: left;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bfc-content</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>display:tabel-cell。IE8及以上版本支持。把BFC元素宽度设成9999px就和block水平元素自动适应容器空间效果一样了。比overflow:hidden适用更广泛，但应付连续英文字符换行较为吃力。</p>
+</li>
+</ul>
+</li>
+<li><p>总结起来，IE7及以上版本适配的自适应解决方案有以下两种，且多栏自适应可以通过嵌套方式实现。</p>
+<ul>
+<li><p>借助overflow属性。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.lbf-content</span> &#123; <span class="attribute">overflow</span>: hidden; &#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>融合display:table-cell和display:inline-block。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.lbf-content</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: table-cell; <span class="attribute">width</span>: <span class="number">9999px</span>;</span><br><span class="line"><span class="comment">/* 如果不需要兼容 IE7，下面样式可以省略 */</span></span><br><span class="line">*<span class="attribute">display</span>: inline-block; *<span class="attribute">width</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*解决连续英文字符无法换行的问题*/</span></span><br><span class="line"><span class="selector-class">.word-break</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: table;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line"><span class="attribute">table-layout</span>: fixed;</span><br><span class="line"><span class="attribute">word-break</span>: break-all;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/29/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(10)/" data-id="ckutzsf5c001m8spt0gmhhpfi" data-title="《CSS世界》笔记(10)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(9)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/28/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(9)/" class="article-date">
+  <time class="dt-published" datetime="2021-09-28T08:58:57.000Z" itemprop="datePublished">2021-09-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/28/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(9)/">《CSS世界》笔记(9)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>vertical-align属性只能作用在display计算值为inline、inline-block、inline-table或table-cell的元素上。因此，在默认情况下，<code>&lt;span&gt;、&lt;strong&gt;、&lt;em&gt;</code>等内联元素，<code>&lt;img&gt;、&lt;button&gt;、&lt;input&gt;</code>等替换元素，非HTML规范的自定义标签元素，以及<code>&lt;td&gt;</code>单元格，都是支持vertical-align属性的，其他块状元素则不支持。</p>
+</li>
+<li><p>虽然就效果而言，table-cell元素设置vertical-align垂直对齐的是资源股市，但是其作用的并不是子元素，而是table-cell元素自身。</p>
+</li>
+<li><p>任意一个块级元素，里面若有图片，则块级元素高度基本上都要比图片的高度高。间隙产生是“幽灵空白节点”、line-height和vertical-align属性共同作用的结果。</p>
+<ul>
+<li>图片块状化。一口气解决三个。</li>
+<li>容器line-height足够小。半行距撑不开间隙。</li>
+<li>容器font-size足够小。需要容器的line-height属性值和当前font-size相关。</li>
+<li>图片设置除基线对齐外其他vertical-align属性值。</li>
+</ul>
+</li>
+<li><p>在CSS中，非主动触发位移的内联元素是不可能跑到计算容器外面的。</p>
+</li>
+<li><p>text-align:justify声明可以实现兼容的列表两端对齐效果，但需要内容超过一行，同时为了让任意个数的列表最后一行也是左对齐排列，需要在列表最后辅助和列表宽度一样的空标签元素来占位。</p>
+</li>
+<li><p>一个inline-block元素，如果里面没有内联元素，或者overflow不是visible，则该元素的基线就是其margin底边缘；否则其基线就是元素里面最后一行内联元素的基线。</p>
+</li>
+<li><p>改变占位<code>&lt;i&gt;</code>元素的基线，要么加入空格或者设置font-size为0来改造“幽灵空白节点”的基线位置，要么先让容器line-height为0并使用其他的vertical-align对齐方式。</p>
+</li>
+<li><p>基于20px图标对齐的处理技巧：</p>
+<ul>
+<li><p>图标高度和当前行高都是20px。建议小图标合并前，图标原图先扩展成统一规格，然后再进行合并，可以节约大量CSS以及对每个图标对齐进行不同处理的开发成本。</p>
+</li>
+<li><p>图标标签里面永远有字符。借助:before或:after生成一个空格字符。</p>
+</li>
+<li><p>图标CSS不适用overflow:hidden保证基线为里面字符的基线，但是要让里面潜在的字符不可见。</p>
+<p>最终形成的最佳图标实践CSS如下：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.icon</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: inline-block;</span><br><span class="line"><span class="attribute">width</span>: <span class="number">20px</span>; <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line"><span class="attribute">background</span>: <span class="built_in">url</span>(<span class="string">sprite.png</span>) no-repeat;</span><br><span class="line"><span class="attribute">white-space</span>: nowrap;</span><br><span class="line"><span class="attribute">letter-spacing</span>: -<span class="number">1em</span>;</span><br><span class="line"><span class="attribute">text-indent</span>: -<span class="number">999em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.icon</span>:before &#123;</span><br><span class="line">content: <span class="string">&#x27;\3000&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 具体图标 */</span></span><br><span class="line"><span class="selector-class">.icon-xxx</span> &#123;</span><br><span class="line"><span class="attribute">background-position</span>: <span class="number">0</span> -<span class="number">20px</span>;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>vertical-align:top/bottom：如果是内联元素，则和这一行位置最高的内联元素的顶部对齐；如果display计算值是table-cell的元素，看作<code>&lt;td&gt;</code>元素，与<code>&lt;tr&gt;</code>元素上边缘对齐，这里的上边缘指的是当前“行框盒子”的上下边缘。</p>
+</li>
+<li><p>vertical-align:middle的定义：</p>
+<ul>
+<li>table-cell元素：单元格填充盒子相对于外面的表格行居中对齐。</li>
+<li>内联元素：元素的垂直中心点和行框盒子基线往上1/2x-height处对齐，也就是说让内联元素真正意义上的垂直中心位置和字符x的交叉点对齐。</li>
+</ul>
+</li>
+<li><p>vertical-align:text-top(bottom)：盒子的顶(底)部和父级内容区域的顶(底)部对齐。“父级内容区域”指的是在父级元素当前font-size和font-family下应有的内容区域大小。无明显优势。</p>
+</li>
+<li><p>记忆vertical-align上标下标属性值sub和super，HTML标签上标<code>&lt;sup&gt;</code>和下标<code>&lt;sub&gt;</code>，圈圈在上面就是“上标”，在下面就是“下标”。且HTML标签默认vertical-align属性值相对应。只用来做上标和下标，多用于公式。</p>
+</li>
+<li><p>top/bottom和baseline/middle行为表现完全不同，前者对齐看边缘行框盒子，后者则和字符x有关。在分析复杂场景的时候，仅需要套用定义分析当前vertical-align值的作用。</p>
+</li>
+<li><p>vertical-align实践：使用纯CSS实现大小不固定的弹框永远居中的效果。见<a target="_blank" rel="noopener" href="https://codepen.io/xialinshirley/pen/oNwmGBG%E3%80%82%E5%85%B6%E4%B8%AD%E5%8D%8A%E9%80%8F%E6%98%8E%E9%BB%91%E8%89%B2%E8%92%99%E5%B1%82%E5%92%8C%E5%BC%B9%E6%A1%86%E5%85%83%E7%B4%A0%E6%98%AF%E5%9C%A8%E4%B8%80%E8%B5%B7%E7%9A%84%E7%88%B6%E5%AD%90%E5%85%B3%E7%B3%BB%E3%80%82%E7%AC%AC%E4%B8%80%E4%B8%AAvertical-align%E6%98%AF%E4%B8%BA%E4%BA%86%E5%AE%9A%E4%BD%8Dx%E7%9A%84%E4%B8%AD%E5%BF%83%E7%82%B9%E5%9C%A8%E5%AE%B9%E5%99%A8%E7%9A%84%E5%9E%82%E7%9B%B4%E4%B8%AD%E5%BF%83%E4%BD%8D%E7%BD%AE%EF%BC%8C%E4%BE%BF%E4%BA%8E%E7%AC%AC%E4%BA%8C%E4%B8%AAvertical-align:middle%E7%9A%84%E5%BC%B9%E6%A1%86%E4%B8%AD%E5%BF%83%E4%BD%8D%E7%BD%AE%E4%B8%8Ex%E7%9A%84%E4%B8%AD%E5%BF%83%E7%82%B9%E4%BD%8D%E7%BD%AE%E5%AF%B9%E9%BD%90%EF%BC%8C%E4%BB%8E%E8%80%8C%E4%B8%8E%E5%AE%B9%E5%99%A8%E7%9A%84%E5%9E%82%E7%9B%B4%E4%B8%AD%E5%BF%83%E4%BD%8D%E7%BD%AE%E5%AF%B9%E9%BD%90%E3%80%82">https://codepen.io/xialinshirley/pen/oNwmGBG。其中半透明黑色蒙层和弹框元素是在一起的父子关系。第一个vertical-align是为了定位x的中心点在容器的垂直中心位置，便于第二个vertical-align:middle的弹框中心位置与x的中心点位置对齐，从而与容器的垂直中心位置对齐。</a></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/28/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(9)/" data-id="ckutzsf6d002p8spt68cr67m7" data-title="《CSS世界》笔记(9)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(8)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/27/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(8)/" class="article-date">
+  <time class="dt-published" datetime="2021-09-27T15:24:26.000Z" itemprop="datePublished">2021-09-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/27/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(8)/">《CSS世界》笔记(8)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>要让单行文字垂直居中，只需要line-height这一个属性就可以。line-hright可以让单行或多行元素近似垂直居中。可以实现“垂直居中”原因在于CSS中“行距的上下等分机制”，“近似”是因为文字字形的垂直中线位置普遍要比真正的“行框盒子”的垂直中线位置低。</p>
+</li>
+<li><p>基于行高实现的多行文字垂直居中效果，需要vertical-align属性帮助。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line"><span class="attribute">line-height</span>: <span class="number">120px</span>;</span><br><span class="line"><span class="attribute">background-color</span>: <span class="number">#f0f3f9</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.content</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: inline-block;</span><br><span class="line"><span class="attribute">line-height</span>: <span class="number">20px</span>;</span><br><span class="line"><span class="attribute">margin</span>: <span class="number">0</span> <span class="number">20px</span>;</span><br><span class="line"><span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>产生的“幽灵空白节点”在.content元素前撑起高度为120px宽度为0的内联元素。</li>
+<li>因为内联元素默认都是基于基线对齐的，通过对.content元素设置vertical-align:middle来调整多行文本的垂直位置。</li>
+</ul>
+</li>
+<li><p>line-height的默认值是normal，还支持数值、百分比值以及长度值。normal实际上是一个和font-family有着密切关联的变量值。</p>
+</li>
+<li><p>如果使用数值作为line-height的属性值，那么所有的元素继承的都是这个值，但是，如果使用百分比值或者长度值作为属性值，那么所有子元素继承的是最终的计算值。</p>
+</li>
+<li><p>重置line-height的方法：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123;</span><br><span class="line"><span class="attribute">line-height</span>:<span class="number">1.5</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">input</span>,<span class="selector-tag">button</span>&#123;</span><br><span class="line"><span class="attribute">line-height</span>:inherit;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>重图文内容展示的网页或网站line-height设置在1.6~1.8。如果是一个偏重布局结构精致的网站，使用长度值或者数值都可以，一是为了兼容，二是无论使用哪种类型值，都存在需要局部重置的场景。</p>
+</li>
+<li><p>使用长度值则直接line-height:20px，使用数值的话最好使用方便计算的行高值，一种是line-height属性值本身方便计算，另一种是line-height的默认计算值方便计算。</p>
+</li>
+<li><p>在CSS中，计算行高的时候，行高值一定不要向下舍入，而要向上舍入。</p>
+</li>
+<li><p>无论内联元素linr-height如何设置，最终父级元素的高度都是由数值大的那个line-height决定的，因为有“幽灵空白节点”的存在，而行框盒子的高度是由高度最高的那个“内联盒子”决定的。</p>
+</li>
+<li><p> 设置<code>&lt;span&gt;</code>元素display:inline-block能创建一个独立的“行框盒子”，从而避免“幽灵空白节点”的干扰。</p>
+</li>
+<li><p>除去inherit这类全局属性值，vertical-align可以分为以下4类：</p>
+<ul>
+<li><p>线类：baseline(默认值)、top、middle、bottom;</p>
+</li>
+<li><p>文本类：text-top、text-bottom;</p>
+</li>
+<li><p>上标下标类，如sub、super;</p>
+</li>
+<li><p>数值百分比类，如20px、2em、20%等。</p>
+<p>“数值类”和“百分比类”的“行为表现一致”，具有相同的渲染规则：根据计算值的不同，如果计算值是正值，则相对于基线往上偏移，负值则往下偏移。因此，vertical-align:baseline等同于vertical-align:0。</p>
+</li>
+</ul>
+</li>
+<li><p>默认的基线对齐  和  相对于基线的“数值百分比类”属性值偏移定位  的渲染兼容性很好，且后者可以精确控制内联元素的垂直对齐位置。</p>
+</li>
+<li><p>CSS中，凡是百分比值，均是一个需要相对计算的值，margin和padding是相对于宽度计算的，line-height是相对于font-size计算的，vertical-align属性的百分比值则是相对于line-height的计算值计算的。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/27/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(8)/" data-id="ckutzsf6a002j8spt9dg3aqys" data-title="《CSS世界》笔记(8)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(7)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/26/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(7)/" class="article-date">
+  <time class="dt-published" datetime="2021-09-26T02:21:23.000Z" itemprop="datePublished">2021-09-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/09/26/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(7)/">《CSS世界》笔记(7)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>border-width不支持百分比。outline、box-shadom、text-shadow等，都是不支持百分比值的。</p>
+</li>
+<li><p>单纯设置border-width或border-color没有边框显示的原因是：border-style的默认值是none。实现没有下边框的边框效果，渲染性能最高的写法是：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">div</span>&#123;</span><br><span class="line"><span class="attribute">border</span>:<span class="number">1px</span> solid;</span><br><span class="line"><span class="attribute">border-bottom</span>:<span class="number">0</span> none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>border-style:dashed的虚线颜色区的宽高比以及颜色区和透明区的宽度比例在不同浏览器下是有差异的。</p>
+</li>
+<li><p>IE浏览器下虚点dotted是个圆，可以在IE8浏览器中实现圆角，因为CSS圆角属性border-radius从IE9才开始支持。</p>
+</li>
+<li><p>因为当边框为3px的时候，double才开始有双线边框的表现，因为边框宽度是没有半像素的概念的。因此使用了能表现double类型的最小边框宽度3px作为边框宽度默认值。</p>
+</li>
+<li><p>一句话总结border-style:double的表现规则：双线宽度永远相等，中间间隔+-1。</p>
+</li>
+<li><p>当没有指定border-color颜色值的时候，会使用当前元素的color计算值作为边框色。</p>
+</li>
+<li><p>透明边框技巧：</p>
+<ul>
+<li><p>右下角background定位的技巧：使用透明边框。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span> &#123;</span><br><span class="line"><span class="attribute">border-right</span>: <span class="number">50px</span> solid transparent;</span><br><span class="line"><span class="attribute">background-position</span>: <span class="number">100%</span> <span class="number">50%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>默认background背景图片实现相对于padding-box计算在内的。</p>
+</li>
+<li><p>能够优雅地增加点击区域的大小。</p>
+</li>
+<li><p>三角等图形绘制：当div宽高为0时，border会以div作为出发点，进行显示。只要是与三角形或者梯形相关的额图形，都可以使用border属性来模拟。</p>
+</li>
+</ul>
+</li>
+<li><p>border实现等高则父级容器不能使用overflow:hidden清除浮动影响，因为溢出隐藏是基于padding box的。兼容性更好，但适合至少一栏是定宽的布局，一旦等高布局栏目过多，则建议使用table-cell等高布局或者margin负值等高布局。</p>
+</li>
+<li><p>涉及内联相关模型垂直方向的排版或者对齐，都离不开基线。line-height行高的定义是两基线的间距，vertical-align的默认值是基线。字母x的下边缘（线）就是基线。</p>
+</li>
+<li><p>x-height指的就是小写字母x的高度，术语描述就是基线和等分线(mean line,也称作中线,midline)之间的距离。<img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210927112719929.png" alt="image-20210927112719929"></p>
+<ul>
+<li><p>ascender height：上下线高度。</p>
+</li>
+<li><p>cap height：大写字母高度。</p>
+</li>
+<li><p>median：中线。</p>
+</li>
+<li><p>descender height：下行线高度。</p>
+<p>vertical-align:middle 并不是绝对的垂直居中对齐,midddle指的是基线往上1/2 x-height高度，根据字体的不同呈现不同的表现。</p>
+</li>
+</ul>
+</li>
+<li><p>ex能实现不受字体和字号影响的内联元素的垂直居中对齐效果。</p>
+</li>
+<li><p><code>&lt;div&gt;</code>高度是由行高决定的，而非文字font-size。对于非替换元素的纯内联元素，其可视高度完全由line-height决定。padding,border对可视高度没有任何影响，因此“盒模型”说的是块级元素。</p>
+</li>
+<li><p>内联元素的高度是由固定高度和不固定高度组成的，改变“行距”这一不固定高度是line-height生效的原因。</p>
+</li>
+<li><p>行距=(line-height)-(font-size)，em是一个相对于font-size大小的CSS单位，因此1em等于当前一个font-size大小。</p>
+</li>
+<li><p>内容区域可以近似理解为Firefox/IE浏览器下文本选中带背景色的区域。通常内容区域比em-box高一些，因为内容区域受font-family和font-size双重影响。但当字体选择宋体时，内容区域和em-box是等同的。</p>
+</li>
+<li><p>line-height不可以影响替换元素（如图片的高度）。有时看上去影响了可能是影响了内联特性表现和普通字符一样的，宽度为0的“幽灵空白节点”。</p>
+</li>
+<li><p>图文混合元素共同形成的“行框盒子”zhongline-height决定的是最小高度，原因有二，一是替换元素高度不收line-height影响，二是vertical-align属性。</p>
+</li>
+<li><p>line-height对于块状元素本身是没有任何作用的，是通过改变块级元素里面内联级别元素占据的高度实现的。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/26/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(7)/" data-id="ckutzsf6b002l8spt2pi401ar" data-title="《CSS世界》笔记(7)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">CSS笔记</a> <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">ES6阮一峰教程学习笔记</a> <a href="/tags/Javascript%E7%AC%94%E8%AE%B0/" style="font-size: 18.33px;">Javascript笔记</a> <a href="/tags/Typescript%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">Typescript笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">前端动画实现</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" style="font-size: 10px;">前端技术</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" style="font-size: 11.67px;">前端知识积累</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 10px;">字节青训营</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a> <a href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">自用说明</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

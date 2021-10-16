@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>《CSS世界》笔记(20) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="outline表示元素的轮廓，语法和border属性非常类似，分宽度、类型和颜色，支持的关键字和属性值和border属性一模一样。两者表现也类似，都是给元素的外面画框。  不能在全局设置outline:0 none，会重置一些默认focus发光效果。  outline是真正意义上的不占据任何空间的属性。应用：  头像剪裁得到矩形镂空效果。 使用一个大大的outline来实现周围半透明遮罩，超出的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《CSS世界》笔记(20)">
+<meta property="og:url" content="http://example.com/2021/10/07/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(20)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="outline表示元素的轮廓，语法和border属性非常类似，分宽度、类型和颜色，支持的关键字和属性值和border属性一模一样。两者表现也类似，都是给元素的外面画框。  不能在全局设置outline:0 none，会重置一些默认focus发光效果。  outline是真正意义上的不占据任何空间的属性。应用：  头像剪裁得到矩形镂空效果。 使用一个大大的outline来实现周围半透明遮罩，超出的">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-10-07T14:35:00.000Z">
+<meta property="article:modified_time" content="2021-10-08T12:26:33.541Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="CSS笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-《CSS世界》笔记(20)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/10/07/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(20)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-07T14:35:00.000Z" itemprop="datePublished">2021-10-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      《CSS世界》笔记(20)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>outline表示元素的轮廓，语法和border属性非常类似，分宽度、类型和颜色，支持的关键字和属性值和border属性一模一样。两者表现也类似，都是给元素的外面画框。</p>
+</li>
+<li><p>不能在全局设置outline:0 none，会重置一些默认focus发光效果。</p>
+</li>
+<li><p>outline是真正意义上的不占据任何空间的属性。应用：</p>
+<ul>
+<li><p>头像剪裁得到矩形镂空效果。</p>
+<p>使用一个大大的outline来实现周围半透明遮罩，超出的区域通过容器overflow:hidden隐藏。</p>
+</li>
+<li><p>自动填满屏幕剩余空间的应用技巧。</p>
+<p>设置超大范围的outline属性，让底部内容元素绝对定位，同时以上边缘和左边缘为界进行裁剪。</p>
+</li>
+</ul>
+</li>
+<li><p>cursor支持的值：</p>
+<ul>
+<li><p>auto:cursor默认值。auto表示光标形状根据内容类别浏览器自动进行处理。</p>
+</li>
+<li><p>default:系统默认光标形状。其中，链接为手形，按钮应该是默认形，通过hover时候的状态变化让用户知道这里是可点击的、可以有交互的。</p>
+</li>
+<li><p>none:可以让光标隐藏不见。</p>
+</li>
+<li><p>pointer:光标表现为一只伸出食指的手。</p>
+</li>
+<li><p>help:光标上带了个问号。</p>
+</li>
+<li><p>progress:表示进行中的意思。从语义上讲，适合loading处理。</p>
+</li>
+<li><p>wait:不使用。</p>
+</li>
+<li><p>text/vertical-text：文字（垂直）选中。</p>
+</li>
+<li><p>crosshair:十字光标。通常用在像素级的框选或点选场合。、</p>
+</li>
+<li><p>cell:Excel中单元格框选同款。</p>
+</li>
+<li><p>move:指示当前元素是可以移动的。</p>
+<p>太多了自己看323页开始的吧。</p>
+</li>
+</ul>
+</li>
+<li><p>自定义光标：对于Chrome等浏览器，可以直接使用PNG图片作为光标，但是IE浏览器只支持专门的.cur格式的光标文件，需要使用工具进行格式转换。</p>
+</li>
+<li><p>direction支持ltr(left-to-right,默认值)和rtl(right-to-left)。direction:rtl还可以让text-justify两端对齐元素，最后一行落单的元素右对齐显示。在不支持text-align:start/end 的浏览器中（如 IE），不同的 direction 属性值会改变 text-align 属性的初始值。</p>
+</li>
+<li><p>unicode-bidi中embed和normal的区别是，embed 属性值的字符排序是独立内嵌的，不受外部影响。</p>
+</li>
+<li><p>writing-mode 就是用来实现文字竖向呈现的。相关支持属性看337页。</p>
+<ul>
+<li>相同的 writing-mode 属性值并不会累加。</li>
+<li>垂直流有：<ul>
+<li>水平方向也能 margin 合并。</li>
+<li>普通块元素可以使用 margin:auto 实现垂直居中。</li>
+<li>可以使用 text-align:center 实现图片垂直居中。</li>
+<li>可以使用 text-indent 实现文字下沉效果。</li>
+<li>可以实现全兼容的 icon fonts 图标的旋转效果。</li>
+<li>充分利用高度的高度自适应布局。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>writing-mode、direction 和 unicode-bidi 是 CSS 世界中三大可以改变文本布局<br>流向的属性，其中 direction 和 unicode-bidi 属于近亲，经常一起使用，也是仅有的两个不受 CSS3 的 all 属性影响的 CSS 属性，基本上就是和内联元素一起使用。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/10/07/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(20)/" data-id="ckutzsf60002b8spt7s76eja2" data-title="《CSS世界》笔记(20)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/10/08/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(1)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Javascript学习笔记(1)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/10/07/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(19)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">《CSS世界》笔记(19)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">CSS笔记</a> <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">ES6阮一峰教程学习笔记</a> <a href="/tags/Javascript%E7%AC%94%E8%AE%B0/" style="font-size: 18.33px;">Javascript笔记</a> <a href="/tags/Typescript%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">Typescript笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">前端动画实现</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" style="font-size: 10px;">前端技术</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" style="font-size: 11.67px;">前端知识积累</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 10px;">字节青训营</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a> <a href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">自用说明</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

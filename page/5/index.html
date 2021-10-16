@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/page/5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main">
+  
+    <article id="pot-Typescript学习笔记(6)" class="h-entry article article-type-pot" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/25/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(6)/" class="article-date">
+  <time class="dt-published" datetime="2021-08-25T09:58:31.000Z" itemprop="datePublished">2021-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/25/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(6)/">Typescript学习笔记(6)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>使用<code>type</code>可以创建类型别名，类型别名常用于联合类型。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Name = <span class="built_in">string</span>;</span><br><span class="line"><span class="keyword">type</span> NameResolver = <span class="function">() =&gt;</span> <span class="built_in">string</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>字符串字面量类型用来约束取值只能是某几个字符串中的一个。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> EventNames = <span class="string">&#x27;click&#x27;</span> | <span class="string">&#x27;scroll&#x27;</span> | <span class="string">&#x27;mousemove&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>注意，<strong>类型别名与字符串字面量类型都是使用<code>type</code>进行定义</strong>。</p>
+</li>
+<li><p>元组：数组合并了相同类型的对象，而元组合并了不同类型的对象。</p>
+<p>可以分开按索引赋值，但直接对元组类型的变量进行初始化或者赋值时，需要提供所有元组类型中指定的项。</p>
+<p>当添加越界的元素时，它的类型会被限制为元组中每个类型的联合类型。</p>
+</li>
+<li><p>枚举：枚举(Enum)类型用于取值被限定在一定范围内的场景。</p>
+<p>使用<code>enum</code>关键字来定义：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enum</span> Days &#123;Sun, Mon, Tue, Wed, Thu, Fri, Sat&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>枚举成员会被赋值为从<code>0</code>开始递增的数字，同时也会对枚举值到枚举名进行反向映射。</p>
+</li>
+<li><p> 未手动赋值的枚举项会接着上一个枚举项以1为步长递增，前一个赋值为小数或负数也一样。</p>
+</li>
+</ol>
+<p>   手动赋值的枚举项可以不是数字，此时需要使用类型断言来让tsc无视类型检查（编译出的js仍然是可用的）</p>
+   <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">enum</span> Days &#123;Sun, Mon, Tue, Wed, Thu, Fri, Sat=&lt;<span class="built_in">any</span>&gt;<span class="string">&quot;S&quot;</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li><p>如果在计算所得项后面的是未手动赋值的项，那么它就会因为无法获得初始值而报错。</p>
+</li>
+<li><p>使用<code>const enum</code>能定义常数枚举。如：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="built_in">enum</span> Directions &#123;</span><br><span class="line">    Up,</span><br><span class="line">    Down,</span><br><span class="line">    Left,</span><br><span class="line">    Right</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> directions = [Directions.Up, Directions.Down, Directions.Left, Directions.Right];</span><br></pre></td></tr></table></figure>
+
+<p>常数枚举与普通枚举的区别是，它会在编译阶段被删除，并且不能包含计算成员，否则会在编译阶段报错。</p>
+</li>
+<li><p>外部枚举是使用<code>decare enum</code>定义的枚举类型，常出现在声明文件中。<code>decalre</code>定义的类型只会用于编译时的检查，编译结果中会被删除。可以同时使用<code>declare</code>和<code>const</code>也是可以的。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/25/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(6)/" data-id="ckutzsf4p001a8spt4n7n204l" data-title="Typescript学习笔记(6)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Typescript学习笔记(5)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/25/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(5)/" class="article-date">
+  <time class="dt-published" datetime="2021-08-25T07:36:31.000Z" itemprop="datePublished">2021-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/25/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(5)/">Typescript学习笔记(5)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>只有<code>function</code>、<code>class</code>和<code>interface</code>可以直接默认导出，其他的变量需要先定义出来，再默认导出。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Directions;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="built_in">enum</span> Directions &#123;</span><br><span class="line">    Up,</span><br><span class="line">    Down,</span><br><span class="line">    Left,</span><br><span class="line">    Right</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>既可以通过<code>&lt;script&gt;</code>标签引入，又可以通过<code>import</code>导入的库，称为UMD库。先有npm包的声明文件，再基于它添加一条<code>export as namespace</code>语句，即可将声明好的一个变量声明为全局变量。</p>
+</li>
+<li><p>使用<code>declare global</code>可以在npm包或者UMD库的声明文件中扩展全局变量的类型。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// types/foo/index.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="built_in">global</span> &#123;</span><br><span class="line">    <span class="keyword">interface</span> String &#123;</span><br><span class="line">        prependHello(): <span class="built_in">string</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//告诉编译器这是模块声明文件，而不是全局变量声明文件</span></span><br><span class="line"><span class="keyword">export</span> &#123;&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>如果需要扩展原有模块的话，需要在类型声明文件中先引用原有模块，再使用<code>declare module</code>扩展原有模块。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// types/foo-bar.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="built_in">module</span> <span class="string">&#x27;foo&#x27;</span> &#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">interface</span> Foo &#123;</span><br><span class="line">        <span class="attr">foo</span>: <span class="built_in">string</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="built_in">module</span> <span class="string">&#x27;bar&#x27;</span> &#123;</span><br><span class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>): <span class="title">string</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>在全局变量的声明文件中，是不允许出现<code>import</code>，<code>export</code>关键字的，一旦出现就会被视为一个npm包或UMD库。因此在书写一个全局变量的声明文件时，使用三斜线指令。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// types/jquery-plugin/index.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/// &lt;reference types=&quot;jquery&quot; /&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params">options: JQuery.AjaxSettings</span>): <span class="title">string</span></span>;</span><br></pre></td></tr></table></figure>
+
+<p>///后面使用xml格式添加了对<code>jquery</code>类型的依赖。三斜线指令必须放在文件的最顶端，三斜线指令的前面只允许出现单行或多行注释。</p>
+<p>依赖全局变量的声明文件也使用三斜线指令引入全局变量。</p>
+</li>
+<li><p>三斜线引入用到了<code>types</code>和<code>path</code>两种不同的指令。其中<code>types</code>用于声明对另一个库的依赖，而<code>path</code>用于声明对另一个文件的依赖。</p>
+</li>
+<li><p>自动生成声明文件：在命令行中添加<code>--declaration</code>(简写<code>-d</code>)，或者在<code>tsconfig.json</code>中添加<code>declaration</code>选项，以后者为例：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="string">&quot;compileOptions&quot;</span>:&#123;</span><br><span class="line">        <span class="string">&quot;module&quot;</span>:<span class="string">&quot;commonjs&quot;</span>,</span><br><span class="line">         <span class="string">&quot;outDir&quot;</span>:<span class="string">&quot;lib&quot;</span>,</span><br><span class="line">         <span class="string">&quot;declaration&quot;</span>:<span class="literal">true</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>将声明与源码放在一起时，首先识别<code>package.json</code>中是否存在<code>types</code>或<code>typing</code>字段，如不存在，再寻找是否存在<code>index.d.ts</code>文件，如不存在，则寻找入口文件(<code>package.json</code>中的<code>main</code>字段指定的入口文件)是否存在对应同名不同后缀的<code>.d.ts</code>文件。</p>
+</li>
+<li><p>内置对象是根据标准在全局作用域（Global）上存在的对象。这里的标准是指ECMAScript和其他环境（比如DOM）的标准。</p>
+<ul>
+<li>ECMAScript：<code>Boolean</code>、<code>Error</code>、<code>Date</code>、<code>RegExp</code>等</li>
+<li>DOM和BOM提供的内置对象有：<code>Document</code>、<code>HTMLElement</code>、<code>Event</code>、<code>NodeList</code>等</li>
+</ul>
+</li>
+<li><p>Typescript核心库的定义中不包含Node.js部分。Node.js不是内置对象的一部分，如果想用TypeScript写Node.js，则需要引入第三方声明文件：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="meta">@types</span>/node --save-dev</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/25/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(5)/" data-id="ckutzsf4j00188spt2apy1n6d" data-title="Typescript学习笔记(5)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Typescript学习笔记(4)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/25/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(4)/" class="article-date">
+  <time class="dt-published" datetime="2021-08-24T16:01:00.000Z" itemprop="datePublished">2021-08-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/25/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(4)/">Typescript学习笔记(4)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>类型断言(Type Assertion)可以用来手动指定一个值的类型，语法为：<code>值 as 类型</code>。在tsx中只能这么使用。</p>
+</li>
+<li><p>类型断言的用途：</p>
+<ul>
+<li><p>将一个联合类型断言为其中一个类型。使用类型断言应尽量避免断言后调用方法或引用深层属性，以减少不必要的运行时错误。</p>
+</li>
+<li><p>将一个父类断言为更加具体的子类。当为类时用instanceof判断，否则使用类型断言。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> ApiError <span class="keyword">extends</span> Error&#123;</span><br><span class="line">    <span class="attr">code</span>:<span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> HttpError <span class="keyword">extends</span> Error&#123;</span><br><span class="line">    <span class="attr">statusCode</span>:<span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isApiError</span>(<span class="params">error:<span class="built_in">Error</span></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span>(error <span class="keyword">as</span> ApiError).code===<span class="string">&#x27;number&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>将任何一个类型断言为<code>any</code>。在<code>any</code>类型的变量上，访问任何属性都是允许的，但注意不能滥用<code>as any</code>。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="built_in">window</span> <span class="keyword">as</span> <span class="built_in">any</span>).foo=<span class="number">1</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>将<code>any</code>断言为一个具体的类型。调用完返回<code>any</code>的函数后立刻进行类型断言，便于后续代码的维护。</p>
+</li>
+<li><p>总结：要使得<code>A</code>能够被断言为<code>B</code>，只需要<code>A</code>兼容<code>B</code>或<code>B</code>兼容<code>A</code>即可。</p>
+</li>
+</ul>
+</li>
+<li><p>除非迫不得已，否则千万别用双重断言。</p>
+</li>
+<li><p>类型断言不是类型转换，它不会真的影响到变量的类型。若要进行类型转换，需要直接调用类型转换的方法。</p>
+</li>
+<li><p>类型声明比类型断言更加严格。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Animal &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">interface</span> Cat &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="built_in">string</span>;</span><br><span class="line">    run(): <span class="built_in">void</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> animal: Animal = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;tom&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">let</span> tom = animal <span class="keyword">as</span> Cat;</span><br><span class="line"><span class="comment">//let tom:Cat=animal报错</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>animal</code>断言为<code>cat</code>，只需要满足<code>Animal</code>兼容<code>Cat</code>或<code>Cat</code> 兼容<code>Animal</code>即可。</li>
+<li><code>animal</code>赋值给<code>tom</code>，需要满足 <code>Cat</code>兼容<code>Animal</code>才行。</li>
+</ul>
+</li>
+<li><p>声明文件必须以<code>.d.ts</code>为后缀，例如<code>jQuery.d.ts</code>：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//src/jQuery.d.ts(全局变量模式声明)</span></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">var</span> jQuery: <span class="function">(<span class="params">selector:<span class="built_in">string</span></span>)=&gt;</span><span class="built_in">any</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>使用<code>@types</code>统一管理第三方库的声明文件。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install <span class="meta">@typrs</span>/jquery --save-dev</span><br></pre></td></tr></table></figure></li>
+<li><p>声明语句中只能定义类型，切勿在声明语句中定义具体的实现。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="keyword">const</span> jQuery: <span class="function">(<span class="params">selector:<span class="built_in">string</span></span>)=&gt;</span><span class="built_in">any</span>;</span><br></pre></td></tr></table></figure></li>
+<li><p><code>declare function</code>用来定义全局函数的类型，在函数类型的声明语句中，函数重载也是支持的。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">declare</span> <span class="function"><span class="keyword">function</span> <span class="title">jQuery</span>(<span class="params">selector:<span class="built_in">string</span></span>):<span class="title">any</span></span>;</span><br><span class="line"><span class="keyword">declare</span> <span class="function"><span class="keyword">function</span> <span class="title">jQuery</span>(<span class="params">domReadyCallback:()=&gt;<span class="built_in">any</span></span>):<span class="title">any</span></span>;</span><br></pre></td></tr></table></figure></li>
+<li><p>使用<code>declare class</code>来定义全局变量为类的情况，也只能用来定义类型，不能用来定义具体的实现。</p>
+</li>
+<li><p>使用<code>declare enum</code>定义的枚举类型也称作外部枚举(Ambient Enums)。</p>
+</li>
+<li><p>在类型声明文件中，我们可以直接使用<code>interface</code>或<code>type</code>来声明一个全局的接口或类型。此时<code>interface</code>前是不需要<code>declare</code>的。</p>
+</li>
+<li><p>暴露在最外层的<code>interface</code>或<code>type</code>会作为全局类型作用于整个项目中，我们应该尽可能的减少全局变量或全局类型的数量，故最好将它们放到<code>namespace</code>下。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/jQuery.d.ts</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">declare</span> <span class="keyword">namespace</span> jQuery &#123;</span><br><span class="line">    <span class="keyword">interface</span> AjaxSettings &#123;</span><br><span class="line">        method?: <span class="string">&#x27;GET&#x27;</span> | <span class="string">&#x27;POST&#x27;</span></span><br><span class="line">        data?: <span class="built_in">any</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">url: <span class="built_in">string</span>, settings?: AjaxSettings</span>): <span class="title">void</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在使用这个<code>interface</code>时，也应该加上<code>jQuery</code>前缀：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// src/index.ts</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> settings: jQuery.AjaxSettings = &#123;</span><br><span class="line">    <span class="attr">method</span>: <span class="string">&#x27;POST&#x27;</span>,</span><br><span class="line">    <span class="attr">data</span>: &#123;</span><br><span class="line">        <span class="attr">name</span>: <span class="string">&#x27;foo&#x27;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line">jQuery.ajax(<span class="string">&#x27;/api/post_something&#x27;</span>, settings);</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/25/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(4)/" data-id="ckutzsf4i00178sptery9e91b" data-title="Typescript学习笔记(4)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Typescript学习笔记(3)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/24/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(3)/" class="article-date">
+  <time class="dt-published" datetime="2021-08-24T13:36:48.000Z" itemprop="datePublished">2021-08-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/24/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(3)/">Typescript学习笔记(3)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>数组的定义方式：</p>
+<ul>
+<li><p>类型+方括号：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fibonacci:<span class="built_in">number</span>[]=[<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>];</span><br></pre></td></tr></table></figure></li>
+<li><p>数组泛型Array&lt;elemType&gt;：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> fibonacci:<span class="built_in">Array</span>&lt;<span class="built_in">number</span>&gt;=[<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>];</span><br></pre></td></tr></table></figure></li>
+<li><p>用接口描述数组：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> NumberArray&#123;</span><br><span class="line">    <span class="comment">//只要索引类型为数字，那么值的类型必须是数字</span></span><br><span class="line">    [index:<span class="built_in">number</span>]:<span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> fibonacci:NumberArray=[<span class="number">1</span>,<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">5</span>];</span><br></pre></td></tr></table></figure></li>
+<li><p>类数组（不能用普通数组方式描述，而应该用接口）：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> args:&#123;</span><br><span class="line">        [index:<span class="built_in">number</span>]:<span class="built_in">number</span>;</span><br><span class="line">        <span class="comment">//定义的两个属性</span></span><br><span class="line">        length:<span class="built_in">number</span>;</span><br><span class="line">        callee:<span class="built_in">Function</span>;</span><br><span class="line">    &#125;=<span class="built_in">arguments</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>一个比较常见的做法是，用<code>any</code>表示数组中允许出现任意类型：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> list:<span class="built_in">any</span>[]=[<span class="string">&#x27;hey&#x27;</span>,<span class="number">17</span>,&#123;<span class="attr">website</span>:<span class="string">&#x27;xxxx&#x27;</span>&#125;];</span><br></pre></td></tr></table></figure></li>
+<li><p>函数声明后，对函数输入多余的（或者少于要求的）参数，是不被允许的。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">x:<span class="built_in">number</span>,y:<span class="built_in">number</span></span>):<span class="title">number</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></li>
+<li><p>函数表达式完整类型：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> mySum:<span class="function">(<span class="params">x:<span class="built_in">number</span>,y:<span class="built_in">number</span></span>)=&gt;</span><span class="built_in">number</span>=<span class="function"><span class="keyword">function</span> (<span class="params">x:<span class="built_in">number</span>,y:<span class="built_in">number</span></span>):<span class="title">number</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x+y;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意不要混淆了TS和ES6中的<code>=&gt;</code>，在ES6中为箭头函数，在TS的类型定义中，<code>=&gt;</code>用来表示函数的定义，左边是输入类型，需要用括号括起来，右边是输出类型。</p>
+</li>
+<li><p>可以用接口来定义函数的形状，从而保证参数个数、参数类型、返回值类型不变。</p>
+</li>
+<li><p>函数设置的可选参数后面不允许再出现必需参数。TS会将添加了默认值的参数识别为可选参数，此时不再受前面提到的顺序限制。</p>
+</li>
+<li><p>ES6用…rest获取剩余参数，rest为一个数组，可以用数组的类型来定义它，其中，rest参数只能是最后一个参数。</p>
+</li>
+<li><p>TS会优先从最前面的函数定义开始匹配，所以多个函数定义如果有包含关系，需要优先把精确的定义写在前面。例如重载reverse：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//函数定义</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">x:<span class="built_in">number</span></span>):<span class="title">number</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">x:<span class="built_in">string</span></span>):<span class="title">string</span></span>;</span><br><span class="line"><span class="comment">//函数实现</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverse</span>(<span class="params">x:<span class="built_in">number</span>|<span class="built_in">string</span></span>):<span class="title">number</span>|<span class="title">string</span>|<span class="title">void</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> x===<span class="string">&#x27;number&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">Number</span>(x.toString().split(<span class="string">&#x27;&#x27;</span>).reverse().join(<span class="string">&#x27;&#x27;</span>));</span><br><span class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(<span class="keyword">typeof</span> x===<span class="string">&#x27;string&#x27;</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> x.split(<span class="string">&#x27;&#x27;</span>).reverse().join(<span class="string">&#x27;&#x27;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/24/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(3)/" data-id="ckutzsf4h00148spt41v0hufi" data-title="Typescript学习笔记(3)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Typescript学习笔记(2)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/22/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(2)/" class="article-date">
+  <time class="dt-published" datetime="2021-08-22T15:29:06.000Z" itemprop="datePublished">2021-08-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/22/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(2)/">Typescript学习笔记(2)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>TypeScript只会在编译时对类型进行静态检查，如果发现有错误，编译的时候就会报错。运行时，和普通JavaScript文件一样，不会对类型进行检查。</p>
+</li>
+<li><p>TypeScript编译的时候即使报错了，还是会生成编译结果。</p>
+</li>
+<li><p>JavaScript没有空值（Void）的概念，在TypeScript中，可以用<code>void</code>表示没有任何返回值的函数。声明一个<code>void</code>类型的变量没有什么用，因为你只能将它赋值为<code>undefined</code>和<code>null</code>（只在–strcitNullChecks未指定时）</p>
+</li>
+<li><p>声明一个变量为任意值后，对它的任何操作，返回的内容的类型都是任意值。</p>
+</li>
+<li><p>如果定义的时候没有赋值，不管之后有没有赋值，都会被推断成<code>any</code>类型而完全不被类型检查。</p>
+</li>
+<li><p>当TypeScript不确定一个联合类型变量到底是哪个类型时，我们只能访问此联合类型的所有类型共有的属性或方法。而联合类型的变量在被赋值的时候，会根据类型推论的规则推断出一个类型。</p>
+</li>
+<li><p>在TypeScript中，我们使用接口(Interfaces)来定义对象的类型，赋值的时候，变量的形状必须和接口的形状保持一致。</p>
+</li>
+<li><p>当希望不要完全匹配一个形状时，可以用可选属性，此时仍然不允许添加未定义的属性。</p>
+</li>
+<li><p>使用<code>[propName:string]</code>定义了任意属性取<code>string</code>类型的值。<strong>一旦定义了任意属性，那么确定属性和可选属性的类型都必须是它的类型的子集。</strong></p>
+</li>
+<li><p>一个接口中只能定义一个任意属性。如果接口中有多个类型的属性，则可以在任意属性中使用联合类型。</p>
+</li>
+<li><p>只读readonly的约束存在于第一次给对象赋值的时候，而不是第一次给只读属性赋值的时候。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">interface</span> Person &#123;</span><br><span class="line">    <span class="keyword">readonly</span> id: <span class="built_in">number</span>;</span><br><span class="line">    name: <span class="built_in">string</span>;</span><br><span class="line">    age?: <span class="built_in">number</span>;</span><br><span class="line">    [propName: <span class="built_in">string</span>]: <span class="built_in">any</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//报错，未对id赋值</span></span><br><span class="line"><span class="keyword">let</span> tom: Person = &#123;</span><br><span class="line">    <span class="attr">name</span>: <span class="string">&#x27;Tom&#x27;</span>,</span><br><span class="line">    <span class="attr">gender</span>: <span class="string">&#x27;male&#x27;</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">//报错，因为tom.id是只读属性</span></span><br><span class="line">tom.id = <span class="number">89757</span>;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/22/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(2)/" data-id="ckutzsf4g00128spt1wry357r" data-title="Typescript学习笔记(2)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-front-end-animation" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/20/front-end-animation/" class="article-date">
+  <time class="dt-published" datetime="2021-08-20T09:49:08.000Z" itemprop="datePublished">2021-08-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/20/front-end-animation/">front-end animation</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210820212741291.png" alt="image-20210820212741291"></p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210820212835646.png" alt="image-20210820212835646"></p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210820221049121.png" alt="image-20210820221049121"></p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210820221841959.png" alt="image-20210820221841959"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/20/front-end-animation/" data-id="ckutzsf4y001f8sptbts71zqn" data-title="front-end animation" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-操作指令-常用" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/19/%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4-%E5%B8%B8%E7%94%A8/" class="article-date">
+  <time class="dt-published" datetime="2021-08-19T02:54:21.000Z" itemprop="datePublished">2021-08-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/19/%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4-%E5%B8%B8%E7%94%A8/">操作指令-常用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li><p>GIT的使用</p>
+<p><img src="https://www.runoob.com/wp-content/uploads/2015/02/git-command.jpg" alt="img"></p>
+</li>
+</ul>
+<ol>
+<li><p>连接到github</p>
+<p><code>复制新建repository后的三行提示代码</code></p>
+</li>
+<li><p>git简明指南学习：</p>
+<ul>
+<li><p>创建新仓库：创建新文件夹(mkdir)，打开(cd)，然后执行<code>git init</code>。</p>
+</li>
+<li><p>检出仓库：执行<code>git clone /path/to/repository</code>以创建一个本地仓库的克隆版本。</p>
+</li>
+<li><p>工作流：本地仓库由git维护的三棵“树”组成，第一个是工作目录，它持有实际文件；第二个是暂存区(Index)，它像个缓存区域，临时保存改动；最后是HEAD，它指向最后一次提交的结果。</p>
+</li>
+<li><p>本地添加和提交：</p>
+<p>工作区到暂存区：<code>git add &lt;filename&gt;</code>   <code>git add *</code></p>
+<p>暂存区到HEAD：<code>git commit -m &quot;代码提交信息&quot;</code></p>
+</li>
+<li><p>推送改动：</p>
+<p>已克隆时使用：<code>git push origin branchName</code></p>
+<p>推送到远程服务器：<code>git remote add origin &lt;server&gt;</code></p>
+</li>
+<li><p>分支特性：</p>
+<p>创建并切换分支：<code>git checkout -b </code> feature_x</p>
+<p>切换回主分支：<code>git checkout master</code></p>
+<p>将新建的分支删掉：<code>git branch -d feature_X</code></p>
+<p>除非将分支推送到远端仓库，否则该分支就是不为他人所见的：<code>git push origin &lt;branch&gt;</code></p>
+</li>
+<li><p>更新本地仓库：<code>git pull</code>能够获取并合并远端的改动。</p>
+</li>
+<li><p>合并其他分支到当前分支：<code>git merge &lt;branch&gt;</code></p>
+</li>
+<li><p>在合并改动之前，预览差异：</p>
+<p><code>git diff &lt;source_branch&gt;&lt;target_branch&gt;</code></p>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/19/%E6%93%8D%E4%BD%9C%E6%8C%87%E4%BB%A4-%E5%B8%B8%E7%94%A8/" data-id="ckutzsf6i002w8sptd9iw1mlf" data-title="操作指令-常用" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-Typescript学习笔记(1)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/18/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(1)/" class="article-date">
+  <time class="dt-published" datetime="2021-08-18T05:45:44.000Z" itemprop="datePublished">2021-08-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/18/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(1)/">Typescript学习笔记(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>‘TS的类型检查’与‘生成JS’是两个独立的过程，类型检查出错不影响生成Javascript代码！</p>
+</li>
+<li><p>类型系统：</p>
+<ul>
+<li>结构类型系统：通过类型的<strong>实际结构</strong>确定两个类型是否相等或兼容。如：Typescript,Haskell,OCaml,Go</li>
+<li>名义类型系统：通过类型的<strong>名称</strong>确定两个类型是否相等。如：C,Cpp,Java,C#,Rust</li>
+</ul>
+</li>
+<li><p>TS类型注解放在后面，加单冒号。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">log</span>(<span class="params">message: <span class="built_in">string</span></span>):<span class="title">void</span></span></span><br></pre></td></tr></table></figure></li>
+<li><p>类型与集合的关系：<img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210818174408939.png" alt="image-20210818174408939"></p>
+</li>
+<li><p>类型别名：在TS中，可以用type为类型声明别名，类型别名和let变量类似，也采用块级作用域。所以，同一个作用域内不能重名。内层类型别名会隐藏外层同名类型。</p>
+</li>
+<li><p>类型拓宽，类型收窄：</p>
+<ul>
+<li>类型拓宽：把字面量赋值给let、var类型时，TS不用字面量类型（单元素集合）作为该变量的类型，而是从字面量类型拓宽到相应的更宽泛的类型。这个过程叫做类型拓宽。</li>
+<li>类型收窄：在某些情况下，TS可以更加确定变量的类型，此时它会将变量类型收窄。</li>
+<li>即TS试图在类型确定性与灵活性之间取得平衡。TS提供了一系列方法来帮助收窄类型，以提高类型的确定度。</li>
+</ul>
+</li>
+<li><p>值空间和类型空间：只包含类型声明的namespace不会产生JS代码，不会引入变量。instanceof操作符只作用于<strong>值空间</strong>。</p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210818181057498.png" alt="image-20210818181057498"></p>
+<p>判断符号在哪个空间：</p>
+<ul>
+<li><p>转译后消失的符号：类型空间。</p>
+</li>
+<li><p>作为类型注解、别名的符号：类型空间。</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> T=<span class="keyword">typeof</span> Person;<span class="keyword">const</span> p:Person</span><br></pre></td></tr></table></figure></li>
+<li><p>类型断言后的符号：类型空间（target as/is <u>HTMLElement</u>）</p>
+</li>
+</ul>
+</li>
+<li><p>[]（索引访问操作符）：在值空间，val[field]或var.field返回val对应属性的值；在类型空间，Type[T]返回对应T的TS类型。</p>
+</li>
+<li><p>any比较特殊，既是Top Type又是Bottom Type，也是就说any类型的变量/常量和任何其他类型的变量/常量可以互相赋值。但any是类型<u>不安全的</u>、<u>无语言服务的</u>，所以应该<u>尽量避免使用</u>。</p>
+</li>
+<li><p>如果无法预知类型，不要用any，用unknown，收窄类型后再使用。</p>
+</li>
+<li><p>在TS中，number包括：整数、浮点数、+-Infinity(正负无穷)，<strong>NaN</strong>。</p>
+</li>
+<li><p>bigint不能和number混合运算，需要显示转换。</p>
+</li>
+<li><p>let、var声明的变量推导成symbol类型，unique symbol必须是const常量。const常量推导成unique symbol，也可以显示注解成unique symbol。unique symbol不是一个类型，而是一组类型。比如unique symbol b1和unique symbol b1x是两个类型。</p>
+</li>
+<li><p>symbol：</p>
+<ul>
+<li>将unique symbol赋值给另一个const时，类型会拓宽为symbol。如果不希望拓宽，需要显示注解为对应常量的typeof。</li>
+<li>Symbol的第一个参数是描述，不是符号名，也不是符号ID。每次调用Symbol都会返回一个全新的符号，即便描述相同。</li>
+<li>Symbol.for在内部维护了一个字典，如果之前没有创建过对应描述的符号，就返回一个新的符号，如果创建过，就返回已创建的符号。</li>
+</ul>
+</li>
+<li><p>Array：数组有两种注解方式：1.T[]  2.Array&lt;T&gt;接口泛型。</p>
+<ul>
+<li>const数组不会收窄，因为收窄就变成tuple类型了。</li>
+<li>TS无法推断空数组的类型，只能推断为any[]。</li>
+<li>但是，当离开作用域时TS可以分析代码，推断出数组的类型。</li>
+</ul>
+</li>
+<li><p>tuple：元组是数组的子类型。元组各索引位上的元素类型是确定的。</p>
+<ul>
+<li>因为元组的创建方法和数组是一样的，所以元组必须显示注解。</li>
+<li>元组支持可选操作符(?)和rest(…)操作符。</li>
+<li>[…string[]]等价于string[]，但[string, …string[]]不等价于string[]，前者至少包含一个元素。</li>
+</ul>
+</li>
+<li><p>Enum：枚举本质上是一种映射。会在值空间产生一个包含该映射的对象。</p>
+<ul>
+<li>未显式赋值的枚举值自动从0自增赋值和显示赋值为整数的枚举都存在双向映射。显式赋值字符串的枚举不存在反向映射。</li>
+<li>常量枚举不会在值空间创建变量，所有引用常量枚举的地方都被替换成对应的值。(但是可以通过preserveConstEnum编译器选项来控制)</li>
+</ul>
+</li>
+<li><p>null,undefined,void,never：</p>
+<ul>
+<li>JS中：Undefined={undefined}，表示已声明，未赋值。Null={null}，表示已声明，值为null或者值为空。</li>
+<li>JS中，void是一个一元操作符，它执行后面的表达值，然后无条件返回undefined。</li>
+<li>TS中：函数没有显式返回值得到void类型，函数无法返回得到never类型。</li>
+</ul>
+</li>
+<li><p>接口(Interface) 与类型别名(Type aliases)可以认为是同一概念的两种语法，类比函数定义与函数表达式。</p>
+</li>
+<li><p>映射类型对比：</p>
+<table>
+<thead>
+<tr>
+<th>值空间</th>
+<th>类型空间</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>函数参数和默认值</td>
+<td>泛型参数和默认值</td>
+</tr>
+<tr>
+<td>for-in遍历</td>
+<td>key-in遍历</td>
+</tr>
+<tr>
+<td>if-else判断</td>
+<td>条件类型判断</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210819102213274.png" alt="image-20210819102213274"></p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210819102526681.png" alt="image-20210819102526681"></p>
+<p><img src="C:\Users\Administrator\AppData\Roaming\Typora\typora-user-images\image-20210819102647971.png" alt="image-20210819102647971"></p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/18/Typescript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(1)/" data-id="ckutzsf4f00108spta5xc6b6h" data-title="Typescript学习笔记(1)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-PromisesA+标准翻译" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/11/PromisesA+%E6%A0%87%E5%87%86%E7%BF%BB%E8%AF%91/" class="article-date">
+  <time class="dt-published" datetime="2021-08-11T12:43:05.000Z" itemprop="datePublished">2021-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/11/PromisesA+%E6%A0%87%E5%87%86%E7%BF%BB%E8%AF%91/">Promises/A+标准翻译</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Promises-A"><a href="#Promises-A" class="headerlink" title="Promises/A+"></a>Promises/A+</h1><p><strong>为使用者提供可靠的、可协作的JavaScript Promises的一个开放标准</strong></p>
+<p>​    一个promise表示一个异步操作的最终结果。和一个promise交互的主要方式是通过注册了回调函数的<code>then</code>方法，其中回调函数能够获取promise最终的值或者该promise无法执行的原因。</p>
+<p>​        此规范详述了提供了<code>then</code>方法的行为，所有遵循Promises/A+规范的promise实现均可将本标准作为参照基础来实施<code>then</code>方法。因此此规范必须十分稳定。尽管Promises/A+组织可能偶尔做向后兼容的小小改变来修改这一规范，从而解决新发现的边界情况，我们只在谨慎地考虑、讨论和测试后，整合一些大的或是不向后兼容的变化。</p>
+<p>​    从历史上看，Promises/A+阐明了更早的Promises/A建议的行为条例，将其扩展为包含实际上存在的行为，并且删减了在特殊情况下和有问题的部分。</p>
+<p>​    最后，核心的Promises/A+规范不涉及处理如何创建，执行或是拒绝promise，而是选择聚焦于提供一个可协作的<code>then</code>方法。未来的其他规范可能会涉及到这些方面。</p>
+<hr>
+<h3 id="1-术语"><a href="#1-术语" class="headerlink" title="1.术语"></a>1.术语</h3><p>1.1. “promise”是一个具有<code>then</code>方法的对象或函数，其中<code>then</code>方法遵循此规范。</p>
+<p>1.2. “thenable”是一个定义了<code>then</code>方法的对象或函数。</p>
+<p>1.3. “value”是一个合法的Javascript值（包括<code>undefined</code>，一个thenable或是一个promise）。</p>
+<p>1.4. “exception”是一个使用<code>throw</code>声明被丢弃的value。</p>
+<p>1.5. “reason”是一个指明为什么一个promise被拒绝的value。</p>
+<hr>
+<h3 id="2-要求"><a href="#2-要求" class="headerlink" title="2.要求"></a>2.要求</h3><h4 id="2-1-Promise-状态"><a href="#2-1-Promise-状态" class="headerlink" title="2.1. Promise 状态"></a>2.1. Promise 状态</h4><p>一个promise必须在下列三种状态之一：pending(待决)，fulfilled(完成)或者rejected(拒绝)。</p>
+<p>2.1.1. 当promise状态为pending:</p>
+<p>​        2.1.1.1. 可能转换到fulfilled或者rejected状态。</p>
+<p>2.1.2. 当promise状态为fulfilled：</p>
+<p>​        2.1.2.1. 一定不会转换到任何其他状态。</p>
+<p>​        2.1.2.2. 一定有一个不能改变的value。</p>
+<p>2.1.3. 当promise状态为rejected时：</p>
+<p>​        2.1.3.1. 一定不会转换到任何其他状态。</p>
+<p>​        2.1.3.2. 一定有一个不能改变的reason。</p>
+<p>这里的一定不会改变指的是不变恒等(===)，但不意味着深不变性。</p>
+<h4 id="2-2-then-方法"><a href="#2-2-then-方法" class="headerlink" title="2.2 .  then 方法"></a>2.2 .  <code>then</code> 方法</h4><p>一个promise必须提供一个<code>then</code>方法来获取它当前或是最终的value或者reason。</p>
+<p>一个promise的<code>then</code>方法接受两个参数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promise.then(onFulfilled,onRejected)</span><br></pre></td></tr></table></figure>
+
+<p>2.2.1. <code>onFulfilled</code>和<code>onRejected</code>都是可选参数：</p>
+<p>​        2.2.1.1. 如果<code>onFulfilled</code>不是一个函数，它应当被忽略。</p>
+<p>​        2.2.1.2. 如果<code>onRejected</code>不是一个函数，它应当被忽略。</p>
+<p>2.2.2. 如果<code>onFulfilled</code>是一个函数：</p>
+<p>​        2.2.2.1. 它一定在<code>promise</code> fulfilled后才被调用，将<code>promise</code>的value作为其第一个参数。</p>
+<p>​        2.2.2.2. 它一定不会在<code>promise</code> fulfilled前被调用。</p>
+<p>​        2.2.2.3. 它的调用次数不会超过一次。</p>
+<p>2.2.3.  如果<code>onRejected</code>是一个函数：</p>
+<p>​        2.2.3.1. 它一定在<code>promise</code> rejected后才被调用，将<code>promise</code>的reason作为其第一个参数。</p>
+<p>​        2.2.3.2. 它一定不会在<code>promise</code> rejected前被调用。</p>
+<p>​        2.2.3.3. 它的调用次数不会超过一次。</p>
+<p>2.2.4. <code>onFulfilled</code> 或者<code>onRejected</code>当且仅当<a target="_blank" rel="noopener" href="https://es5.github.io/#x10.3">执行环境</a>堆栈只包含平台代码时可以被调用。[见3.1]</p>
+<p>2.2.5. <code>onFulfilled</code>和<code>onRejected</code>必须以函数的方式被调用(例如：不包含<code>this</code> value)。</p>
+<p>2.2.6. <code>then</code>在同一个promise中可能被多次调用。</p>
+<p>​        2.2.6.1. 如果/当<code>promise</code>被fulfilled后，所有相应的<code>onFulfilled</code>调用必须按照对<code>then</code>原始调用的顺序        执行。</p>
+<p>​        2.2.6.2. 如果/当<code>promise</code>被rejected后，所有相应的<code>onFulfilled</code>调用必须按照对<code>then</code>原始调用的顺        序执行。</p>
+<p>2.2.7. <code>then</code>必须返回一个promise。[见3.3]</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">promise2=promise1.then(onFulfilled,onRejected);</span><br></pre></td></tr></table></figure>
+
+<p>​        2.2.7.1. 如果<code>onFulfilled</code>或者<code>onRejected</code>返回一个value <code>x</code>，执行以下promise解决过程：</p>
+<p>​        [[Resolve]](promise2,x)</p>
+<p>​        2.2.7.2. 如果<code>onFulfilled </code>或者<code>onRejected</code>抛出一个 exception  <code>e</code>，<code>promise2</code>必须以<code>e</code>为reason来被rejected。</p>
+<p>​        2.2.7.3. 如果<code>onFulfilled</code>不是一个函数，同时<code>promise1</code>被fulfilled，<code>promise2</code>必须使用和<code>promise1</code>相同的value被fulfilled。</p>
+<p>​        2.2.7.4. 如果<code>onRejected</code>不是一个函数，同时<code>promise1</code>被fulfilled，<code>promise2</code>必须使用和<code>promise1</code>相同的value被rejected。</p>
+<h4 id="2-3-Promise解决过程"><a href="#2-3-Promise解决过程" class="headerlink" title="2.3 Promise解决过程"></a>2.3 Promise解决过程</h4><p>promise解决过程表示为<code>[[Resolve]](promise,x)</code>，是以一个promise和一个value为输入的抽象操作。如果<code>x</code>是thenable的，同时x表现的有些像一个promise，那么解决过程试图让<code>promise</code>接受<code>x</code>的状态。否则，解决过程用value <code>x</code>来fulfill promise。</p>
+<p>只要promise的实现暴露了一个遵循Promises/A+的<code>then</code>方法，这种thenable的特性就会使得promise的实现更具通用性，同时使得遵循了Promises/A+的promise实现能和未遵循但有可用<code>then</code>方法的promise实现共存。</p>
+<p>为了运行<code>[[Resolve]](promise,x)</code>，执行以下步骤：</p>
+<p>2.3.1. 如果<code>promise</code>和<code>x</code>指向同一个对象，那么以<code>TypeError</code>作为reason来reject <code>promise</code>。</p>
+<p>2.3.2 如果<code>x</code>是一个promise，接受它的状态[见3.4]：</p>
+<p>​        2.3.2.1. 如果<code>x</code>处于pending状态时，在<code>x</code>处于fulfilled或者rejected状态之前，<code>promise</code>必须一直保持        pending状态。</p>
+<p>​        2.3.2.2. 如果/当<code>x</code>处于fulfilled状态时，使用同样的value来fulfill <code>promise</code>。</p>
+<p>​        2.3.2.3. 如果/当<code>x</code>处于rejected状态时，使用同样的reason来reject <code>promise</code>。</p>
+<p>2.3.3. 如果<code>x</code>是一个对象或者函数，</p>
+<p>​        2.3.3.1. 让<code>then</code>变为<code>x.then</code>[见3.5]</p>
+<p>​        2.3.3.2. 如果取<code>x.then</code>的值导致了一个exception <code>e</code>的抛出，将<code>e</code>作为reason来reject <code>promise</code>。</p>
+<p>​        2.3.3.3. 如果<code>then</code>是一个函数，将<code>x</code>作为<code>this</code>来调用它，第一个参数为<code>resolvePromise</code>，第二个参        数为<code>rejectPromise</code>，其中：</p>
+<p>​            2.3.3.3.1. 如果/当<code>resolvePromise</code>被一个value <code>y</code>调用，运行<code>[[Resolve]](promise,y)</code>.</p>
+<p>​            2.3.3.3.2. 如果/当rejectPromise被一个reason <code>r</code>调用，用<code>r</code>来reject <code>promise</code>。</p>
+<p>​            2.3.3.3.3.  如果<code>resolvePromise</code>和<code>rejectPromise</code>都被调用或者对同一参数进行了多次调用，则第            一次调用优先，其他所有调用都被忽略。</p>
+<p>​            2.3.3.3.4. 如果调用<code>then</code>抛出了一个exception <code>e</code>，</p>
+<p>​                2.3.3.3.4.1 如果<code>resolvePromise</code>或者<code>rejectPromise</code>已经被调用过了，则无视。</p>
+<p>​                2.3.3.3.4.2. 否则，以<code>e</code>为reason来reject <code>promise</code>。</p>
+<p>​        2.3.3.4. 如果<code>then</code>不是一个函数，用<code>x</code>来fulfill <code>promise</code>。</p>
+<p>2.3.4. 如果<code>then</code>不是一个对象或函数，用<code>x</code>来fulfill <code>promise</code>。</p>
+<p>如果一个promise使用参与了一个循环thenable链的thenable变为resolved，例如<code>[[Resolve]](promise,thenable)</code>的循环性质最终导致<code>[[Resolve]](promise,thenable)</code>被再次调用，遵循上述算法将导致无限递归。鼓励但不强制要求实现检测这样的递归，并以提示信息的<code>TypeError</code> 作为reason来reject <code>promise</code>。</p>
+<h3 id="3-注释"><a href="#3-注释" class="headerlink" title="3.注释"></a>3.注释</h3><p>3.1. 这里的平台代码指引擎，环境和promise的实现代码。实际上，这个要求确保了在<code>then</code>被调用的那一轮事件循环之后的新栈中，<code>onFulfilled</code>和<code>onRejected</code>异步执行。可以使用例如<code>setTimeout</code>或<code>setImmediate</code>的宏任务机制，或者例如<code>MutationObserver</code>或<code>process.nextTick</code>的微任务机制来实现。由于promise实现本身就是平台代码，可能自身已经包含了一个在其中调用处理程序的任务调度队列。</p>
+<p>3.2. 在严格模式下，它们的<code>this</code>是<code>undefined</code>;在非严格模式下，它是一个全局对象。</p>
+<p>3.3. 在满足所有要求的情况下实现可能允许<code>promise1===promise2</code>，每个实现都应记录是否允许以及在什么条件下允许<code>promise2===promise1</code>。</p>
+<p>3.4. 通常，只有在<code>x</code>符合当前实现时，我们才认为它是真正的promise。这一条款允许那些特定实现方式接受已知符合要求的promises状态。</p>
+<p>3.5. 这一步首先存储了对<code>x.then</code>的引用，接着测试了这个引用，随后调用这个引用，避免对于<code>x.then</code>属性的多次访问。这一预防措施对于确保访问器属性的一致性非常重要，因为访问器属性值可能在检索间改变。</p>
+<p>3.6. 实现在thenable链的深度上不应该设置任意限制，并假定超出这一任意限制后将无限递归。只有真正的循环应该导致一个<code>TypeError</code>；如果遇到了一条无限长的链上thenable各不相同，正确的行为是一直递归下去。</p>
+<hr>
+<p>翻译此标准是为了便于自己后续的实现，同时加深对于Promises/A+标准的理解。按个人阅读习惯，在翻译中保留了一些在标准中解释过的专有术语。个人水平不足，翻译可能存在一些问题，若有不当之处还望指正，谢谢！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/11/PromisesA+%E6%A0%87%E5%87%86%E7%BF%BB%E8%AF%91/" data-id="ckutzsf4e000x8sptfk5mf1d1" data-title="Promises/A+标准翻译" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-《CSS世界》笔记(1)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/08/11/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(1)/" class="article-date">
+  <time class="dt-published" datetime="2021-08-11T12:43:05.000Z" itemprop="datePublished">2021-08-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/08/11/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(1)/">《CSS世界》笔记(1)</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ul>
+<li>务必了解的CSS世界的专业术语</li>
+</ul>
+<ol>
+<li>2%后面的百分号不是长度单位，因为2%就是一个完整的值。&lt;number&gt;+长度单位=&lt;length&gt;。</li>
+<li>像&lt;a&gt;&lt;button&gt;这样的元素，当我们使用键盘进行Tab键切换的时候，是可以被focus的，表现为虚框或者外发光，这类元素称为“焦点元素”；非焦点元素指没有设置tabindex属性的&lt;div&gt;、&lt;span&gt;等普通元素。</li>
+<li>规范描述外产生的bug原因是“未定义行为”(undefined behavior)。</li>
+</ol>
+<ul>
+<li>流、元素与基本尺寸</li>
+</ul>
+<ol>
+<li>块级元素的基本特征是一个水平流上只能单独显示一个元素，多个块级元素则换行显示。<strong>注意</strong>：“块级元素”和“display为block的元素”不是一个概念。例如：&lt;li&gt;、&lt;table&gt;元素默认的display值分别为list-item和table。</li>
+<li>CSS清除浮动的4种方式：<ul>
+<li>父级元素添加overflow:hidden：子元素浮动了，会导致父元素的高度坍塌。</li>
+<li>通过在浮动元素多添加一个块级元素，并添加claer:both属性。</li>
+<li>通过给父级元素添加伪类after：这种方式也是使用clear:both的方式达到效果，只是变相的使用了伪类after，使得页面结构更简洁。</li>
+<li>使用双伪类，原理同三，代码更简洁。</li>
+</ul>
+</li>
+<li>设置display:list-item元素会出现项目符号是因为生成了专门放原点、数字这些项目符号的“标记盒子”，IE浏览器下伪元素不支持list-item或许无法创建这个标记盒子导致的。</li>
+<li>width和height对于inline-block的设置在容器盒子上。width的默认值是auto。</li>
+<li>overflow:hidden的作用：<ul>
+<li>溢出隐藏：给一个元素中设置overflow:hidden，那么该元素的内容若超过了给定的宽度和高度属性，那么超出的部分将会被隐藏，不占位。</li>
+<li>清除浮动：由于父级元素没有高度，下面的元素会顶上去，造成页面的塌陷。因此，需要给父级元素加个overflow:hidden(为了兼容性，最好加上zoom:1)，这样父级的高度就随子级容器以及子级内容的高度自适应。</li>
+<li>解决外边距塌陷：父级元素内部有子元素，如果给子元素添加margin-top元素，那么父级元素也会跟着下来，造成外边距塌陷。</li>
+</ul>
+</li>
+<li>with:auto的宽度表现：<ul>
+<li>充分利用可用空间。如：<code>&lt;div&gt;</code>、<code>&lt;p&gt;</code></li>
+<li>收缩与包裹。如：<code>inline-block</code>、<code>table</code></li>
+<li>收缩到最小。如：<code>table-layout</code>为auto</li>
+<li>超出容器限制。内容很长或者内联元素设置了<code>white-space:nowrap</code></li>
+</ul>
+</li>
+<li><code>&lt;a&gt;</code>元素默认display是inline。<code>&lt;button&gt;</code>标签按钮才会自动换行，<code>&lt;input&gt;</code>标签按钮是不会换行的。</li>
+<li>外部容器宽度为0时，内部图文呈现“首选最小宽度”。如果想让英文字符和中文一样，每一个字符都用最小宽度，使用<code>word-break:break-all</code>。</li>
+<li>“最大宽度”等同于“包裹性”元素设置white-space:nowrap声明后的宽度。如果内部没有块级元素或者块级元素没有设定宽度值，则“最大宽度”实际上是最大的连续内联盒子的宽度。</li>
+<li>“连续内联盒子”指的全部都是内联级别的一个或一堆元素，中间没有任何的换行标签<code>&lt;br&gt;</code>或其他块级元素。</li>
+<li>实现自定义滚动的两种原理：<ul>
+<li>借助原生的滚动，scrollLeft/scrollTop值变化，优点是简单，不足是效果呆板；</li>
+<li>根据内部元素的尺寸和容器的关系，通过修改内部元素的位置实现滚动效果，优点是效果可以很绽放。如：iScroll。</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/08/11/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(1)/" data-id="ckutzsf5b001k8sptgzfx7kca" data-title="《CSS世界》笔记(1)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+
+
+  <nav id="page-nav">
+    
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+  </nav>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">CSS笔记</a> <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">ES6阮一峰教程学习笔记</a> <a href="/tags/Javascript%E7%AC%94%E8%AE%B0/" style="font-size: 18.33px;">Javascript笔记</a> <a href="/tags/Typescript%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">Typescript笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">前端动画实现</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" style="font-size: 10px;">前端技术</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" style="font-size: 11.67px;">前端知识积累</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 10px;">字节青训营</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a> <a href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">自用说明</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>

@@ -71,10 +71,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-牛客前端刷题(3)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Javascript学习笔记(16)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/08/06/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(3)/" class="article-date">
-  <time class="dt-published" datetime="2021-08-06T03:22:23.000Z" itemprop="datePublished">2021-08-06</time>
+    <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-16T08:10:26.000Z" itemprop="datePublished">2021-10-16</time>
 </a>
     
   </div>
@@ -85,7 +85,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/06/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(3)/">牛客前端刷题（3）</a>
+      <a class="p-name article-title" href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
     </h1>
   
 
@@ -94,68 +94,60 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <ol>
-<li><p>var a=b=5相当于拆解成var a=b;b=5;然后b=5前面没有var，相当于声明为全局变量（这种方式在严格模式下会报错）。</p>
+<li><p>单线程模型指的是，JavaScript 只在一个线程上运行。</p>
 </li>
-<li><p>AMD和CMD都是浏览器端的js模块化规范，分别由require.js和sea.js实现。CommonJS是服务器端的js模块化规范，由NodeJs实现。AMD依赖前置，CMD依赖就近。</p>
+<li><p>IO操作很慢时，CPU 完全可以不管 IO 操作，挂起处于等待中的任务，先运行排在后面的任务。等到 IO 操作返回了结果，再回过头，把挂起的任务继续执行下去。这种机制就是 JavaScript 内部采用的“事件循环”机制（Event Loop）。</p>
 </li>
-<li><p>Readonly只针对input(text/password)和textarea有效，而disabled对于所有的表单元素有效，包括select,eadio.checkbox,button等。</p>
+<li><p>同步任务是那些没有被引擎挂起、在主线程上排队执行的任务。只有前一个任务执行完毕，才能执行后一个任务。</p>
 </li>
-<li><p>JS全局函数：</p>
+<li><p>异步任务是那些被引擎放在一边，不进入主线程、而进入任务队列的任务。只有引擎认为某个异步任务可以执行了，该任务（采用回调函数的形式）才会进入主线程执行。排在异步任务后面的代码，不用等待异步任务结束会马上运行，也就是说，异步任务不具有“堵塞”效应。</p>
+</li>
+<li><p>只要同步任务执行完了，引擎就会去检查那些挂起来的异步任务，是不是可以进入主线程了。这种循环检查的机制，就叫做事件循环（Event Loop）。</p>
+</li>
+<li><p>异步任务的写法通常是回调函数。一旦异步任务重新进入主线程，就会执行对应的回调函数。如果一个异步任务没有回调函数，就不会进入任务队列。</p>
+</li>
+<li><p>异步操作的模式 ：</p>
 <ul>
-<li>编码相关：escape、unescape、encodeURL、decodeURL、encodeURLComponent、decodeURLComponent</li>
-<li>数据处理：Number、String</li>
-<li>数字相关：parseFloat、parseInt、isFinite、isNaN</li>
-<li>特殊：eval</li>
+<li>回调函数 ：回调函数的优点是简单、容易理解和实现，缺点是不利于代码的阅读和维护，各个部分之间高度<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Coupling_(computer_programming)">耦合</a>（coupling），使得程序结构混乱、流程难以追踪（尤其是多个回调函数嵌套的情况），而且每个任务只能指定一个回调函数。</li>
+<li>事件监听 ：异步任务的执行不取决于代码的顺序，而取决于某个事件是否发生。这种方法的优点是比较容易理解，可以绑定多个事件，每个事件可以指定多个回调函数，而且可以“<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Decoupling">去耦合</a>”（decoupling），有利于实现模块化。缺点是整个程序都要变成事件驱动型，运行流程会变得很不清晰。阅读代码的时候，很难看出主流程。</li>
+<li>发布/订阅：事件完全可以理解成“信号”，如果存在一个“信号中心”，某个任务执行完成，就向信号中心“发布”（publish）一个信号，其他任务可以向信号中心“订阅”（subscribe）这个信号，从而知道什么时候自己可以开始执行。这就叫做”<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Publish-subscribe_pattern">发布/订阅模式</a>”（publish-subscribe pattern），又称“<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Observer_pattern">观察者模式</a>”（observer pattern）</li>
 </ul>
 </li>
-<li><p>tagName是只读的属性，可以赋值，但赋值无效。加号优先级高于三目运算，低于括号。</p>
+<li><p>并行执行的效率较高，比起串行执行一次只能执行一个任务，较为节约时间。但是问题在于如果并行的任务较多，很容易耗尽系统资源，拖慢运行速度。因此有了第三种流程控制方式。</p>
 </li>
-<li><p>length返回浏览器历史列表中的URL数量；back加载history列表中的前一个URL；forward加载history列表中的后一个URL，go加载history列表中某个具体页面。</p>
+<li><p>所谓并行与串行的结合，就是设置一个门槛，每次最多只能并行执行<code>n</code>个异步任务，这样就避免了过分占用系统资源。</p>
 </li>
-<li><p>不能冒泡的事件：load,unload,abort,resize,error,focus,blur,mouseenter,mouseleave。</p>
+<li><p><code>setTimeout</code>函数用来指定某个函数或某段代码，在多少毫秒之后执行。它返回一个整数，表示定时器的编号，以后可以用来取消这个定时器。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timerId = <span class="built_in">setTimeout</span>(func|code, delay);</span><br></pre></td></tr></table></figure></li>
+<li><p><code>setTimeout</code>的第二个参数如果省略，则默认为0。除了前两个参数，<code>setTimeout</code>还允许更多的参数。它们将依次传入推迟执行的函数（回调函数）。</p>
 </li>
-<li><p>语法：<code>window.open([URL],[窗口名称],[参数字符串])</code>,open()方法可以查找一个已经存在或者新建的浏览器窗口。</p>
-</li>
-<li><p>两个特殊的typeof:  typeof []=object; typeof null=object。</p>
-</li>
-<li><p>Promise.all(iterable)方法返回一个Promise对象，Array.prototype.join方法返回一个数组。</p>
-</li>
-<li><p>hasOwnProperty只会检查属性是否在myObject对象中，不会检查[[Prototype]]链。</p>
-</li>
-<li><p>onpageshow在用户浏览网页时即onload后触发，onpagehide在unload事件前触发。</p>
-</li>
-<li><p>JS中实现跨域的方式总结：</p>
+<li><p>如果回调函数是对象的方法，那么<code>setTimeout</code>使得方法内部的<code>this</code>关键字指向全局环境，而不是定义时所在的那个对象。为了防止出现这个问题:</p>
 <ul>
-<li>jsonp请求：jsonp的原理是利用<code>&lt;script&gt;</code>标签的跨域特性，可以不受限制地从其他域中加载资源，类似的标签还有<code>&lt;img&gt;</code>。</li>
-<li>document.domain：这种方式用在主域名相同子域名不同的跨域访问中。</li>
-<li>window.name：window的name属性有个特征，在一个窗口(window)的生命周期内，窗口载入的所有的页面都是共享一个<code>window.name</code>的，每个页面对window.name都有读写的权限，window.name是持久存在一个窗口载入过的所有页面中的，并不会因新页面的载入而进行重置。</li>
-<li>window.postMessage:<code>window.pastMessage</code>是html5中实现跨域访问的一种新方式，可以使用它来向其他的window对象发送消息，无论这个window对象是属于同源或不同源。</li>
-<li>CORS(跨域资源共享)：CORS背后的基本思想，就是使用自定义的HTTP头部让浏览器与服务器进行沟通，从而决定请求或响应是应该成功还是应该失败。</li>
-<li>web sockets(双向信息传输)：web sockets原理：在JS创建了web socket之后，会有一个HTTP请求发送到浏览器以发起连接。取得服务器响应后，建立的连接会使用HTTP升级从HTTP协议交换为web socket协议。</li>
+<li>一种解决方法是将<code>obj.y</code>放入一个函数。</li>
+<li>另一种解决方法是，使用<code>bind</code>方法，将<code>obj.y</code>这个方法绑定在<code>obj</code>上面。</li>
 </ul>
 </li>
-<li><p><code>noscript</code>元素用来定义在脚本未被执行时的替代内容（文本）。</p>
+<li><p><code>setInterval</code>指定某个任务每隔一段时间就执行一次，也就是无限次的定时执行。<code>setInterval</code>的一个常见用途是实现轮询。</p>
 </li>
-<li><p>可以用来判断是否为array的：</p>
-<ul>
-<li><p>Array.isArray()</p>
+<li><p>为了确保两次执行之间有固定的间隔，可以不用<code>setInterval</code>，而是每次执行结束后，使用<code>setTimeout</code>指定下一次执行的具体时间。</p>
 </li>
-<li><p>instanceof   (typeof不行，因为<strong>object、array、null</strong>的变量都返回object)</p>
+<li><p><code>setTimeout</code>和<code>setInterval</code>函数，都返回一个整数值，表示计数器编号。将该整数传入<code>clearTimeout</code>和<code>clearInterval</code>函数，就可以取消对应的定时器。</p>
 </li>
-<li><p>Object.prototype.toString为Object对象的实例方法，默认情况下(即不重写该方法)，返回参数的类型字符串。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call([<span class="number">1</span>,<span class="number">2</span>])</span><br><span class="line"><span class="comment">//&quot;[object Array]&quot;</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="number">1</span>)</span><br><span class="line"><span class="comment">//&quot;[object Number]&quot;</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="string">&#x27;1&#x27;</span>)</span><br><span class="line"><span class="comment">//&quot;[object String]&quot;</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">false</span>)</span><br><span class="line"><span class="comment">//&quot;[object Boolean]&quot;</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">Symbol</span>())</span><br><span class="line"><span class="comment">//&quot;[object Symbol]&quot;</span></span><br></pre></td></tr></table></figure></li>
-</ul>
+<li><p><code>setTimeout</code>和<code>setInterval</code>返回的整数值是连续的。</p>
 </li>
+<li><p> debounce（防抖动）的做法是，设置一个门槛值，表示两次 Ajax 通信的最小间隔时间。如果在间隔时间内，发生新的<code>keydown</code>事件，则不触发 Ajax 通信，并且重新开始计时。如果过了指定时间，没有发生新的<code>keydown</code>事件，再将数据发送出去。</p>
+</li>
+<li></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/06/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(3)/" data-id="cks0e81pt0000f4ptb3rt42ih" data-title="牛客前端刷题（3）" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/" data-id="ckutzsf3m00088sptdsy0eg2d" data-title="Javascript学习笔记(16)" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li></ul>
 
     </footer>
   </div>
@@ -165,10 +157,10 @@
 
 
   
-    <article id="post-牛客前端刷题(2)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Javascript学习笔记(15)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/08/04/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(2)/" class="article-date">
-  <time class="dt-published" datetime="2021-08-04T09:20:43.000Z" itemprop="datePublished">2021-08-04</time>
+    <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-15T12:27:58.000Z" itemprop="datePublished">2021-10-15</time>
 </a>
     
   </div>
@@ -179,7 +171,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/04/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(2)/">牛客前端刷题（2）</a>
+      <a class="p-name article-title" href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
     </h1>
   
 
@@ -188,46 +180,54 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <ol>
-<li><p>/([A-Za-z]+)/g指匹配完全由大小写字母组成，长度不限。</p>
-</li>
-<li><p>Browser对象有关的对象：history,screen,location,Navigator。</p>
-</li>
-<li><p>match是支持正则表达式的String对象方法；js对象有3个方法：test(),exec(),compile()。</p>
-</li>
-<li><p>Math.max(args…)传入参数是任意数量的值，不能传入数组。</p>
-</li>
-<li><p>js运行于单线程环境中，定时器作用是在规定时间内将事件加入执行队列，而加入的前提是当前事件队列没有任何东西。</p>
-</li>
-<li><p>四种touch事件：</p>
-<ul>
-<li>touchStart：手指放到屏幕上时触发</li>
-<li>touchMove：手指在屏幕上滑动时触发</li>
-<li>touchEnd：手指离开屏幕时触发</li>
-<li>touchCancel：系统取消touch事件时触发</li>
+<li>实例对象的<code>isPrototypeOf</code>方法，用来判断该对象是否为参数对象的原型。</li>
+<li>实例对象的<code>__proto__</code>属性（前后各两个下划线），返回该对象的原型。该属性可读写。应该尽量少用这个属性，而是用<code>Object.getPrototypeOf()</code>和<code>Object.setPrototypeOf()</code>，进行原型对象的读写操作。</li>
+<li>获取实例对象<code>obj</code>的原型对象，有三种方法。前两种不是很可靠。在改变原型对象时，一般要同时设置<code>constructor</code>属性。<ul>
+<li><code>obj.__proto__</code></li>
+<li><code>obj.constructor.prototype</code></li>
+<li><code>Object.getPrototypeOf(obj)</code></li>
 </ul>
 </li>
-<li><p>null是对象，没有prototype的方法。对象不具有prototype属性，只有函数才有prototype属性。原型链图示：<img src="https://upload-images.jianshu.io/upload_images/4888929-d2e1166fb30c2681.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt="img"></p>
+<li><code>Object.getOwnPropertyNames</code>方法返回一个数组，成员是参数对象本身的所有属性的键名，不包含继承的属性键名。只获取那些可以遍历的属性，使用<code>Object.keys</code>方法。</li>
+<li>对象实例的<code>hasOwnProperty</code>方法返回一个布尔值，用于判断某个属性定义在对象自身，还是定义在原型链上。</li>
+<li><code>hasOwnProperty</code>方法是 JavaScript 之中唯一一个处理对象属性时，不会遍历原型链的方法。</li>
+<li><code>in</code>运算符常用于检查一个属性是否存在。获得对象的所有可遍历属性（不管是自身的还是继承的），可以使用<code>for...in</code>循环。</li>
+<li>如果要拷贝一个对象，需要做到下面两件事情。<ul>
+<li>确保拷贝后的对象，与原对象具有同样的原型。</li>
+<li>确保拷贝后的对象，与原对象具有同样的实例属性。</li>
+</ul>
 </li>
-<li><p>var obj=()会产生运行错误，var obj=//;声明obj为正则对象。Math.round(-2019.5)=-2019。</p>
+<li>进入严格模式的标志，是一行字符串<code>use strict</code>。严格模式可以用于整个脚本，也可以只用于单个函数。</li>
+<li>严格模式使得 JavaScript 的语法变得更严格，更多的操作会显式报错。<ul>
+<li>严格模式下，对只读属性赋值，或者删除不可配置（non-configurable）属性都会报错。</li>
+<li>严格模式下，对一个只有取值器（getter）、没有存值器（setter）的属性赋值，会报错。</li>
+<li>严格模式下，对禁止扩展的对象添加新属性，会报错。</li>
+<li>严格模式下，使用<code>eval</code>或者<code>arguments</code>作为标识名，将会报错。下面的语句都会报错。</li>
+<li>正常模式下，如果函数有多个重名的参数，可以用<code>arguments[i]</code>读取。严格模式下，这属于语法错误。</li>
+<li>正常模式下，整数的第一位如果是<code>0</code>，表示这是八进制数，比如<code>0100</code>等于十进制的64。严格模式禁止这种表示法，整数第一位为<code>0</code>，将报错。</li>
+<li>正常模式中，如果一个变量没有声明就赋值，默认是全局变量。严格模式禁止这种用法，全局变量必须显式声明。</li>
+<li>正常模式下，函数内部的<code>this</code>可能会指向全局对象，严格模式禁止这种用法，避免无意间创造全局变量。</li>
+<li>严格模式下，函数直接调用时（不使用<code>new</code>调用），函数内部的<code>this</code>表示<code>undefined</code>（未定义），因此可以用<code>call</code>、<code>apply</code>和<code>bind</code>方法，将任意值绑定在<code>this</code>上面。正常模式下，<code>this</code>指向全局对象，如果绑定的值是非对象，将被自动转为对象再绑定上去，而<code>null</code>和<code>undefined</code>这两个无法转成对象的值，将被忽略。</li>
+<li>函数内部不得使用<code>fn.caller</code>、<code>fn.arguments</code>，否则会报错。这意味着不能在函数内部得到调用栈了。</li>
+<li>禁止使用 arguments.callee、arguments.caller 。</li>
+<li>严格模式下无法删除变量，如果使用<code>delete</code>命令删除一个变量，会报错。只有对象的属性，且属性的描述对象的<code>configurable</code>属性设置为<code>true</code>，才能被<code>delete</code>命令删除。</li>
+<li>严格模式下，使用<code>with</code>语句将报错。</li>
+<li>正常模式下，JavaScript 语言有两种变量作用域（scope）：全局作用域和函数作用域。严格模式创设了第三种作用域：<code>eval</code>作用域。</li>
+<li>严格模式下，函数内部改变参数与<code>arguments</code>的联系被切断了，两者不再存在联动关系。改变函数的参数，不会反应到<code>arguments</code>对象上来。</li>
+<li>ES5 的严格模式只允许在全局作用域或函数作用域声明函数。</li>
+<li>严格模式新增了一些保留字（implements、interface、let、package、private、protected、public、static、yield等）。使用这些词作为变量名将会报错。</li>
+</ul>
 </li>
-<li><p>执行顺序是先执行同步的任务，再执行异步任务，其中异步任务分为宏任务和微任务，微任务优先级高于宏任务。promise是微任务，会在当前轮事件循环结束前执行，setTimeout是宏任务，在下一轮事件循环执行。</p>
-</li>
-<li><p>会改变数组的方法：push、pop、shift、unshift、splice、sort、reverse、forEach。不会改变数组的方法：filter、concat、slice、map。</p>
-</li>
-<li><p>s.charCodeAt(i)可以将字符串s的第i个字符转换为unicode编码。</p>
-</li>
-<li><p>邮箱有效验证的正则表达式写法：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isAvailableEmail</span>(<span class="params">sEmail</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> reg=<span class="regexp">/^[0-9a-zA-Z_.]&#123;1,&#125;@[a-zA-Z0-9_.]&#123;1,&#125;[a-zA-Z0-9]&#123;2,4&#125;$/</span>;</span><br><span class="line">    <span class="keyword">return</span> reg.test(sEmail);</span><br><span class="line">&#125;</span><br><span class="line">isAvailableEmail(<span class="string">&quot;.@.com&quot;</span>)</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/04/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(2)/" data-id="ckrz4e24y0001t4pt1iyq8kph" data-title="牛客前端刷题（2）" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/" data-id="ckutzsf3v000d8spt7vptflif" data-title="Javascript学习笔记(15)" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li></ul>
 
     </footer>
   </div>
@@ -237,10 +237,10 @@
 
 
   
-    <article id="post-牛客前端刷题(1)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Javascript学习笔记(14)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/08/03/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(1)/" class="article-date">
-  <time class="dt-published" datetime="2021-08-03T14:06:15.000Z" itemprop="datePublished">2021-08-03</time>
+    <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-14T15:58:03.000Z" itemprop="datePublished">2021-10-14</time>
 </a>
     
   </div>
@@ -251,7 +251,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/03/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(1)/">牛客前端刷题（1）</a>
+      <a class="p-name article-title" href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
     </h1>
   
 
@@ -260,110 +260,76 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <ol>
-<li><p>正则表达式基本语法：</p>
-<table>
-<thead>
-<tr>
-<th>元字符</th>
-<th>说明</th>
-<th>语法</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>.</td>
-<td>匹配除换行符以外的任意字符</td>
-<td>*</td>
-<td>重复零次或更多次</td>
-</tr>
-<tr>
-<td>\w</td>
-<td>匹配字母或数字或下划线或汉字</td>
-<td>+</td>
-<td>重复一次或更多次</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>匹配任意的空白符</td>
-<td>？</td>
-<td>重复零次或一次</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>匹配数字</td>
-<td>{n}</td>
-<td>重复n次</td>
-</tr>
-<tr>
-<td>\b</td>
-<td>匹配单词的开始或结束</td>
-<td>{n,}</td>
-<td>重复n次或更多次</td>
-</tr>
-<tr>
-<td>^</td>
-<td>匹配字符串的开始</td>
-<td>{n,m}</td>
-<td>重复n到m次</td>
-</tr>
-<tr>
-<td>$</td>
-<td>匹配字符串的结束</td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
+<li><p>如果属性和方法定义在原型上，那么所有实例对象就能共享，不仅节省了内存，还体现了实例对象之间的联系。</p>
 </li>
-<li><p><code>void 0</code>是为了得到javascript中的undefined值，不直接写undefined值是为了兼容IE8以下的浏览器旧版本。</p>
+<li><p>JavaScript 规定，每个函数都有一个<code>prototype</code>属性，指向一个对象。所有对象都继承了<code>Object.prototype</code>的属性。这就是所有对象都有<code>valueOf</code>和<code>toString</code>方法的原因，因为这是从<code>Object.prototype</code>继承的。</p>
 </li>
-<li><p>对于DOM中的节点，使用<code>node.parentNode.nodeName</code>可以得到其父节点的名称，使用<code>node1.contains(node2)</code>可以得到一个布尔值判断node1是否是node2的父节点。</p>
+<li><p><code>Object.prototype</code>的原型是<code>null</code>。<code>null</code>没有任何属性和方法，也没有自己的原型。<code>prototype</code>对象有一个<code>constructor</code>属性，默认指向<code>prototype</code>对象所在的构造函数。</p>
 </li>
-<li><p>看清是getElement<code>s</code>ByClassName,注意返回的是一个元素还是多个元素。</p>
+<li><p><code>constructor</code>属性的作用是，可以得知某个实例对象，到底是哪一个构造函数产生的。另一方面，有了<code>constructor</code>属性，就可以从一个实例对象新建另一个实例。</p>
 </li>
-<li><p>在JS中，只有0,-0,NaN,””,null,undefined这六个值转布尔值时，结果为false。</p>
+<li><p><code>constructor</code>属性表示原型对象与构造函数之间的关联关系，如果修改了原型对象，一般会同时修改<code>constructor</code>属性，防止引用的时候出错。</p>
+</li>
+<li><p>要么将<code>constructor</code>属性重新指向原来的构造函数，要么只在原型对象上添加方法，这样可以保证<code>instanceof</code>运算符不会失真。</p>
+</li>
+<li><p>通过<code>name</code>属性，可以从实例得到构造函数的名称。</p>
+</li>
+<li><p><code>instanceof</code>运算符返回一个布尔值，表示对象是否为某个构造函数的实例。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">v <span class="keyword">instanceof</span> Vehicle</span><br><span class="line"><span class="comment">// 等同于</span></span><br><span class="line">Vehicle.prototype.isPrototypeOf(v)</span><br></pre></td></tr></table></figure></li>
+<li><p>由于任意对象（除了<code>null</code>）都是<code>Object</code>的实例，所以<code>instanceof</code>运算符可以判断一个值是否为非<code>null</code>的对象。</p>
+</li>
+<li><p><code>instanceof</code>的原理是检查右边构造函数的<code>prototype</code>属性，是否在左边对象的原型链上。有一种特殊情况，就是左边对象的原型链上，只有<code>null</code>对象。这时，<code>instanceof</code>判断会失真。</p>
+</li>
+<li><p><code>instanceof</code>运算符的一个用处，是判断值的类型。注意，<code>instanceof</code>运算符只能用于对象，不适用原始类型的值。</p>
+</li>
+<li><p>对于<code>undefined</code>和<code>null</code>，<code>instanceof</code>运算符总是返回<code>false</code>。</p>
+</li>
+<li><p>让一个构造函数继承另一个构造函数可以分成两步实现。第一步是在子类的构造函数中，调用父类的构造函数。第二步，是让子类的原型指向父类的原型，这样子类就可以继承父类原型</p>
+</li>
+<li><p>模块是实现特定功能的一组属性和方法的封装。使用“立即执行函数”（Immediately-Invoked Function Expression，IIFE），将相关的属性和方法封装在一个函数作用域里面，可以达到不暴露私有成员的目的。</p>
+</li>
+<li><p>如果一个模块很大，必须分成几个部分，或者一个模块需要继承另一个模块，这时就有必要采用“放大模式”（augmentation）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> module1 = (<span class="function"><span class="keyword">function</span> (<span class="params">mod</span>)</span>&#123;</span><br><span class="line">　mod.m3 = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">　　<span class="comment">//...</span></span><br><span class="line">　&#125;;</span><br><span class="line">　<span class="keyword">return</span> mod;</span><br><span class="line">&#125;)(module1);</span><br></pre></td></tr></table></figure></li>
+<li><p>第一个执行的部分有可能加载一个不存在空对象，这时就要采用”宽放大模式”（Loose augmentation）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> module1 = (<span class="function"><span class="keyword">function</span> (<span class="params">mod</span>) </span>&#123;</span><br><span class="line">　<span class="comment">//...</span></span><br><span class="line">　<span class="keyword">return</span> mod;</span><br><span class="line">&#125;)(<span class="built_in">window</span>.module1 || &#123;&#125;);</span><br></pre></td></tr></table></figure>
+
+<p>与”放大模式”相比，“宽放大模式”就是“立即执行函数”的参数可以是空对象。</p>
+</li>
+<li><p>独立性是模块的重要特点，模块内部最好不与程序的其他部分直接交互。立即执行函数还可以起到命名空间的作用。</p>
+</li>
+<li><p><code>Object.getPrototypeOf</code>方法返回参数对象的原型。这是获取原型对象的标准方法。</p>
 <ul>
-<li>y=Boolean(0)是对0进行类型转换</li>
-<li>y=new Boolean(0)得到的y是一个Boolean类型的对象，if(obj)得到的值为true</li>
+<li> 空对象的原型是 Object.prototype。</li>
+<li>Object.prototype 的原型是 null。</li>
+<li>函数的原型是 Function.prototype。</li>
 </ul>
 </li>
-<li><p>Date().setMonth()操作接受0-11的参数。length是数组属性而不是方法，调用时不加圆括号。</p>
+<li><p><code>Object.setPrototypeOf</code>方法为参数对象设置原型，返回该参数对象。它接受两个参数，第一个是现有对象，第二个是原型对象。</p>
 </li>
-<li><p>js实现继承的方式</p>
-<ul>
-<li><p>原型链继承：将父类的实例作为子类的原型。</p>
+<li><p>JavaScript 提供了<code>Object.create()</code>方法，用来满足这种需求。该方法接受一个对象作为参数，然后以它为原型，返回一个实例对象。该实例完全继承原型对象的属性。</p>
 </li>
-<li><p>构造函数继承：使用父类的构造函数来增强子类，等于是复制父类的实例属性给子类（没用到原型）。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="built_in">this</span>);<span class="comment">//通过call多个父类对象可以实现多继承</span></span><br><span class="line">  <span class="built_in">this</span>.name = name || <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>实例继承：为父类实例添加新特性，作为子类实例返回。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> instance = <span class="keyword">new</span> Animal();</span><br><span class="line">  instance.name = name || <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">  <span class="keyword">return</span> instance;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>拷贝继承</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> animal = <span class="keyword">new</span> Animal();</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">var</span> p <span class="keyword">in</span> animal)&#123;</span><br><span class="line">    Cat.prototype[p] = animal[p];</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">this</span>.name = name || <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>组合继承：通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="built_in">this</span>);</span><br><span class="line">  <span class="built_in">this</span>.name = name || <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line">Cat.prototype = <span class="keyword">new</span> Animal();</span><br><span class="line">Cat.prototype.constructor = Cat;</span><br></pre></td></tr></table></figure></li>
-<li><p>寄生组合式继承：通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法/属性，避免组合继承的缺点。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Cat</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">  Animal.call(<span class="built_in">this</span>);</span><br><span class="line">  <span class="built_in">this</span>.name = name || <span class="string">&#x27;Tom&#x27;</span>;</span><br><span class="line">&#125;</span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// 创建一个没有实例方法的类</span></span><br><span class="line">  <span class="keyword">var</span> Super = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;;</span><br><span class="line">  Super.prototype = Animal.prototype;</span><br><span class="line">  <span class="comment">//将实例作为子类的原型</span></span><br><span class="line">  Cat.prototype = <span class="keyword">new</span> Super();</span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></li>
-</ul>
+<li><p>下面三种方式生成的新对象是等价的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = <span class="built_in">Object</span>.create(&#123;&#125;);</span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">Object</span>.create(<span class="built_in">Object</span>.prototype);</span><br><span class="line"><span class="keyword">var</span> obj3 = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br></pre></td></tr></table></figure></li>
+<li><p>如果想要生成一个不继承任何属性（比如没有<code>toString()</code>和<code>valueOf()</code>方法）的对象，可以将<code>Object.create()</code>的参数设为<code>null</code>。</p>
 </li>
-<li><p>cookie的有效时间默认为-1，如果不进行设置的话，就会默认在浏览器会话关闭时结束。可以通过<code>setMaxAge()</code>方法设置cookie的生命期，当<code>setMaxAge(0)</code>表示立刻删除该浏览器上指定的cookie。</p>
+<li><p>使用<code>Object.create()</code>方法的时候，必须提供对象原型，即参数不能为空，或者不是对象，否则会报错。</p>
 </li>
-<li><p>在函数中声明的与函数外同名var变量会被提升到函数头部，但是赋值操作不会被提升。</p>
+<li><p><code>Object.create()</code>方法生成的新对象，动态继承了原型。在原型上添加或修改任何方法，会立刻反映在新对象之上。</p>
 </li>
-<li><p>一个数据结构只要具有Symbol.iterator属性，就可以认为是“可遍历的”(iterable)。原生具备Iterator接口的数据结构有：Array、Map、Set、String、TypedArray、函数的arguments对象、NodeList对象。</p>
+<li><p>除了对象的原型，<code>Object.create()</code>方法还可以接受第二个参数。该参数是一个属性描述对象，它所描述的对象属性，会添加到实例对象，作为该对象自身的属性。</p>
 </li>
-<li><p>函数提升优先级高于变量提升。</p>
+<li><p><code>Object.create()</code>方法生成的对象，继承了它的原型对象的构造函数。</p>
 </li>
-<li><p>IIFE（立即调用函数表达式）是一个在定义时就会立即执行的js函数。其中的匿名函数不仅避免了外界访问此IIFE中的变量，而且又不会污染全局作用域。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> name=<span class="string">&quot;Barry&quot;</span> </span><br><span class="line">&#125;)()</span><br><span class="line"><span class="comment">//无法从外部访问变量name</span></span><br><span class="line">name<span class="comment">//抛出错误：&quot;Uncaught ReferenceError：name is not defined&quot;</span></span><br></pre></td></tr></table></figure></li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/03/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(1)/" data-id="ckrz4e2550003t4pt4uda667m" data-title="牛客前端刷题（1）" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/" data-id="ckutzsf3o000a8spt98dvengz" data-title="Javascript学习笔记(14)" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li></ul>
 
     </footer>
   </div>
@@ -373,10 +339,10 @@
 
 
   
-    <article id="post-github前端面经(1)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Javascript学习笔记(13)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/08/03/github%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F(1)/" class="article-date">
-  <time class="dt-published" datetime="2021-08-03T07:39:43.000Z" itemprop="datePublished">2021-08-03</time>
+    <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-14T09:03:35.000Z" itemprop="datePublished">2021-10-14</time>
 </a>
     
   </div>
@@ -387,7 +353,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/08/03/github%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F(1)/">github前端面经（1）</a>
+      <a class="p-name article-title" href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
     </h1>
   
 
@@ -396,41 +362,134 @@
     <div class="e-content article-entry" itemprop="articleBody">
       
         <ol>
-<li><p><code>call()</code>方法分别接受参数，<code>apply()</code>方法接受数组形式的参数，如果要使用数组而不是参数列表，则<code>apply()</code>方法非常方便。</p>
-</li>
-<li><p><code>Array.prototype.slice</code>可以将拥有length属性的对象转换为数组，如函数中的arguments对象，虽然具有length属性，但并不是数组，无法使用数组原型中的方法，此时通过<code>Array.prototype.slice.call(arguments)</code>可将其转换为数组。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getArray</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> tmp = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">    <span class="keyword">return</span> tmp;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arrayExample = getArray(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);			<span class="comment">//[1,2,3,4,5]</span></span><br><span class="line"><span class="built_in">console</span>.log(arrayExample <span class="keyword">instanceof</span> <span class="built_in">Array</span>);     <span class="comment">//结果为true</span></span><br></pre></td></tr></table></figure></li>
-<li><p><code>unshift()</code>方法可向数组的开头添加一个或更多元素，并返回新的长度。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arrayObject.unshift(newelement1,newelement2,....,newelementX)</span><br></pre></td></tr></table></figure></li>
-<li><p><code>getElementsByTagName()</code> 方法返回元素的顺序是它们在文档中的顺序。如果把特殊字符串 “*” 传递给 <code>getElementsByTagName() </code>方法，它将返回文档中所有元素的列表，元素排列的顺序就是它们在文档中的顺序。</p>
-</li>
-<li><p><code>call</code>和<code>apply</code>的应用场景：</p>
+<li><p>JSON 对值的类型和格式有严格的规定:</p>
 <ul>
-<li><p><code>call</code>和<code>apply</code>是为了动态改变this出现的，当一个object没有某个方法，但是其他的有，可以借助<code>call</code> 或<code>apply</code>用其他对象的方法来操作。</p>
+<li><p>复合类型的值只能是数组或对象，不能是函数、正则表达式对象、日期对象。</p>
 </li>
-<li><p>通过<code>document.getElementsByTagName</code>选择的dom 节点是一种类似array的array。它不能应用Array下的push,pop等方法。可以通过：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> domNodes =<span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;*&quot;</span>))</span><br></pre></td></tr></table></figure>
-
-<p>这样domNodes就可以应用Array下的所有方法了。</p>
+<li><p>原始类型的值只有四种：字符串、数值（必须以十进制表示）、布尔值和<code>null</code>（不能使用<code>NaN</code>, <code>Infinity</code>, <code>-Infinity</code>和<code>undefined</code>）。</p>
+</li>
+<li><p>字符串必须使用双引号表示，不能使用单引号。</p>
+</li>
+<li><p>对象的键名必须放在双引号里面。</p>
+</li>
+<li><p>数组或对象最后一个成员的后面，不能加逗号。</p>
 </li>
 </ul>
 </li>
-<li><p>考查事件冒泡机制，确保当遮罩(overlay)被点击时要自动关闭，解决方法是检查事件的触发对象和绑定对象是否一致，从而确定事件不是从子元素里面冒上来的。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;.overlay&#x27;</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (e.target == e.currentTarget)</span><br><span class="line">    closeOverlay();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
-<li><p>在页面中点击一个元素，事件是从这个元素的祖先元素中逐层传递下来的，这个阶段为事件的捕获阶段。当事件传递到这个元素之后，又会把事件逐成传递回去，直到根元素为止，这个阶段是事件的冒泡阶段。<code>event.target</code>指向引起触发事件的元素，而<code>event.currentTarget</code>则是事件绑定的元素。</p>
+<li><p><code>JSON.stringify()</code>方法用于将一个值转为 JSON 字符串。该字符串符合 JSON 格式，并且可以被<code>JSON.parse()</code>方法还原。</p>
 </li>
-<li><p>为一个元素绑定一个事件时，可以指定是要在捕获阶段绑定或者换在冒泡阶段绑定。当<code>addEventListener</code>的第三个参数为<code>true</code>的时候，代表是在捕获阶段绑定，当第三个参数为<code>false</code>或者空的时候，代表在冒泡阶段绑定。</p>
+<li><p>如果对象的属性是<code>undefined</code>、函数或 XML 对象，该属性会被<code>JSON.stringify()</code>过滤。如果数组的成员是<code>undefined</code>、函数或 XML 对象，则这些值被转成<code>null</code>。正则对象会被转成空对象。</p>
+</li>
+<li><p><code>JSON.stringify()</code>方法会忽略对象的不可遍历的属性。</p>
+</li>
+<li><p><code>JSON.stringify()</code>方法还可以接受一个数组，作为第二个参数，指定参数对象的哪些属性需要转成字符串。这个类似白名单的数组，只对对象的属性有效，对数组无效。</p>
+</li>
+<li><p>第二个参数还可以是一个函数，用来更改<code>JSON.stringify()</code>的返回值。如果处理函数返回<code>undefined</code>或没有返回值，则该属性会被忽略。</p>
+</li>
+<li><p><code>JSON.stringify()</code>还可以接受第三个参数，用于增加返回的 JSON 字符串的可读性。第三个属性如果是一个数字，则表示每个属性前面添加的空格（最多不超过10个）。</p>
+</li>
+<li><p>如果参数对象有自定义的<code>toJSON()</code>方法，那么<code>JSON.stringify()</code>会使用这个方法的返回值作为参数，而忽略原对象的其他属性。<code>toJSON()</code>方法的一个应用是，将正则对象自动转为字符串。</p>
+</li>
+<li><p><code>JSON.parse()</code>方法用于将 JSON 字符串转换成对应的值。<code>JSON.parse()</code>方法可以接受一个处理函数，作为第二个参数，用法与<code>JSON.stringify()</code>方法类似。</p>
+</li>
+<li><p>对象是什么：</p>
+<ul>
+<li>对象是单个实物的抽象。</li>
+<li>对象是一个容器，封装了属性（property）和方法（method）。</li>
+</ul>
+</li>
+<li><p>JavaScript 语言使用构造函数（constructor）作为对象的模板。所谓”构造函数”，就是专门用来生成实例对象的函数。它就是对象的模板，描述实例对象的基本结构。</p>
+</li>
+<li><p>构造函数的特点有两个。</p>
+<ul>
+<li>函数体内部使用了<code>this</code>关键字，代表了所要生成的对象实例。</li>
+<li>生成对象的时候，必须使用<code>new</code>命令。</li>
+</ul>
+</li>
+<li><p>为了保证构造函数必须与<code>new</code>命令一起使用，一个解决办法是，构造函数内部使用严格模式，即第一行加上<code>use strict</code>。JavaScript 不允许对<code>undefined</code>添加属性。</p>
+</li>
+<li><p>使用<code>new</code>命令时，它后面的函数依次执行下面的步骤。</p>
+<ul>
+<li><p>创建一个空对象，作为将要返回的对象实例。</p>
+</li>
+<li><p>将这个空对象的原型，指向构造函数的<code>prototype</code>属性。</p>
+</li>
+<li><p>将这个空对象赋值给函数内部的<code>this</code>关键字。</p>
+</li>
+<li><p>开始执行构造函数内部的代码。</p>
+</li>
+</ul>
+</li>
+<li><p>如果构造函数内部有<code>return</code>语句，而且<code>return</code>后面跟着一个对象，<code>new</code>命令会返回<code>return</code>语句指定的对象；否则，就会不管<code>return</code>语句，返回<code>this</code>对象。</p>
+</li>
+<li><p>函数内部可以使用<code>new.target</code>属性。如果当前函数是<code>new</code>命令调用，<code>new.target</code>指向当前函数，否则为<code>undefined</code>。</p>
+</li>
+<li><p>使用<code>Object.create()</code>方法以这个现有的对象作为模板，生成新的实例对象。</p>
+</li>
+<li><p>简单说，<code>this</code>就是属性或方法“当前”所在的对象。总结一下，JavaScript 语言之中，一切皆对象，运行环境也是对象，所以函数都是在某个对象之中运行，<code>this</code>就是函数运行时所在的对象（环境）。</p>
+</li>
+<li><p><code>this</code>主要有以下几个使用场合。</p>
+<ul>
+<li>全局环境使用<code>this</code>，它指的就是顶层对象<code>window</code>。</li>
+<li>构造函数中的<code>this</code>，指的是实例对象。</li>
+<li>如果对象的方法里面包含<code>this</code>，<code>this</code>的指向就是方法运行时所在的对象。该方法赋值给另一个对象，就会改变<code>this</code>的指向。</li>
+</ul>
+</li>
+<li><p>如果<code>this</code>所在的方法不在对象的第一层，这时<code>this</code>只是指向当前一层的对象，而不会继承更上面的层。</p>
+</li>
+<li><p>使用<code>this</code>注意点：</p>
+<ul>
+<li><p>由于<code>this</code>的指向是不确定的，所以切勿在函数中包含多层的<code>this</code>。</p>
+<ul>
+<li>事实上，使用一个变量固定<code>this</code>的值，然后内层函数调用这个变量，是非常常见的做法，请务必掌握。</li>
+<li>JavaScript 提供了严格模式，也可以硬性避免这种问题。严格模式下，如果函数内部的<code>this</code>指向顶层对象，就会报错。</li>
+</ul>
+</li>
+<li><p>数组的<code>map</code>和<code>foreach</code>方法，允许提供一个函数作为参数。这个函数内部不应该使用<code>this</code>。</p>
+<ul>
+<li><p>一种方法，就是前面提到的，使用中间变量固定<code>this</code>。</p>
+</li>
+<li><p>另一种方法是将<code>this</code>当作<code>foreach</code>方法的第二个参数，固定它的运行环境。</p>
+</li>
+</ul>
+</li>
+<li><p>回调函数中的<code>this</code>往往会改变指向，最好避免使用。</p>
+</li>
+</ul>
+</li>
+<li><p>JavaScript 提供了<code>call</code>、<code>apply</code>、<code>bind</code>这三个方法，来切换/固定<code>this</code>的指向。</p>
+<ul>
+<li>Function.prototype.call()：函数实例的<code>call</code>方法，可以指定函数内部<code>this</code>的指向（即函数执行时所在的作用域），然后在所指定的作用域中，调用该函数。<ul>
+<li><code>call</code>方法的参数，应该是一个对象。如果参数为空、<code>null</code>和<code>undefined</code>，则默认传入全局对象。</li>
+<li><code>call</code>方法的一个应用是调用对象的原生方法。</li>
+</ul>
+</li>
+<li><code>apply</code>方法的作用与<code>call</code>方法类似，也是改变<code>this</code>指向，然后再调用该函数。唯一的区别就是，它接收一个数组作为函数执行时的参数。<ul>
+<li>通过<code>apply</code>方法，利用<code>Array</code>构造函数将数组的空元素变成<code>undefined</code>。</li>
+<li>利用数组对象的<code>slice</code>方法，可以将一个类似数组的对象（比如<code>arguments</code>对象）转为真正的数组。这个方法起作用的前提是，被处理的对象必须有<code>length</code>属性，以及相对应的数字键。</li>
+<li>绑定回调函数的对象。</li>
+</ul>
+</li>
+<li><code>bind()</code>方法用于将函数体内的<code>this</code>绑定到某个对象，然后返回一个新函数。<ul>
+<li>如果<code>bind()</code>方法的第一个参数是<code>null</code>或<code>undefined</code>，等于将<code>this</code>绑定到全局对象，函数运行时<code>this</code>指向顶层对象（浏览器为<code>window</code>）。</li>
+<li><code>bind()</code>方法每运行一次，就返回一个新函数。</li>
+<li>回调函数是 JavaScript 最常用的模式之一，但是一个常见的错误是，将包含<code>this</code>的方法直接当作回调函数。</li>
+<li>还有一种情况比较隐蔽，就是某些数组方法可以接受一个函数当作参数。例如<code>forEach()</code>方法回调函数指向全局对象。</li>
+<li>自我理解：相当于还是bind前面这个方法，但对象固定成括号里的了。常常体悟这一节。</li>
+</ul>
+</li>
+</ul>
 </li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/03/github%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F(1)/" data-id="ckrz4e24n0000t4ptefyr280g" data-title="github前端面经（1）" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/" data-id="ckutzsf3400048spt1zwx43sl" data-title="Javascript学习笔记(13)" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li></ul>
 
     </footer>
   </div>
@@ -440,10 +499,10 @@
 
 
   
-    <article id="post-《react小书》笔记(31-46)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Javascript学习笔记(12)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-46)/" class="article-date">
-  <time class="dt-published" datetime="2021-07-31T02:47:20.000Z" itemprop="datePublished">2021-07-31</time>
+    <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-14T06:38:42.000Z" itemprop="datePublished">2021-10-14</time>
 </a>
     
   </div>
@@ -454,7 +513,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-46)/">《react小书》笔记(31-46)</a>
+      <a class="p-name article-title" href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
     </h1>
   
 
@@ -462,122 +521,58 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <ul>
-<li>动手实现Redux（二）：抽离store和监控数据变化</li>
-</ul>
-<ol>
-<li><p>使用观察者模式，定义数组<code>listeners</code>和新方法<code>subscibe</code>通过<code>store.subscribe(listener)</code>的方式给<code>subscribe</code>传入一个监听函数，这个函数会被<code>push</code>到数组中。</p>
-</li>
-<li><p>可以通过<code>subscribe</code>传入数据变化的监听函数，每当<code>dispatch</code>的时候，监听函数就会被调用，从而实现在每当数据变化时候进行重新渲染。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">createStore</span> (<span class="params">state, stateChanger</span>) </span>&#123;</span><br><span class="line"><span class="keyword">const</span> listeners = []</span><br><span class="line"><span class="keyword">const</span> subscribe = <span class="function">(<span class="params">listener</span>) =&gt;</span> listeners.push(listener)</span><br><span class="line"><span class="keyword">const</span> getState = <span class="function">() =&gt;</span> state</span><br><span class="line"><span class="keyword">const</span> dispatch = <span class="function">(<span class="params">action</span>) =&gt;</span> &#123;</span><br><span class="line">stateChanger(state, action)</span><br><span class="line">listeners.forEach(<span class="function">(<span class="params">listener</span>) =&gt;</span> listener())</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> &#123; getState, dispatch, subscribe &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p><code>!!</code>是将非布尔型的转换为布尔型。<code>Reflect.apply(target,thisArgument,argumentList)</code>能对指定的参数列表发起对目标函数的调用。其中：</p>
-<ul>
-<li>target：目标函数。</li>
-<li>thisArgument：target函数调用时绑定的this对象。</li>
-<li>argumentsList：target函数调用时传入的实参列表，该参数应该是一个类数组的对象。</li>
+        <ol>
+<li>如果在正则表达式之中，某个字符只表示它字面的含义，那么它们就叫做“字面量字符”（literal characters）。</li>
+<li>除了字面量字符以外，还有一部分字符有特殊含义，不代表字面的意思。它们叫做“元字符”（metacharacters）：<ul>
+<li>点字符（<code>.</code>）匹配除回车（<code>\r</code>）、换行(<code>\n</code>) 、行分隔符（<code>\u2028</code>）和段分隔符（<code>\u2029</code>）以外的所有字符。注意，对于码点大于<code>0xFFFF</code>字符，点字符不能正确匹配，会认为这是两个字符。</li>
+<li>位置字符用来提示字符所处的位置，主要有两个字符。使用/^test$/表示从开始位置到结束位置只有test。<ul>
+<li><code>^</code> 表示字符串的开始位置</li>
+<li><code>$</code> 表示字符串的结束位置</li>
 </ul>
 </li>
-</ol>
-<hr>
-<ul>
-<li>动手实现Redux（三）：纯函数（Pure Function）简介</li>
-</ul>
-<ol>
-<li>纯函数的返回结果只依赖于它的参数，并且在执行过程中没有副作用。</li>
-<li>一个函数执行过程产生了外部可观察的变化，那么就说这个函数是有副作用的，例如函数修改了外部的变量。</li>
-<li>纯函数很严格，几乎除了计算数据以外什么都不能干，计算的时候还不能依赖除了函数参数以外的数据。</li>
-</ol>
-<hr>
-<ul>
-<li>动手实现Redux（四）：共享结构的对象提高性能</li>
-</ul>
-<ol>
-<li><p><code>const obj2=&#123;...obj&#125;</code>其实就是新建一个对象<code>obj2</code>，然后把<code>obj</code>所有属性都复制到<code>obj2</code>里面，相当于对象的浅复制，两个对象内容相同，但是却是两个不同的对象。</p>
-</li>
-<li><p>除了浅复制对象，还可以覆盖、拓展对象属性：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">const</span> obj2 = &#123; ...obj, <span class="attr">b</span>: <span class="number">3</span>, <span class="attr">c</span>: <span class="number">4</span>&#125; <span class="comment">// =&gt; &#123; a: 1, b: 3, c: 4 &#125;，覆盖了 b，新增了 c</span></span><br></pre></td></tr></table></figure></li>
-<li><p>修改数据的时候就把修改路径都复制一遍，但是保持其他内容不变，最后的所有对象具有某些不变共享的结构。</p>
-</li>
-</ol>
-<hr>
-<ul>
-<li>动手实现Redux（五）：不要问为什么的reducer</li>
-</ul>
-<ol>
-<li>reducer是一个纯函数，把修改路径的对象都复制一遍，然后产生一个新的对象返回，没有对state进行更改。</li>
-<li>reducer是不允许有副作用的，不能在里面操作DOM，也不能发Ajax请求，更不能直接修改state，它要做的仅仅是初始化和计算新的state。</li>
-</ol>
-<hr>
-<ul>
-<li>动手实现Redux（六）：Redux总结</li>
-</ul>
-<ol>
-<li><p>createStore使用套路：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定⼀个 reducer</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reducer</span> (<span class="params">state, action</span>) </span>&#123;</span><br><span class="line"><span class="comment">/* 初始化 state 和 switch case */</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ⽣成 store</span></span><br><span class="line"><span class="keyword">const</span> store = createStore(reducer)</span><br><span class="line"><span class="comment">// 监听数据变化重新渲染⻚⾯</span></span><br><span class="line">store.subscribe(<span class="function">() =&gt;</span> renderApp(store.getState()))</span><br><span class="line"><span class="comment">// ⾸次渲染⻚⾯</span></span><br><span class="line">renderApp(store.getState())</span><br><span class="line"><span class="comment">// 后⾯可以随意 dispatch 了，⻚⾯⾃动更新</span></span><br><span class="line">store.dispatch(...)--createStore使用套路</span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<ul>
-<li>动手实现React-redux（三）：connect和mapStateToProps</li>
-</ul>
-<ol>
-<li>如果一个组件的渲染只依赖于外界传进去的<code>props</code>和自己的<code>state</code>，而并不依赖于其他外界的任何数据，可预测性非常强，对参数（<code>props</code>）以外的数据零依赖，也不产生副作用，称这种组件为Pure Component/Dumb Component，这种组件的可复用性较强。</li>
-<li>用高阶组件把<code>Dumb</code>组件包装一层，高阶组件和<code>context</code>打交道，把里面数据取出来通过<code>props</code>传给<code>Dumb</code>组件。</li>
-</ol>
-<hr>
-<ul>
-<li>使用真正的Redux和React-redux</li>
-</ul>
-<ol>
-<li>从第三方模块<code>redux</code>中可以引入<code>createStore</code>，从第三方<code>react-redux</code>模块中引入<code>Provider</code>和<code>connect</code>。</li>
-<li>mapDispatchToProps中写了需要注入的函数，mapStateToProps中写了需要注入的props。</li>
-</ol>
-<hr>
-<ul>
-<li>Smart组件vsDumb组件</li>
-</ul>
-<ol>
-<li>根据是否需要高度的复用性，把组件划分为Dumb组件和Smart组件，约定俗成地把它们分别放到<code>components</code>和<code>container</code>目录下。</li>
-<li>Smart组件专门做数据相关的应用逻辑，和各种数据打交道、和Ajax打交道，然后把数据通过<code>props</code>传递给Dumb,带领Dumb组件完成了复杂的应用程序逻辑。</li>
-<li>Smart组件不用考虑太多复用性问题，它们就是用来执行特定应用逻辑的。Smart组件并不意味着完全不能复用，Smart组件的复用性是依赖场景的，而Dumb则是可以跨应用场景复用，二者的复用程度、场景不一样。</li>
-<li>如果一个组件是Dumb的，那么它的子组件们都应该是Dumb的才对。</li>
-</ol>
-<hr>
-<ul>
-<li>实战分析：评论功能（七）</li>
-</ul>
-<ol>
-<li>在src下新建三个目录：<code>components</code>、<code>containers</code>、<code>reducers</code>。</li>
-<li>reducer是用来描述数据的形态和相应的变更。</li>
-<li>可以把action封装到一种函数里面帮助构建action，这种函数叫做action creators。这样dispatch的时候只需要传入数据就可以了，同时还可以对传入的数据做统一处理，并且使代码测试更方便。</li>
-<li>写reducer文件顺序：<ul>
-<li>定义action types</li>
-<li>编写reducer</li>
-<li>跟这个reducer相关的action creators</li>
+<li>竖线符号（<code>|</code>）在正则表达式中表示“或关系”（OR）。</li>
 </ul>
 </li>
-<li>注意函数是在组件内还是通过props从外界传过来的，不犯低级错误。</li>
-</ol>
-<hr>
-<ul>
-<li>评论功能（九）</li>
+<li>正则表达式中那些有特殊含义的元字符，如果要匹配它们本身，就需要在它们前面要加上反斜杠。正则表达式中，需要反斜杠转义的，一共有12个字符：<code>^</code>、<code>.</code>、<code>[</code>、<code>$</code>、<code>(</code>、<code>)</code>、<code>|</code>、<code>*</code>、<code>+</code>、<code>?</code>、<code>&#123;</code>和<code>\</code>。</li>
+<li>需要特别注意的是，如果使用<code>RegExp</code>方法生成正则对象，转义需要使用两个斜杠，因为字符串内部会先转义一次。</li>
+<li>字符类（class）表示有一系列字符可供选择，只要匹配其中一个就可以了。所有可供选择的字符都放在方括号内。</li>
+<li>如果方括号内的第一个字符是<code>[^]</code>，则表示除了字符类之中的字符，其他字符都可以匹配。如果方括号内没有其他字符，即只有<code>[^]</code>，就表示匹配一切字符，其中包括换行符。</li>
+<li>某些情况下，对于连续序列的字符，连字符（<code>-</code>）用来提供简写形式，表示字符的连续范围。</li>
+<li>预定义模式指的是某些常见模式的简写方式。<code>[\S\s]</code>指代一切字符。<ul>
+<li><code>\d</code> 匹配0-9之间的任一数字，相当于<code>[0-9]</code>。</li>
+<li><code>\D</code> 匹配所有0-9以外的字符，相当于<code>[^0-9]</code>。</li>
+<li><code>\w</code> 匹配任意的字母、数字和下划线，相当于<code>[A-Za-z0-9_]</code>。</li>
+<li><code>\W</code> 除所有字母、数字和下划线以外的字符，相当于<code>[^A-Za-z0-9_]</code>。</li>
+<li><code>\s</code> 匹配空格（包括换行符、制表符、空格符等），相等于<code>[ \t\r\n\v\f]</code>。</li>
+<li><code>\S</code> 匹配非空格的字符，相当于<code>[^ \t\r\n\v\f]</code>。</li>
+<li><code>\b</code> 匹配词的边界。</li>
+<li><code>\B</code> 匹配非词边界，即在词的内部。</li>
 </ul>
-<ol>
-<li><p>与MVC、MVP架构模式类比，Dumb组件就是View（负责渲染），Smart组件就是Controller(Presenter)，State就有点类似Model。</p>
-<p><img src="https://huzidaha.github.io/static/assets/img/posts/6F7A1EE0-9AF4-4AB3-B554-A01E9074FC3C.png" alt="img"></p>
 </li>
-<li><p>最后实现的组件树：</p>
-<p><img src="https://huzidaha.github.io/static/assets/img/posts/170B1159-C690-4DDA-9118-95AF810D40C6.png" alt="img"></p>
+<li>模式的精确匹配次数，使用大括号<code>&#123;&#125;</code>表示。<code>&#123;n&#125;</code>表示恰好重复<code>n</code>次，<code>&#123;n,&#125;</code>表示至少重复<code>n</code>次，<code>&#123;n,m&#125;</code>表示重复不少于<code>n</code>次，不多于<code>m</code>次。</li>
+<li>量词符用来设定某个模式出现的次数。默认情况下都是最大可能匹配，即匹配到下一个字符不满足匹配规则为止。如果想将贪婪模式改为非贪婪模式，可以在量词符后面加一个问号。<ul>
+<li><code>?</code> 问号表示某个模式出现0次或1次，等同于<code>&#123;0, 1&#125;</code>。</li>
+<li><code>*</code> 星号表示某个模式出现0次或多次，等同于<code>&#123;0,&#125;</code>。</li>
+<li><code>+</code> 加号表示某个模式出现1次或多次，等同于<code>&#123;1,&#125;</code>。</li>
+</ul>
 </li>
+<li><code>g</code>修饰符表示全局匹配（global）。默认情况下，正则对象区分字母的大小写，加上<code>i</code>修饰符以后表示忽略大小写（ignoreCase）。</li>
+<li><code>m</code>修饰符表示多行模式（multiline），加上<code>m</code>修饰符以后，<code>^</code>和<code>$</code>还会匹配行首和行尾，即<code>^</code>和<code>$</code>会识别换行符（<code>\n</code>）。</li>
+<li>正则表达式的括号表示分组匹配，括号中的模式可以用来匹配分组的内容。注意，使用组匹配时，不宜同时使用<code>g</code>修饰符，否则<code>match</code>方法不会捕获分组的内容。</li>
+<li>正则表达式内部，还可以用<code>\n</code>引用括号匹配的内容，<code>n</code>是从1开始的自然数，表示对应顺序的括号。</li>
+<li><code>(?:x)</code>称为非捕获组（Non-capturing group），表示不返回该组匹配的内容，即匹配的结果中不计入这个括号。</li>
+<li><code>x(?=y)</code>称为先行断言（Positive look-ahead），<code>x</code>只有在<code>y</code>前面才匹配，<code>y</code>不会被计入返回结果。比如，要匹配后面跟着百分号的数字，可以写成<code>/\d+(?=%)/</code>。</li>
+<li><code>x(?!y)</code>称为先行否定断言（Negative look-ahead），<code>x</code>只有不在<code>y</code>前面才匹配，<code>y</code>不会被计入返回结果。</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-46)/" data-id="ckrvk5nn80000a8pt36roekzh" data-title="《react小书》笔记(31-46)" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/" data-id="ckutzsf3900058spt29e7655i" data-title="Javascript学习笔记(12)" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li></ul>
 
     </footer>
   </div>
@@ -587,10 +582,10 @@
 
 
   
-    <article id="post-《react小书》笔记(21-30)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Javascript学习笔记(11)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(21-30)/" class="article-date">
-  <time class="dt-published" datetime="2021-07-31T02:40:47.000Z" itemprop="datePublished">2021-07-31</time>
+    <a href="/2021/10/13/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(11)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-13T14:04:52.000Z" itemprop="datePublished">2021-10-13</time>
 </a>
     
   </div>
@@ -601,7 +596,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(21-30)/">《react小书》笔记(21-30)</a>
+      <a class="p-name article-title" href="/2021/10/13/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(11)/">Javascript学习笔记(10)</a>
     </h1>
   
 
@@ -609,122 +604,84 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <ul>
-<li>ref和React.js中的DOM操作</li>
-</ul>
-<ol>
-<li>React.js当中提供了ref属性来帮助获取已经挂载的元素的DOM节点，可以给某个ISX元素加上ref属性，但能不用ref就尽量不要用。</li>
-<li>使用ref的场景例子：<ul>
-<li>进入页面后自动focus到某个输入框，调用input.focus( )的DOM API</li>
-<li>动态获取某个DOM元素来做后续的动画</li>
-</ul>
+        <ol>
+<li><p>如果参数为空, <code>Math.min</code>返回<code>Infinity</code>, <code>Math.max</code>返回<code>-Infinity</code>。</p>
 </li>
-<li>组件标签加上ref获取到的是该组件在React.js内部初始化的实例，但不常用。</li>
-</ol>
-<hr>
+<li><p><code>Math.floor</code>方法和<code>Math.ceil</code>方法结合起来，可以实现一个总是返回数值的整数部分的函数。</p>
+</li>
+<li><p>注意<code>Math.round</code>方法对负数的处理（主要是对<code>0.5</code>的处理）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.round(-<span class="number">1.1</span>) <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">Math</span>.round(-<span class="number">1.5</span>) <span class="comment">// -1</span></span><br><span class="line"><span class="built_in">Math</span>.round(-<span class="number">1.6</span>) <span class="comment">// -2</span></span><br></pre></td></tr></table></figure></li>
+<li><p><code>Math.pow</code>方法返回以第一个参数为底数、第二个参数为指数的幂运算值。<code>Math.sqrt</code>方法返回参数值的平方根。如果参数是一个负值，则返回<code>NaN</code>。</p>
+</li>
+<li><p>如果要计算以10为底的对数，可以先用<code>Math.log</code>求出自然对数，然后除以<code>Math.LN10</code>；求以2为底的对数，可以除以<code>Math.LN2</code>。</p>
+</li>
+<li><p>无论有没有参数，直接调用<code>Date</code>总是返回当前时间。</p>
+</li>
+<li><p><code>Date</code>实例有一个独特的地方。其他对象求值的时候，都是默认调用<code>.valueOf()</code>方法，但是<code>Date</code>实例求值的时候，默认调用的是<code>toString()</code>方法。</p>
+</li>
+<li><p>关于<code>Date</code>构造函数的参数，有几点说明。</p>
 <ul>
-<li>props.children和容器类组件</li>
+<li>第一点，参数可以是负整数，代表1970年元旦之前的时间。</li>
+<li>第二点，只要是能被<code>Date.parse()</code>方法解析的字符串，都可以当作参数。</li>
+<li>第三，参数为年、月、日等多个整数时，年和月是不能省略的，其他参数都可以省略的。</li>
 </ul>
-<ol>
-<li>使用自定义组件的时候，可以在其中嵌套JSX结构。嵌套的结构在组件内部都可以通过props.children获取到，这种组件编写方式在编写容器类型的组件当中非常有用。</li>
-</ol>
-<hr>
+</li>
+<li><p>注意，月份从<code>0</code>开始计算，但是，天数从<code>1</code>开始计算。另外，除了日期的默认值为<code>1</code>，小时、分钟、秒钟和毫秒的默认值都是<code>0</code>。</p>
+</li>
+<li><p>两个日期实例对象进行减法运算时，返回的是它们间隔的毫秒数；进行加法运算时，返回的是两个字符串连接而成的新字符串。</p>
+</li>
+<li><p><code>Date.now</code>方法返回当前时间距离时间零点（1970年1月1日 00:00:00 UTC）的毫秒数。</p>
+</li>
+<li><p><code>Date.parse</code>方法用来解析日期字符串，返回该时间距离时间零点（1970年1月1日 00:00:00）的毫秒数。如果解析失败，返回<code>NaN</code>。</p>
+</li>
+<li><p>区别在于<code>Date.UTC</code>方法的参数，会被解释为 UTC 时间（世界标准时间），<code>Date</code>构造函数的参数会被解释为当前时区的时间。</p>
+</li>
+<li><p>计算本年度还剩多少天：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">leftDays</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> today = <span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line">  <span class="keyword">var</span> endYear = <span class="keyword">new</span> <span class="built_in">Date</span>(today.getFullYear(), <span class="number">11</span>, <span class="number">31</span>, <span class="number">23</span>, <span class="number">59</span>, <span class="number">59</span>, <span class="number">999</span>);</span><br><span class="line">  <span class="keyword">var</span> msPerDay = <span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">1000</span>;</span><br><span class="line">  <span class="keyword">return</span> <span class="built_in">Math</span>.round((endYear.getTime() - today.getTime()) / msPerDay);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>新建正则表达式有两种方法。一种是使用字面量，以斜杠表示开始和结束。另一种是使用<code>RegExp</code>构造函数。实际应用中，基本上都采用字面量定义正则表达式。</p>
+</li>
+<li><p>一类是修饰符相关，用于了解设置了什么修饰符。</p>
 <ul>
-<li>dangerouslySetHTML和style属性</li>
+<li><code>RegExp.prototype.ignoreCase</code>：返回一个布尔值，表示是否设置了<code>i</code>修饰符。</li>
+<li><code>RegExp.prototype.global</code>：返回一个布尔值，表示是否设置了<code>g</code>修饰符。</li>
+<li><code>RegExp.prototype.multiline</code>：返回一个布尔值，表示是否设置了<code>m</code>修饰符。</li>
+<li><code>RegExp.prototype.flags</code>：返回一个字符串，包含了已经设置的所有修饰符，按字母排序。</li>
 </ul>
-<ol>
-<li><p>要实现动态渲染元素的innerHTML结构，需要给dangerouslySetInnerHTML传入一个对象，这个对象的__html属性值就相当于元素的innerHTML。复杂是因为设置innerHTML可能会导致跨站脚本攻击。</p>
 </li>
-<li><p>在React.js中需要把CSS属性变成一个对象再传给元素。用对象作为style方便动态设置元素的样式，可以用props或者state中的数据生成样式对象再传给元素，然后用setState就可以修改样式，非常灵活。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 style=&#123;&#123;<span class="attr">fontSize</span>: <span class="string">&#x27;12px&#x27;</span>, <span class="attr">color</span>: <span class="built_in">this</span>.state.color&#125;&#125;&gt;React.js ⼩书&lt;/h1&gt;</span><br><span class="line"><span class="comment">//setState(&#123;color:blue&#125;)可以修改元素到蓝色</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
+<li><p>正则实例对象的<code>test</code>方法返回一个布尔值，表示当前模式是否能匹配参数字符串。如果正则表达式带有<code>g</code>修饰符，则每一次<code>test</code>方法都从上一次结束的位置开始向后匹配。</p>
+</li>
+<li><p>带有<code>g</code>修饰符时，可以通过正则对象的<code>lastIndex</code>属性指定开始搜索的位置。注意，带有<code>g</code>修饰符时，正则表达式内部会记住上一次的<code>lastIndex</code>属性，这时不应该更换所要匹配的字符串，否则会有一些难以察觉的错误。</p>
+</li>
+<li><p><code>lastIndex</code>属性只对同一个正则表达式有效。</p>
+</li>
+<li><p>正则实例对象的<code>exec()</code>方法，用来返回匹配结果。如果发现匹配，就返回一个数组，成员是匹配成功的子字符串，否则返回<code>null</code>。</p>
+</li>
+<li><p>如果正则表示式包含圆括号（即含有“组匹配”），则返回的数组会包括多个成员。第一个成员是整个匹配成功的结果，后面的成员就是圆括号对应的匹配成功的组。</p>
+</li>
+<li><p>字符串的实例方法之中，有4种与正则表达式有关。</p>
 <ul>
-<li>PropTypes和组件参数验证</li>
-</ul>
-<ol>
-<li><p>Javascript的灵活性体现在弱类型、高阶函数等语言特性上。</p>
-</li>
-<li><p>文件头部引入PropTypes并给组件类添加了类属性propTypes，规定传入的comment类型必须为object（对象）。通过Required关键字来强制组件某个参数必须传入。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> PropTypes <span class="keyword">from</span> <span class="string">&#x27;prop-types&#x27;</span></span><br><span class="line"><span class="comment">//类里面写</span></span><br><span class="line"><span class="keyword">static</span> propTypes=&#123;</span><br><span class="line"><span class="attr">comment</span>:PropTypes.object.isRequired</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>PropTypes提供了一系列的数据类型可以用来配置组件的参数，具体见：<a target="_blank" rel="noopener" href="https://reactjs.org/docs/typechecking-with-proptypes.html">https://reactjs.org/docs/typechecking-with-proptypes.html</a>.</p>
-</li>
-<li><p>组件参数验证在构建大型组件库时能迅速定位这种类型错误，使组件开发更为规范，另外也起到一个说明文档的作用。</p>
-</li>
-</ol>
-<hr>
-<ul>
-<li>实战分析：评论功能（四）</li>
-</ul>
-<ol>
-<li>用户名输入框失去焦点的事件<code>onBlur</code>与<code>onFocus</code>相对。</li>
-<li>组件的私有方法都以<code>_</code>开头，所有事件监听的方法都用<code>handle</code>开头。把事件监听方法传给组件的时候，属性名都用<code>on</code>开头。</li>
-<li>便于维护的组件内容编写顺序：<ul>
-<li>static开头的类属性，如<code>defaultProps</code>、<code>propTypes</code>。</li>
-<li>构造函数，<code>constructor</code>。</li>
-<li>getter/setter</li>
-<li>组件生命周期。</li>
-<li><code>_</code>开头的私有方法。</li>
-<li>事件监听方法，<code>handle*</code>。</li>
-<li><code>render*</code>开头的方法。有时候<code>render()</code>方法里面的内容会分开到不同函数里面进行，这些函数都以<code>render*</code>开头。</li>
-<li><code>render()</code>方法。</li>
+<li><code>String.prototype.match()</code>：返回一个数组，成员是所有匹配的子字符串。</li>
+<li><code>String.prototype.search()</code>：按照给定的正则表达式进行搜索，返回一个整数，表示匹配开始的位置。</li>
+<li><code>String.prototype.replace()</code>：按照给定的正则表达式进行替换，返回替换后的字符串。</li>
+<li><code>String.prototype.split()</code>：按照给定规则进行字符串分割，返回一个数组，包含分割后的各个成员。</li>
 </ul>
 </li>
-</ol>
-<hr>
-<ul>
-<li>实战分析：评论功能（五）</li>
-</ul>
-<ol>
-<li><p>JSON.stringfy()和JSON.parse()是相对的函数，前者转换为JSON格式，后者转换回原格式。</p>
+<li><p><code>String.prototype.match()</code>如果正则表达式带有<code>g</code>修饰符，则该方法与正则对象的<code>exec</code>方法行为不同，会一次性返回所有匹配成功的结果。</p>
 </li>
-<li><p>js在某个数据类型前使用<code>+</code>，这个操作的目的是将该数据类型转换为Number类型，如果转换失败，则返回NaN(Not a Number)。以下例子返回效果等同：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">+<span class="keyword">new</span> <span class="built_in">Date</span>();</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>().getTime();</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>().valueOf();</span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Date</span>()*<span class="number">1</span></span><br></pre></td></tr></table></figure></li>
-<li><p>需要往页面动态插入HTML结构需要使用dangerouslySetInnerHTML。</p>
+<li><p><code>replace</code>方法的第二个参数可以使用美元符号<code>$</code>，用来指代所替换的内容。<code>replace</code>方法的第二个参数还可以是一个函数，将每一个匹配内容替换为函数返回值。</p>
 </li>
-</ol>
-<hr>
-<ul>
-<li>高阶组件(Higher-Order Components)</li>
-</ul>
-<ol>
-<li>高阶组件是一个函数，它接受一个组件作为参数，返回一个新的组件，新组建会将传入的组件作为子组件。</li>
-<li>高阶组件其实就是为了组件之间的代码复用，可以把组件之间可复用的代码、逻辑抽离到高阶组件当中。新的组件和传入的组件通过<code>props</code>传递信息。</li>
-</ol>
-<hr>
-<ul>
-<li>React.js的context</li>
-</ul>
-<ol>
-<li><p>首先，尽量避免使用context。某个组件只要往自己的context里面放了些状态，这个组件之下的所有子组件都直接访问这个状态而不需要通过中间组件的传递。</p>
+<li><p>如果正则表达式带有括号，则<code>String.prototype.split()</code>括号匹配的部分也会作为数组成员返回。</p>
 </li>
-<li><p>一个组件的context只有它的子组件能够访问，它的父组件是不能访问到的。</p>
-</li>
-<li><p>在设置共享context的组件里写如下例代码。getChildContext返回对象就是context，childContextTypes用于验证getChildContext返回的对象。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> childContextTypes = &#123;</span><br><span class="line"><span class="attr">themeColor</span>: PropTypes.string</span><br><span class="line">&#125;</span><br><span class="line">getChildContext () &#123;</span><br><span class="line"><span class="keyword">return</span> &#123; <span class="attr">themeColor</span>: <span class="built_in">this</span>.state.themeColor &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>子组件获取context里面的内容时，必须写contextTypes来声明和验证需要获取的状态的类型，然后用this.context.xxx来获取。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Title</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line"><span class="keyword">static</span> contextTypes = &#123;</span><br><span class="line"><span class="attr">themeColor</span>: PropTypes.string</span><br><span class="line">&#125;</span><br><span class="line">render () &#123;</span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">style</span>=<span class="string">&#123;&#123;</span> <span class="attr">color:</span> <span class="attr">this.context.themeColor</span> &#125;&#125;&gt;</span>React.js ⼩书标题<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>context打破了组件和组件之间通过<code>props</code>传递数据的规范，极大地增强了组件之间的耦合性。一些第三方的前端应用状态管理库（Redux）就是充分利用了这种机制提供便利的状态管理服务。</p>
-</li>
-</ol>
-<hr>
-<ul>
-<li>动手实现Redux(一)：优雅地修改共享状态</li>
-</ul>
-<ol>
-<li>Redux是一种架构模式，不关注使用什么库，而React-redux是把Redux这种架构模式和React.js结合起来的一个库，是Redux架构在React.js中的体现。</li>
-<li>解决的矛盾是：“模块（组件）之间需要共享数据”和“数据可能被任意修改导致不可预料的结果”。</li>
-<li>解决方案：提高数据修改的门槛，设置“中间人”函数，所有的数据修改必须通过它。</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(21-30)/" data-id="ckrr60a5l00005wpt4pyx0own" data-title="《react小书》笔记(21-30)" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/13/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(11)/" data-id="ckutzsf3100038spt1h4ka1z8" data-title="Javascript学习笔记(10)" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li></ul>
 
     </footer>
   </div>
@@ -734,10 +691,10 @@
 
 
   
-    <article id="post-《react小书》笔记(11-20)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Javascript学习笔记(10)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/07/27/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(11-20)/" class="article-date">
-  <time class="dt-published" datetime="2021-07-27T09:14:58.000Z" itemprop="datePublished">2021-07-27</time>
+    <a href="/2021/10/13/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-12T17:11:50.000Z" itemprop="datePublished">2021-10-13</time>
 </a>
     
   </div>
@@ -748,7 +705,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/27/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(11-20)/">《react小书》笔记(11-20)</a>
+      <a class="p-name article-title" href="/2021/10/13/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/">Javascript学习笔记(9)</a>
     </h1>
   
 
@@ -756,97 +713,54 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <ul>
-<li>配置组件的props</li>
-</ul>
-<ol>
-<li><p>使用defaultProps可以做到默认配置，不需要使用||操作符来实现。</p>
-<p>在类中，写如下例代码来对props中各个属性进行默认配置。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> defaultProps = &#123;</span><br><span class="line"><span class="attr">likedText</span>: <span class="string">&#x27;取消&#x27;</span>,</span><br><span class="line"><span class="attr">unlikedText</span>: <span class="string">&#x27;点赞&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>组件被渲染时传进来的props不能被改变，便于输出确定的UI显示形态。</p>
-</li>
-<li><p>由于setState会导致组件重新渲染，因而可以通过重新渲染的方式来传入新的props从而达到修改显示形态的效果。</p>
-</li>
-</ol>
-<hr>
-<ul>
-<li>state vs props</li>
-</ul>
-<ol>
-<li>state的主要作用是用于组件保存、控制、修改自己的可变状态。state在组件内部初始化，可以被组件自身修改，而外部不能访问也不能修改。可以把state看做是一个局部的、只能被组件自身控制的数据源。state中状态可以通过this.setState方法进行更新。setState会导致组件的重新渲染。</li>
-<li>props的主要作用是让使用该组件的父组件可以传入参数来配置该组件。它是外部传进来的配置参数，组件内部无法控制也无法修改。除非外部组件主动传入新的props，否则组件的props永远保持不变。</li>
-<li>state是让组件控制自己的状态，props是让外部对组件自己进行配置。尽量少使用state，尽量多用props。</li>
-<li>React.js鼓励无状态组件。以前一个组件是通过继承Component来构建，一个子类就是一个组件，而用函数式的组件编写方法一个函数就是一个组件。</li>
-</ol>
-<hr>
-<ul>
-<li>渲染列表数据</li>
-</ul>
-<ol>
-<li>如果往{}放一个数组，React.js会将数组里面一个个元素罗列并且渲染出来。</li>
-<li>React.js的高效依赖所谓的Virtual-DOM策略，通过在列表中加入唯一的key能帮助判断元素位置的交换，从而尽量复用元素内部的结构。（注意key不能直接在props中调用）</li>
-</ol>
-<hr>
-<ul>
-<li>实战部分-评论功能</li>
-</ul>
-<ol>
-<li>在React.js当中必须要用setState才能更新组件的内容。</li>
-<li>类似&lt;input //&gt;、&lt;select //&gt;、&lt;textarea //&gt;这些元素的value值被React.js所控制、渲染的组件，在React.js当中被称为受控组件。对于用户可输入的控件，一般都可以让它们称为受控组件。</li>
-</ol>
-<hr>
-<ul>
-<li>前端应用状态管理–状态提升</li>
-</ul>
-<ol>
-<li>当某个状态被多个组件依赖或者影响的时候，就把该状态提升到这些组件的最近公共父组件中去管理，用props传递数据或者函数来管理这种依赖或者影响的行为。</li>
-<li>input标签中type除了text外还可以填number，toFixed(n)可以将number四舍五入到n位小数。</li>
-</ol>
-<hr>
-<ul>
-<li>挂载阶段的组件生命周期（一）</li>
-</ul>
-<ol>
-<li><p>React.js将组件渲染并且构造DOM元素然后塞入页面的过程称为组件的挂载。</p>
-</li>
-<li><p>挂载的时候，React.js会在组件的render之前调用componentWillMount，在DOM元素塞入页面之后调用componentDidMount。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-&gt; <span class="title">constructor</span>(<span class="params"></span>)</span><br><span class="line">-&gt; <span class="title">componentWillMount</span>(<span class="params"></span>)</span><br><span class="line">-&gt; <span class="title">render</span>(<span class="params"></span>)</span><br><span class="line">// 然后构造 <span class="title">DOM</span> 元素插⼊⻚⾯</span><br><span class="line">-&gt; <span class="title">componentDidMount</span>(<span class="params"></span>)</span><br></pre></td></tr></table></figure></li>
-<li><p>在组件删除之前React.js会调用组件定义的componentWillUnmount。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-&gt; <span class="title">constructor</span>(<span class="params"></span>)</span><br><span class="line">-&gt; <span class="title">componentWillMount</span>(<span class="params"></span>)</span><br><span class="line">-&gt; <span class="title">render</span>(<span class="params"></span>)</span><br><span class="line">// 然后构造 <span class="title">DOM</span> 元素插⼊⻚⾯</span><br><span class="line">-&gt; <span class="title">componentDidMount</span>(<span class="params"></span>)</span><br><span class="line">// ...</span><br><span class="line">// 即将从⻚⾯中删除</span><br><span class="line">-&gt; <span class="title">componentWillUnmount</span>(<span class="params"></span>)</span><br><span class="line">// 从⻚⾯中删除		</span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<ul>
-<li>挂载阶段的组件生命周期（二）</li>
-</ul>
-<ol>
-<li>setState只能在已经挂载或者正在挂载的组件上调用，因为React.js重新构造和销毁组件来达到隐藏和显示的效果，故对于隐藏的组件不能调用。</li>
-<li>一些组件启动的动作，包括Ajax数据的拉取操作、一些定时器的启动，可以放在componentWillMount里面进行</li>
-<li>componentWillUnmount的作用是在组件销毁的时候做例如清除该组件定时器和其他的数据清理的清场工作，不能用this.setState({})进行赋值，要调用另一个函数进行赋值。</li>
-<li>有些组件的启动工作是依赖DOM的，例如动画的启动，而componentWillMount时组件还未挂载完成，因而将这些启动操作放在componentDidMount当中。</li>
-<li>await关键字仅在async function中有效，async函数执行时，如果遇到await就会先暂停执行，等到触发的异步操作完成后，恢复async函数的执行并返回解析值。</li>
-</ol>
-<hr>
-<ul>
-<li>更新阶段的组件生命周期</li>
-</ul>
-<ol>
-<li>更新阶段指React.js重新渲染组件并把组件的变化应用到DOM元素上的过程，是一个组件的变化过程。更新阶段的组件生命周期有：<ul>
-<li>shouldComponentUpdate(nextProps,nextState)：通过这个方法控制组件是否重新渲染。如果返回false组件就不会重新渲染。这个生命周期在React.js性能优化上非常有用。</li>
-<li>componentWillReceiveProps(nextProps)：组件从父组件接收到新的props之前调用。</li>
-<li>componentWillUpdata( )：组件开始渲染之前调用。</li>
-<li>componentDidUpdate( )：组件重新渲染并且把更改变更到真实的DOM以后调用。</li>
+        <ol>
+<li>所谓“包装对象”，指的是与数值、字符串、布尔值分别相对应的<code>Number</code>、<code>String</code>、<code>Boolean</code>三个原生对象。这三个原生对象可以把原始类型的值变成（包装成）对象。</li>
+<li>包装对象的设计目的，首先是使得“对象”这种类型可以覆盖 JavaScript 所有的值，整门语言有一个通用的数据模型，其次是使得原始类型的值也有办法调用自己的方法。</li>
+<li>这三个对象作为构造函数使用（带有<code>new</code>）时，可以将原始类型的值转为对象；作为普通函数使用时（不带有<code>new</code>），可以将任意类型的值，转为原始类型的值。</li>
+<li>某些场合，原始类型的值会自动当作包装对象调用，即调用包装对象的属性和方法。这时，JavaScript 引擎会自动将原始类型的值转为包装对象实例，并在使用后立刻销毁实例。</li>
+<li>自动转换生成的包装对象是只读的，无法修改。所以，字符串无法添加新属性。如果要为字符串添加属性，只有在它的原型对象<code>String.prototype</code>上定义。</li>
+<li>注意，<code>false</code>对应的包装对象实例，布尔运算结果也是<code>true</code>。</li>
+<li><code>Number</code>对象拥有以下一些静态属性（即直接定义在<code>Number</code>对象上的属性，而不是定义在实例上的属性）。<ul>
+<li><code>Number.POSITIVE_INFINITY</code>：正的无限，指向<code>Infinity</code>。</li>
+<li><code>Number.NEGATIVE_INFINITY</code>：负的无限，指向<code>-Infinity</code>。</li>
+<li><code>Number.NaN</code>：表示非数值，指向<code>NaN</code>。</li>
+<li><code>Number.MIN_VALUE</code>：表示最小的正数（即最接近0的正数，在64位浮点数体系中为<code>5e-324</code>），相应的，最接近0的负数为<code>-Number.MIN_VALUE</code>。</li>
+<li><code>Number.MAX_SAFE_INTEGER</code>：表示能够精确表示的最大整数，即<code>9007199254740991</code>。</li>
+<li><code>Number.MIN_SAFE_INTEGER</code>：表示能够精确表示的最小整数，即<code>-9007199254740991</code>。</li>
 </ul>
 </li>
+<li><code>toString</code>方法可以接受一个参数，表示输出的进制。<code>toString</code>方法只能将十进制的数，转为其他进制的字符串。如果要将其他进制的数，转回十进制，需要使用<code>parseInt</code>方法。</li>
+<li><code>toFixed()</code>方法先将一个数转为指定位数的小数，然后返回这个小数对应的字符串。由于浮点数的原因，小数<code>5</code>的四舍五入是不确定的，使用的时候必须小心。</li>
+<li><code>toExponential</code>方法用于将一个数转为科学计数法形式。<code>toExponential</code>方法的参数是小数点后有效数字的位数，范围为0到100，超出这个范围，会抛出一个 RangeError 错误。</li>
+<li><code>Number.prototype.toPrecision()</code>方法用于将一个数转为指定位数的有效数字。</li>
+<li><code>Number.prototype.toLocaleString()</code>方法接受一个地区码作为参数，返回一个字符串，表示当前数字在该地区的当地书写形式。</li>
+<li>注意，数值的自定义方法，只能定义在它的原型对象<code>Number.prototype</code>上面，数值本身是无法自定义属性的。</li>
+<li><code>String.fromCharCode()</code>方法的参数是一个或多个数值，代表 Unicode 码点，返回值是这些码点组成的字符串。该方法不支持 Unicode 码点大于<code>0xFFFF</code>的字符。</li>
+<li><code>charCodeAt()</code>方法返回字符串指定位置的 Unicode 码点（十进制表示），相当于<code>String.fromCharCode()</code>的逆操作。如果没有任何参数，<code>charCodeAt</code>返回首字符的 Unicode 码点，如果参数为负数，或大于等于字符串的长度，<code>charCodeAt</code>返回<code>NaN</code>。</li>
+<li><code>concat</code>方法用于连接两个字符串，返回一个新字符串，不改变原字符串，该方法可以接受多个参数。</li>
+<li><code>slice()</code>方法用于从原字符串取出子字符串并返回，不改变原字符串。</li>
+<li><code>substring</code>方法用于从原字符串取出子字符串并返回，不改变原字符串，跟<code>slice</code>方法很相像。如果第一个参数大于第二个参数，<code>substring</code>方法会自动更换两个参数的位置。如果参数是负数，<code>substring</code>方法会自动将负数转为0。</li>
+<li>由于这些规则违反直觉，因此不建议使用<code>substring</code>方法，应该优先使用<code>slice</code>。</li>
+<li><code>substr</code>方法的第一个参数是子字符串的开始位置（从0开始计算），第二个参数是子字符串的长度。如果第二个参数是负数，将被自动转为0，因此会返回空字符串。</li>
+<li><code>indexOf</code>方法还可以接受第二个参数，表示从该位置开始向后匹配。另外，<code>lastIndexOf</code>的第二个参数表示从该位置起向前匹配。</li>
+<li><code>trim</code>方法用于去除字符串两端的空格，返回一个新字符串，不改变原字符串。该方法去除的不仅是空格，还包括制表符（<code>\t</code>、<code>\v</code>）、换行符（<code>\n</code>）和回车符（<code>\r</code>）。</li>
+<li><code>toLowerCase</code>方法和<code>toUpperCase</code>方法都返回一个新字符串，不改变原字符串。</li>
+<li><code>match</code>方法用于确定原字符串是否匹配某个子字符串，返回一个数组，成员为匹配的第一个字符串。如果没有找到匹配，则返回<code>null</code>。返回的数组还有<code>index</code>属性和<code>input</code>属性，分别表示匹配字符串开始的位置和原始字符串。<code>match</code>方法还可以使用正则表达式作为参数。</li>
+<li><code>replace</code>方法用于替换匹配的子字符串，一般情况下只替换第一个匹配（除非使用带有<code>g</code>修饰符的正则表达式）。</li>
+<li><code>search</code>方法的用法基本等同于<code>match</code>，但是返回值为匹配的第一个位置。如果没有找到匹配，则返回<code>-1</code>。</li>
+<li><code>split</code>方法还可以接受第二个参数，限定返回数组的最大成员数。<code>split</code>方法还可以使用正则表达式作为参数。</li>
+<li><code>localeCompare</code>方法会考虑自然语言的排序情况。它返回一个整数，如果小于0，表示第一个字符串小于第二个字符串；如果等于0，表示两者相等；如果大于0，表示第一个字符串大于第二个字符串。</li>
+<li><code>localeCompare</code>还可以有第二个参数，指定所使用的语言（默认是英语），然后根据该语言的规则进行比较。</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/27/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(11-20)/" data-id="ckrojzo3o0000jwpt51mkc371" data-title="《react小书》笔记(11-20)" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/13/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(10)/" data-id="ckutzsf1w00008spt3hslazcf" data-title="Javascript学习笔记(9)" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li></ul>
 
     </footer>
   </div>
@@ -856,10 +770,10 @@
 
 
   
-    <article id="post-《react小书》笔记(1-10)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Javascript学习笔记(9)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/07/26/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(1-10)/" class="article-date">
-  <time class="dt-published" datetime="2021-07-26T09:21:25.000Z" itemprop="datePublished">2021-07-26</time>
+    <a href="/2021/10/12/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(9)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-12T12:50:43.000Z" itemprop="datePublished">2021-10-12</time>
 </a>
     
   </div>
@@ -870,7 +784,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/26/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(1-10)/">《react小书》笔记(1-10)</a>
+      <a class="p-name article-title" href="/2021/10/12/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(9)/">Javascript学习笔记(9)</a>
     </h1>
   
 
@@ -878,69 +792,57 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <ul>
-<li>使用JSX描述UI信息</li>
-</ul>
-<ol>
-<li>一个DOM元素包含三个信息：标签名，属性，子元素。</li>
-<li>JSX直接写HTML代码实际上调用了React.createElement函数。</li>
-<li>react-dom将js对象变成DOM元素，并渲染到网页上。</li>
-<li>经过js对象的原因：<ul>
-<li>不一定会渲染到浏览器的普通页面</li>
-<li>更新组件时操作js对象而不是DOM能减少浏览器重排从而极大优化性能。</li>
-</ul>
+        <ol>
+<li><p><code>Array</code>是 JavaScript 的原生对象，同时也是一个构造函数，可以用它生成新的数组。</p>
 </li>
-</ol>
-<hr>
-<ul>
-<li>组件的render方法</li>
-</ul>
-<ol>
-<li>render方法返回必须要用一个外层的JSX元素把所有内容包裹起来，返回并列多个JSX元素是不合法的。</li>
-<li>div占据新的一行，span是行内元素。</li>
-</ol>
-<ul>
-<li>组件的组合、嵌套和组件树</li>
-</ul>
-<ol>
-<li>自定义的组件都必须要用大写字母开头，普通的HTML标签都用小写字母开头。</li>
-<li>理解组件树的概念对理解数据是如何在组件树内自上往下流动过程很重要。</li>
-</ol>
-<hr>
-<ul>
-<li>事件监听</li>
-</ul>
-<ol>
-<li><p>on*事件监听封装在React.js中，只能用在普通的HTML标签上，而不能用在组件标签上。</p>
+<li><p><code>Array.isArray</code>方法返回一个布尔值，表示参数是否为数组。它可以弥补<code>typeof</code>运算符的不足。</p>
 </li>
-<li><p>查看React.js中的事件<a target="_blank" rel="noopener" href="https://reactjs.org/docs/events.html#supported-events%EF%BC%8C%E4%BA%8B%E4%BB%B6%E5%B1%9E%E6%80%A7%E5%90%8D%E9%83%BD%E5%BF%85%E9%A1%BB%E8%A6%81%E7%94%A8%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E6%B3%95%E3%80%82">https://reactjs.org/docs/events.html#supported-events，事件属性名都必须要用驼峰命名法。</a></p>
+<li><p>数组的<code>valueOf</code>方法返回数组本身，数组的<code>toString</code>方法返回数组的字符串形式。</p>
 </li>
-<li><p>一般在某个类的实例方法中this指的是这个实例本身，但在handlexxx的this是null或者undefined，因为React.js并不是通过对象方法的方式调用this.handlexxx，而是直接通过函数调用handlexxx。所以事件监听函数不能通过this获取到实例。</p>
+<li><p><code>shift()</code>的前提是数组元素不能是<code>0</code>或任何布尔值等于<code>false</code>的元素。</p>
 </li>
-<li><p>bind模式不仅可以把事监听方法中的this绑定到当前组件实例上，还可以在渲染列表元素的时候，把列表元素传入事件监听函数当中。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Title</span> <span class="keyword">extends</span> <span class="title">Component</span> </span>&#123;</span><br><span class="line">handleClickOnTitle (word, e) &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">this</span>, word)</span><br><span class="line">&#125;</span><br><span class="line">render () &#123;</span><br><span class="line"><span class="keyword">return</span> (</span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">onClick</span>=<span class="string">&#123;this.handleClickOnTitle.bind(this,</span> &#x27;<span class="attr">Hello</span>&#x27;)&#125;&gt;</span>React ⼩书<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<ul>
-<li>组件的state和setState</li>
-</ul>
-<ol>
-<li><p>使用setState来告知React.js修改了组件的状态便于更新页面，只需要传入需要更新的部分，而不需要传入整个对象。</p>
+<li><p><code>concat</code>方法用于多个数组的合并。它将新数组的成员，添加到原数组成员的后部，然后返回一个新数组，原数组不变。</p>
 </li>
-<li><p>调用steState时state不会马上被修改，而是放进更新队列中，稍后才会从队列当中把新的状态提取出来合并到state中，再触发组件更新。因此使用前一次结果传入这个函数。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line">handleClickOnLikeButton () &#123;</span><br><span class="line"><span class="built_in">this</span>.setState(&#123; <span class="attr">count</span>: <span class="number">0</span> &#125;) <span class="comment">// =&gt; this.state.count 还是 undefined</span></span><br><span class="line"><span class="built_in">this</span>.setState(&#123; <span class="attr">count</span>: <span class="built_in">this</span>.state.count + <span class="number">1</span>&#125;) <span class="comment">// =&gt; undefined + 1 = NaN</span></span><br><span class="line"> 或</span><br><span class="line"> <span class="built_in">this</span>.setState(<span class="function">(<span class="params">prevState</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="keyword">return</span> &#123; <span class="attr">count</span>: <span class="number">0</span> &#125;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">this</span>.setState(<span class="function">(<span class="params">prevState</span>) =&gt;</span> &#123;</span><br><span class="line"><span class="keyword">return</span> &#123; <span class="attr">count</span>: prevState.count + <span class="number">1</span> &#125; <span class="comment">// 上⼀个 setState 的返回是 count 为 0，</span></span><br><span class="line">&#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li><p>React.js内部会把Javascript事件循环中的消息队列的同一个消息中的setState都进行合并以后再重新渲染组件，并不需要担心多次进行setState会带来性能问题。</p>
+<li><p>如果数组成员包括对象，<code>concat</code>方法返回当前数组的一个浅拷贝。所谓“浅拷贝”，指的是新数组拷贝的是对象的引用。</p>
+</li>
+<li><p><code>reverse</code>方法将改变原数组。如果<code>slice()</code>方法的参数是负数，则表示倒数计算的位置。<code>slice()</code>方法的一个重要应用，是将类似数组的对象转为真正的数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Array</span>.prototype.slice.call(&#123; <span class="number">0</span>: <span class="string">&#x27;a&#x27;</span>, <span class="number">1</span>: <span class="string">&#x27;b&#x27;</span>, <span class="attr">length</span>: <span class="number">2</span> &#125;)</span><br><span class="line"><span class="comment">// [&#x27;a&#x27;, &#x27;b&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">document</span>.querySelectorAll(<span class="string">&quot;div&quot;</span>));</span><br><span class="line"><span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br></pre></td></tr></table></figure></li>
+<li><p><code>splice()</code>方法用于删除原数组的一部分成员，并可以在删除的位置添加新的数组成员，返回值是被删除的元素。注意，该方法会改变原数组。如果只提供第一个参数，等同于将原数组在指定位置拆分成两个数组。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">arr.splice(start, count, addElement1, addElement2, ...);</span><br></pre></td></tr></table></figure></li>
+<li><p><code>sort</code>的参数函数本身接受两个参数，表示进行比较的两个数组成员。如果该函数的返回值大于<code>0</code>，表示第一个成员排在第二个成员后面；其他情况下，都是第一个元素排在第二个元素前面。</p>
+</li>
+<li><p><code>map()</code>方法将数组的所有成员依次传入参数函数，然后把每一次的执行结果组成一个新数组返回。</p>
+</li>
+<li><p><code>map()</code>方法接受一个函数作为参数。该函数调用时，<code>map()</code>方法向它传入三个参数：当前成员、当前位置和数组本身。</p>
+</li>
+<li><p><code>map()</code>方法还可以接受第二个参数，用来绑定回调函数内部的<code>this</code>变量。<code>map()</code>方法不会跳过<code>undefined</code>和<code>null</code>，但是会跳过空位。</p>
+</li>
+<li><p>如果数组遍历的目的是为了得到返回值，那么使用<code>map()</code>方法，否则使用<code>forEach()</code>方法。<code>forEach()</code>方法和<code>map()</code>方法的使用类似。</p>
+</li>
+<li><p>注意，<code>forEach()</code>方法无法中断执行，总是会将所有成员遍历完。如果希望符合某种条件时，就中断遍历，要使用<code>for</code>循环。</p>
+</li>
+<li><p><code>filter()</code>方法用于过滤数组成员，满足条件的成员组成一个新数组返回。它的参数是一个函数，所有数组成员依次执行该函数，返回结果为<code>true</code>的成员组成一个新数组返回。该方法不会改变原数组。</p>
+</li>
+<li><p><code>some</code>方法检验其中是否有满足条件的，<code>every</code>方法检验是否每个都满足条件。注意，对于空数组，<code>some</code>方法返回<code>false</code>，<code>every</code>方法返回<code>true</code>，回调函数都不会执行。</p>
+</li>
+<li><p><code>reduce()</code>方法和<code>reduceRight()</code>方法依次处理数组的每个成员，最终累计为一个值。它们的差别是，<code>reduce()</code>是从左到右处理（从第一个成员到最后一个成员），<code>reduceRight()</code>则是从右到左（从最后一个成员到第一个成员），其他完全一样。</p>
+</li>
+<li><p>建议总是加上第二个参数，这样比较符合直觉，每个数组成员都会依次执行<code>reduce()</code>方法的参数函数。另外，第二个参数可以防止空数组报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>].reduce(<span class="function"><span class="keyword">function</span> (<span class="params"></span></span></span><br><span class="line"><span class="params"><span class="function">  a,   <span class="comment">// 累积变量，必须</span></span></span></span><br><span class="line"><span class="params"><span class="function">  b,   <span class="comment">// 当前变量，必须</span></span></span></span><br><span class="line"><span class="params"><span class="function">  i,   <span class="comment">// 当前位置，可选</span></span></span></span><br><span class="line"><span class="params"><span class="function">  arr  <span class="comment">// 原数组，可选</span></span></span></span><br><span class="line"><span class="params"><span class="function"></span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ... ...</span></span><br></pre></td></tr></table></figure></li>
+<li><p><code>indexOf</code>方法返回给定元素在数组中第一次出现的位置，如果没有出现则返回<code>-1</code>，还可以接受第二个参数，表示搜索的开始位置。<code>lastIndexOf</code>方法返回给定元素在数组中最后一次出现的位置，如果没有出现则返回<code>-1</code>。</p>
+</li>
+<li><p>注意，这两个方法不能用来搜索<code>NaN</code>的位置，即它们无法确定数组成员是否包含<code>NaN</code>。因为这两个方法内部，使用严格相等运算符（<code>===</code>）进行比较，而<code>NaN</code>是唯一一个不等于自身的值。</p>
 </li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/26/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(1-10)/" data-id="ckrltzrap00004kpt90gzgbpn" data-title="《react小书》笔记(1-10)" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/12/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(9)/" data-id="ckutzsf4d000t8spt3qiqakst" data-title="Javascript学习笔记(9)" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li></ul>
 
     </footer>
   </div>
@@ -950,10 +852,10 @@
 
 
   
-    <article id="post-ES6阮一峰教程学习笔记 （4）字符串的扩展" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Javascript学习笔记(8)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/07/24/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%884%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/" class="article-date">
-  <time class="dt-published" datetime="2021-07-24T15:45:13.000Z" itemprop="datePublished">2021-07-24</time>
+    <a href="/2021/10/12/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(8)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-12T05:59:35.000Z" itemprop="datePublished">2021-10-12</time>
 </a>
     
   </div>
@@ -964,7 +866,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/24/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%884%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/">ES6阮一峰教程学习笔记 （4）字符串的扩展</a>
+      <a class="p-name article-title" href="/2021/10/12/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(8)/">Javascript学习笔记(8)</a>
     </h1>
   
 
@@ -972,98 +874,91 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="字符串的扩展"><a href="#字符串的扩展" class="headerlink" title="字符串的扩展"></a>字符串的扩展</h3><ul>
-<li>字符的Unicode表示法</li>
-</ul>
-<ol>
-<li>ES6将码点放入大括号，即\u{xxxx}，就能正确解读该字符。</li>
-<li>大括号表示法与四字节的UTF-16编码是等价的。</li>
-</ol>
+        <ol>
+<li><p><code>Object</code>对象的原生方法分成两类：<code>Object</code>本身的方法与<code>Object</code>的实例方法。</p>
 <ul>
-<li>字符串的遍历器接口</li>
+<li><strong><code>Object</code>对象本身的方法</strong>。所谓“本身的方法”就是直接定义在<code>Object</code>对象的方法。</li>
+<li><strong><code>Object</code>的实例方法</strong>。所谓实例方法就是定义在<code>Object</code>原型对象<code>Object.prototype</code>上的方法。它可以被<code>Object</code>实例直接使用。</li>
 </ul>
-<ol>
-<li><p>ES6中字符串可以被for…of循环遍历。</p>
 </li>
-<li><p>for…of可以识别0xFFFF的码点，传统的for循环无法识别这样的码点。</p>
-<hr>
+<li><p><code>instanceof</code>运算符用来验证，一个对象是否为指定的构造函数的实例。如果参数是原始类型的值，<code>Object</code>方法将其转为对应的包装对象的实例。如果<code>Object</code>方法的参数是一个对象，它总是返回该对象，即不用转换。利用这一点，可以写一个判断变量是否为对象的函数。</p>
 </li>
-</ol>
+<li><p><code>Object(value)</code>与<code>new Object(value)</code>两者的语义是不同的，<code>Object(value)</code>表示将<code>value</code>转成一个对象，<code>new Object(value)</code>则表示新生成一个对象，它的值是<code>value</code>。</p>
+</li>
+<li><p><code>Object.keys</code>方法只返回可枚举的属性，<code>Object.getOwnPropertyNames</code>方法还返回不可枚举的属性名。一般情况下，几乎总是使用<code>Object.keys</code>方法，遍历对象的属性。</p>
+</li>
+<li><p>实例方法：<code>valueOf</code>方法的作用是返回一个对象的“值”，默认情况下返回对象本身。<code>toString</code>方法的作用是返回一个对象的字符串形式，默认情况下返回类型字符串。</p>
+</li>
+<li><p>数组、字符串、函数、Date 对象都分别部署了自定义的<code>toString</code>方法，覆盖了<code>Object.prototype.toString</code>方法。直接使用<code>Object.prototype.toString</code>方法。通过函数的<code>call</code>方法，可以在任意值上调用这个方法，帮助我们判断这个值的类型。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span>.prototype.toString.call(value)</span><br></pre></td></tr></table></figure></li>
+<li><p>这个方法的主要作用是留出一个接口，让各种不同的对象实现自己版本的<code>toLocaleString</code>，用来返回针对某些地域的特定的值。Array,Number,Date的prototype自定义了<code>toLocaleString</code>方法。</p>
+</li>
+<li><p><code>Object.prototype.hasOwnProperty</code>方法接受一个字符串作为参数，返回一个布尔值，表示该实例对象自身是否具有该属性。</p>
+</li>
+<li><p>JavaScript 提供了一个内部数据结构，用来描述对象的属性，控制它的行为，比如该属性是否可写、可遍历等等。这个内部数据结构称为“属性描述对象”（attributes object）。</p>
+</li>
+<li><p>属性描述对象提供6个元属性。包括：value、writable(针对value)、enumerable、configurable(除value外其他元属性)、set、get。</p>
+</li>
+<li><p><code>Object.getOwnPropertyDescriptor()</code>方法可以获取属性描述对象。它的第一个参数是目标对象，第二个参数是一个字符串，对应目标对象的某个属性名。这一方法只能用于对象自身的属性，不能用于继承的属性。</p>
+</li>
+<li><p><code>Object.getOwnPropertyNames</code>方法返回一个数组，成员是参数对象自身的全部属性的属性名，不管该属性是否可遍历</p>
+</li>
+<li><p>注意，一旦定义了取值函数<code>get</code>（或存值函数<code>set</code>），就不能将<code>writable</code>属性设为<code>true</code>，或者同时定义<code>value</code>属性，否则会报错。</p>
+</li>
+<li><p><code>Object.defineProperty()</code>和<code>Object.defineProperties()</code>参数里面的属性描述对象，<code>writable</code>、<code>configurable</code>、<code>enumerable</code>这三个属性的默认值都为<code>false</code>。</p>
+</li>
+<li><p>实例对象的<code>propertyIsEnumerable()</code>方法返回一个布尔值，用来判断某个属性是否可遍历。注意，这个方法只能用于判断对象自身的属性，对于继承的属性一律返回<code>false</code>。</p>
+</li>
+<li><p><code>value</code>属性是目标属性的值。<code>writable</code>属性是一个布尔值，决定了目标属性的值（value）是否可以被改变。</p>
+</li>
+<li><p>如果原型对象的某个属性的<code>writable</code>为<code>false</code>，那么子对象将无法自定义这个属性。，有一个规避方法，就是通过覆盖属性描述对象，绕过这个限制。原因是这种情况下，原型链会被完全忽视。</p>
+</li>
+<li><p>具体来说，如果一个属性的<code>enumerable</code>为<code>false</code>，下面三个操作不会取到该属性。</p>
 <ul>
-<li>直接输入U+2028和U+2029</li>
+<li><code>for..in</code>循环</li>
+<li><code>Object.keys</code>方法</li>
+<li><code>JSON.stringify</code>方法</li>
 </ul>
-<ol>
-<li><p>Javascipt字符串允许直接输入字符，以及输入字符的转义形式。</p>
+<p>因此，<code>enumerable</code>可以用来设置“秘密”属性。</p>
 </li>
-<li><p>Javascript规定有5个字符，不能在字符串里直接使用，只能使用转义形式。</p>
-<ul>
-<li>U+005C：反斜杠（reverse solidus)</li>
-<li>U+000D：回车（carriage return）</li>
-<li>U+2028：行分隔符（line separator）</li>
-<li>U+2029：段分隔符（paragraph separator）</li>
-<li>U+000A：换行符（line feed）</li>
-</ul>
+<li><p>注意，<code>for...in</code>循环包括继承的属性，<code>Object.keys</code>方法不包括继承的属性。如果需要获取对象自身的所有属性，不管是否可遍历，可以使用<code>Object.getOwnPropertyNames</code>方法。</p>
 </li>
-<li><p>但为了适应JSON模板字符串允许直接输入行/段分隔符，正则表达式依然不允许直接输入这两个字符。</p>
-<hr>
+<li><p>另外，<code>JSON.stringify</code>方法会排除<code>enumerable</code>为<code>false</code>的属性，有时可以利用这一点。如果对象的 JSON 格式输出要排除某些属性，就可以把这些属性的<code>enumerable</code>设为<code>false</code>。</p>
 </li>
-</ol>
-<ul>
-<li>JSON.stringfy()的改造</li>
-</ul>
-<ol>
-<li><p>为确保返回的是合法的UTF-8字符，ES2019改变了JSON.stringfy()的行为，如果遇到0xD800到0xDFFF之间的单个码点或者不存在的配对形式，将返回转义字符串，留给应用自己决定下一步处理。</p>
-<hr>
+<li><p><code>configurable</code>为<code>false</code>时，<code>writable</code>、<code>enumerable</code>和<code>configurable</code>都不能被修改了。注意，<code>writable</code>属性只有在<code>false</code>改为<code>true</code>时会报错，<code>true</code>改为<code>false</code>是允许的。</p>
 </li>
-</ol>
-<ul>
-<li>模板字符串</li>
-</ul>
-<ol>
-<li><p>ES6的模板字符串用反引号(`)标识，可以当作普通字符串使用，也可以用来定义多行字符串，或者在字符串中嵌入变量。</p>
+<li><p><code>value</code>属性的情况比较特殊。只要<code>writable</code>和<code>configurable</code>有一个为<code>true</code>，就允许改动<code>value</code>。可配置性决定了目标属性是否可以被删除（delete）。</p>
 </li>
-<li><p>如果在模板字符串中需要使用反引号，则前面要用反斜杠转义。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> greeting=<span class="string">`\`Yo \` World!`</span>;</span><br></pre></td></tr></table></figure></li>
-<li><p>如果使用模板字符串表示多行字符串，所有的空格和缩进都会被保留在输出之中。通过trim()方法可以消除换行。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">&#x27;#list&#x27;</span>).html(<span class="string">`</span></span><br><span class="line"><span class="string">&lt;ul&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;first&lt;/li&gt;</span></span><br><span class="line"><span class="string">  &lt;li&gt;second&lt;/li&gt;</span></span><br><span class="line"><span class="string">&lt;/ul&gt;</span></span><br><span class="line"><span class="string">`</span>.trim());</span><br></pre></td></tr></table></figure></li>
-<li><p>模板字符串中嵌入变量，需要将变量名写在${}之中。如果大括号中的值不是字符串，将按一般的规则转为字符串。</p>
-<hr>
+<li><p>注意，取值函数<code>get</code>不能接受参数，存值函数<code>set</code>只能接受一个参数（即属性的值）。存取器往往用于，属性的值依赖对象内部数据的场合。</p>
 </li>
-</ol>
-<ul>
-<li>标签模板</li>
-</ul>
-<ol>
-<li><p>模板字符串跟在一个函数名后面，该函数将被调用来处理这个模板字符串。这被称为“标签模板”功能。其中“标签”指函数，紧跟在后面的模板字符串是它的参数。</p>
+<li><p>对象的拷贝可以通过<code>Object.defineProperty</code>方法来拷贝属性。</p>
 </li>
-<li><p>对于有变量的模板字符串，先将模板字符串处理成多个参数，再调用函数。</p>
+<li><p>有时需要冻结对象的读写状态，防止对象被改变。JavaScript 提供了三种冻结方法，最弱的一种是<code>Object.preventExtensions</code>，其次是<code>Object.seal</code>，最强的是<code>Object.freeze</code>。</p>
 </li>
-<li><p>“标签模板”重要应用</p>
-<ul>
-<li>过滤HTML字符串，防止用户输入恶意内容。</li>
-<li>多语言转换，可以在Javascript语言中嵌入其他语言。</li>
-</ul>
+<li><p><code>Object.preventExtensions</code>方法可以使得一个对象无法再添加新的属性，也无法删除旧属性。<code>Object.isExtensible</code>方法用于检查一个对象是否使用了<code>Object.preventExtensions</code>方法。也就是说，检查是否可以为一个对象添加属性。</p>
 </li>
-<li><p>模板处理函数的第一个参数（模板字符串数组），还有一个raw属性，保存的是转义后 的原字符串。比如，strings.raw 数组会将\n为\\和n两个字符，而不是换行符。这是为了方便取得转义之前的原始模板而设计的。</p>
-<hr>
+<li><p><code>Object.seal</code>方法使得一个对象既无法添加新属性，也无法删除旧属性，并不影响修改某个属性的值。<code>Object.seal</code>实质是把属性描述对象的<code>configurable</code>属性设为<code>false</code>，因此属性描述对象不再能改变了。</p>
 </li>
-</ol>
-<ul>
-<li>模板字符串的限制</li>
-</ul>
-<ol>
-<li>ES2018遇到不合法的字符串转义返回undefined，而不是报错，从raw属性上可以得到原始字符串。</li>
-<li>对字符串转义的放松，只在标签模板解析字符串时生效，不是标签模板的场合依然会报错。</li>
+<li><p><code>Object.isSealed</code>方法用于检查一个对象是否使用了<code>Object.seal</code>方法。seal后，<code>Object.isExtensible</code>方法也返回<code>false</code>。</p>
+</li>
+<li><p><code>Object.freeze</code>方法可以使得一个对象无法添加新属性、无法删除旧属性、也无法改变属性的值，使得这个对象实际上变成了常量。</p>
+</li>
+<li><p>使用<code>Object.freeze</code>方法以后，<code>Object.isSealed</code>将会返回<code>true</code>，<code>Object.isExtensible</code>返回<code>false</code>。</p>
+</li>
+<li><p><code>Object.isFrozen</code>的一个用途是，确认某个对象没有被冻结后，再对它的属性赋值。</p>
+</li>
+<li><p>上面的三个方法锁定对象的可写性有一个漏洞：可以通过改变原型对象，来为对象增加属性。一种解决方案是，把<code>obj</code>的原型也冻结住。另外一个局限是，如果属性值是对象，上面这些方法只能冻结属性指向的对象，而不能冻结对象本身的内容。</p>
+</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/24/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%884%EF%BC%89%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84%E6%89%A9%E5%B1%95/" data-id="ckrirtriv0000c4ptdnwz6ijz" data-title="ES6阮一峰教程学习笔记 （4）字符串的扩展" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/12/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(8)/" data-id="ckutzsf4b000r8spt2ct03nki" data-title="Javascript学习笔记(8)" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li></ul>
 
     </footer>
   </div>
@@ -1073,10 +968,10 @@
 
 
   
-    <article id="post-ES6阮一峰教程学习笔记 （3）变量的解构赋值" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-Javascript学习笔记(7)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/07/24/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%883%EF%BC%89%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" class="article-date">
-  <time class="dt-published" datetime="2021-07-24T09:50:31.000Z" itemprop="datePublished">2021-07-24</time>
+    <a href="/2021/10/11/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(7)/" class="article-date">
+  <time class="dt-published" datetime="2021-10-11T09:36:57.000Z" itemprop="datePublished">2021-10-11</time>
 </a>
     
   </div>
@@ -1087,7 +982,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/07/24/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%883%EF%BC%89%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/">ES6阮一峰教程学习笔记 （3）变量的解构赋值</a>
+      <a class="p-name article-title" href="/2021/10/11/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(7)/">Javascript学习笔记(7)</a>
     </h1>
   
 
@@ -1095,104 +990,98 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h3 id="变量的解构赋值"><a href="#变量的解构赋值" class="headerlink" title="变量的解构赋值"></a>变量的解构赋值</h3><ul>
-<li>数组的解构赋值</li>
-</ul>
-<ol>
-<li><p>解构不成功时，返回的值为undefined。若等式右边不是数组，不完全解构将会报错。Set结构可以使用数组的解构赋值。</p>
+        <ol>
+<li><p>强制转换主要指使用<code>Number()</code>、<code>String()</code>和<code>Boolean()</code>三个函数，手动将各种类型的值，分别转换成数字、字符串或者布尔值。</p>
 </li>
-<li><p>只要某种数据结构具有Iterator接口，都可以采用数组形式的解构赋值。</p>
+<li><p><code>Number</code>函数将字符串转为数值，要比<code>parseInt</code>函数严格很多。基本上，只要有一个字符无法转成数值，整个字符串就会被转为<code>NaN</code>。</p>
 </li>
-<li><p>解构赋值允许默认值。ES6使用严格相等运算符判断一个位置是否有值。只有当一个数组成员严格等于undefined时，默认值才会生效。</p>
+<li><p><code>parseInt</code>逐个解析字符，而<code>Number</code>函数整体转换字符串的类型。<code>parseInt</code>和<code>Number</code>函数都会自动过滤一个字符串前导和后缀的空格。</p>
 </li>
-<li><p>默认值是表达式时，该表达式惰性求值，即只有在用到时才会求值。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&#x27;aaa&#x27;</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> [x = f()] = [<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
-
-<p>因为x能取到值所以函数f不会执行。</p>
-<hr>
+<li><p>简单的规则是，<code>Number</code>方法的参数是对象时，将返回<code>NaN</code>，除非是包含单个数值的数组。</p>
 </li>
-</ol>
+<li><p><code>String</code>方法的参数如果是对象，返回一个类型字符串；如果是数组，返回该数组的字符串形式。</p>
+</li>
+<li><p><code>String</code>方法背后的转换规则，与<code>Number</code>方法基本相同，只是互换了<code>valueOf</code>方法和<code>toString</code>方法的执行顺序。如果<code>toString</code>法和<code>valueOf</code>方法，返回的都是对象，就会报错。</p>
+</li>
+<li><p><code>Boolean()</code>函数可以将任意类型的值转为布尔值。</p>
+<p>它的转换规则相对简单：除了以下五个值的转换结果为<code>false</code>，其他的值全部为<code>true</code>。</p>
 <ul>
-<li>对象的解构赋值</li>
+<li><code>undefined</code></li>
+<li><code>null</code></li>
+<li><code>0</code>（包含<code>-0</code>和<code>+0</code>）</li>
+<li><code>NaN</code></li>
+<li><code>&#39;&#39;</code>（空字符串）</li>
 </ul>
-<ol>
-<li><p>对象的属性没有次序，变量必须与属性同名，才能取到正确的值。</p>
 </li>
-<li><p>对象的解构赋值，可以很方便的将现有对象的方法，赋值到某个变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 例一</span></span><br><span class="line"><span class="keyword">let</span> &#123; log, sin, cos &#125; = <span class="built_in">Math</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 例二</span></span><br><span class="line"><span class="keyword">const</span> &#123; log &#125; = <span class="built_in">console</span>;</span><br><span class="line">log(<span class="string">&#x27;hello&#x27;</span>) <span class="comment">// hello</span></span><br></pre></td></tr></table></figure></li>
-<li><p>对象的解构赋值内部机制是先找到同名属性，然后在赋给对应的变量。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> &#123; <span class="attr">foo</span>: foo, <span class="attr">bar</span>: bar &#125; = &#123; <span class="attr">foo</span>: <span class="string">&#x27;aaa&#x27;</span>, <span class="attr">bar</span>: <span class="string">&#x27;bbb&#x27;</span> &#125;;</span><br></pre></td></tr></table></figure></li>
-<li><p>前一个p是变量，后一个p表示的是模式。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">  <span class="attr">p</span>: [</span><br><span class="line">    <span class="string">&#x27;Hello&#x27;</span>,</span><br><span class="line">    &#123; <span class="attr">y</span>: <span class="string">&#x27;World&#x27;</span> &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> &#123; p, <span class="attr">p</span>: [x, &#123; y &#125;] &#125; = obj;</span><br><span class="line">x <span class="comment">// &quot;Hello&quot;</span></span><br><span class="line">y <span class="comment">// &quot;World&quot;</span></span><br><span class="line">p <span class="comment">// [&quot;Hello&quot;, &#123;y: &quot;World&quot;&#125;]</span></span><br></pre></td></tr></table></figure></li>
-<li><p>默认值生效的条件是，对象的属性值严格等于undefined。</p>
-</li>
-<li><p>数组本质是特殊的对象，可以对数组进行对象属性的解构。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line"><span class="keyword">let</span> &#123;<span class="number">0</span> : first, [arr.length - <span class="number">1</span>] : last&#125; = arr;</span><br><span class="line">first <span class="comment">// 1</span></span><br><span class="line">last <span class="comment">// 3</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<hr>
-<p>  字符串的解构赋值</p>
-<ol>
-<li><p>字符串解构赋值时被转换成一个类似数组的对象，可以对length属性解构赋值。</p>
-<hr>
-</li>
-</ol>
+<li><p>遇到以下三种情况时，JavaScript 会自动转换数据类型，即转换是自动完成的。</p>
 <ul>
-<li>数值和布尔值的解构赋值</li>
+<li>不同类型的数据互相运算。</li>
+<li>对非布尔值类型的数据求布尔值。</li>
+<li>对非数值类型的值使用一元运算符（即<code>+</code>和<code>-</code>）。</li>
 </ul>
-<ol>
-<li>解构赋值的规则是：只要等号右边的值不是对象或数组，就先将其转为对象。数值和布尔值的包装对象都有toString属性。</li>
-<li>由于undefined和null无法转为对象，所以对它们进行解构赋值都会报错。</li>
-</ol>
-<hr>
-<p>  函数参数的解构赋值</p>
-<ol>
-<li><p>undefined就会触发函数参数的默认值。</p>
 </li>
-<li><p>注意代码中是为函数的参数指定默认值还是为变量指定默认值。</p>
-<hr>
+<li><p>除了加法运算符（<code>+</code>）有可能把运算子转为字符串，其他运算符都会把运算子自动转成数值。注意：<code>null</code>转为数值时为<code>0</code>，而<code>undefined</code>转为数值时为<code>NaN</code>。</p>
 </li>
-</ol>
+<li><p><code>Error</code>实例对象是最一般的错误类型，在它的基础上，JavaScript 还定义了其他6种错误对象。也就是说，存在<code>Error</code>的6个派生对象。</p>
 <ul>
-<li>圆括号问题</li>
+<li><code>SyntaxError</code>对象是解析代码时发生的语法错误。</li>
+<li><code>ReferenceError</code>对象是引用一个不存在的变量时发生的错误。另一种触发场景是，将一个值分配给无法分配的对象，比如对函数的运行结果赋值。</li>
+<li><code>RangeError</code>对象是一个值超出有效范围时发生的错误。主要有几种情况，一是数组长度为负数，二是<code>Number</code>对象的方法参数超出范围，以及函数堆栈超过最大值。</li>
+<li><code>TypeError</code>对象是变量或参数不是预期类型时发生的错误。比如，对字符串、布尔值、数值等原始类型的值使用<code>new</code>命令，就会抛出这种错误，因为<code>new</code>命令的参数应该是一个构造函数。</li>
+<li><code>URIError</code>对象是 URI 相关函数的参数不正确时抛出的错误，主要涉及<code>encodeURI()</code>、<code>decodeURI()</code>、<code>encodeURIComponent()</code>、<code>decodeURIComponent()</code>、<code>escape()</code>和<code>unescape()</code>这六个函数。</li>
 </ul>
-<ol>
-<li><p>不要在模式中放置圆括号，避免导致歧义。</p>
 </li>
-<li><p>不能使用圆括号的三种情况：</p>
+<li><p><code>throw</code>语句的作用是手动中断程序执行，抛出一个错误。一旦发生错误，程序就中止执行了。JavaScript 提供了<code>try...catch</code>结构，允许对错误进行处理，选择是否往下执行。</p>
+</li>
+<li><p><code>try...catch</code>结构允许在最后添加一个<code>finally</code>代码块，表示不管是否出现错误，都必需在最后运行的语句。<code>return</code>语句的执行是排在<code>finally</code>代码之前，只是等<code>finally</code>代码执行完毕后才返回。</p>
+</li>
+<li><p>编程规范：</p>
 <ul>
-<li><p>变量声明语句</p>
-</li>
-<li><p>函数参数</p>
-</li>
-<li><p>赋值语句的模式</p>
-</li>
+<li>表示区块起首的大括号，不要另起一行。</li>
+<li>建议总是使用大括号表示区块。</li>
+<li>由于解释引擎自动添加分号的行为难以预测，因此编写代码的时候不应该省略行尾的分号。</li>
+<li>JavaScript 最大的语法缺点，可能就是全局变量对于任何一个代码块，都是可读可写。这对代码的模块化和重复使用，非常不利。因此，建议避免使用全局变量。如果不得不使用，可以考虑用大写字母表示变量名。</li>
+<li>不要使用<code>with</code>语句。</li>
+<li>建议不要使用相等运算符（<code>==</code>），只使用严格相等运算符（<code>===</code>）。</li>
+<li>建议不要将不同目的的语句，合并成一行。</li>
+<li>建议自增（<code>++</code>）和自减（<code>--</code>）运算符尽量使用<code>+=</code>和<code>-=</code>代替。</li>
+<li>建议<code>switch...case</code>结构可以用对象结构代替。</li>
 </ul>
 </li>
-<li><p>可以使用圆括号的情况只有一种：赋值语句的非模式部分。</p>
-<hr>
-</li>
-</ol>
+<li><p><code>console.log</code>方法支持以下占位符，不同类型的数据必须使用对应的占位符。</p>
 <ul>
-<li>用途</li>
+<li><code>%s</code> 字符串</li>
+<li><code>%d</code> 整数</li>
+<li><code>%i</code> 整数</li>
+<li><code>%f</code> 浮点数</li>
+<li><code>%o</code> 对象的链接</li>
+<li><code>%c</code> CSS 格式字符串</li>
 </ul>
-<ol>
-<li>交换变量的值</li>
-<li>从函数返回多个值</li>
-<li>函数参数的定义</li>
-<li>提取JSON数据</li>
-<li>函数参数的默认值</li>
-<li>遍历Map结构</li>
-<li>输入模块的指定方法</li>
+</li>
+<li><p>可以这样理解，<code>log</code>方法是写入标准输出（<code>stdout</code>），<code>warn</code>方法和<code>error</code>方法是写入标准错误（<code>stderr</code>）。</p>
+</li>
+<li><p>对于某些复合类型的数据，<code>console.table</code>方法可以将其转为表格显示。<code>count</code>方法用于计数，输出它被调用了多少次.该方法可以接受一个字符串作为参数，作为标签，对执行次数进行分类。</p>
+</li>
+<li><p><code>dirxml</code>方法主要用于以目录树的形式，显示 DOM 节点。如果参数不是 DOM 节点，而是普通的 JavaScript 对象，<code>console.dirxml</code>等同于<code>console.dir</code>。</p>
+</li>
+<li><p><code>console.assert</code>方法主要用于程序运行过程中，进行条件判断，如果不满足条件，就显示一个错误，但不会中断程序执行。</p>
+</li>
+<li><p>console.time()，console.timeEnd() 这两个方法用于计时，可以算出一个操作所花费的准确时间。它们的参数是计时器的名称。</p>
+</li>
+<li><p><code>keys(object)</code>方法返回一个数组，包含<code>object</code>的所有键名。<code>values(object)</code>方法返回一个数组，包含<code>object</code>的所有键值。</p>
+</li>
+<li><p><code>debugger</code>语句主要用于除错，作用是设置断点。如果有正在运行的除错工具，程序运行到<code>debugger</code>语句时会自动停下。如果没有除错工具，<code>debugger</code>语句不会产生任何结果，JavaScript 引擎自动跳过这一句。</p>
+</li>
 </ol>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://example.com/2021/07/24/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20%EF%BC%883%EF%BC%89%E5%8F%98%E9%87%8F%E7%9A%84%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC/" data-id="ckrhxwr370000z8ptg2nzc7ap" data-title="ES6阮一峰教程学习笔记 （3）变量的解构赋值" class="article-share-link">Share</a>
+      <a data-url="http://example.com/2021/10/11/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(7)/" data-id="ckutzsf46000p8spth5pjd1yt" data-title="Javascript学习笔记(7)" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li></ul>
 
     </footer>
   </div>
@@ -1206,7 +1095,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1220,7 +1109,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li></ul>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
     </div>
   </div>
 
@@ -1230,7 +1119,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">ES6阮一峰教程学习笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a>
+      <a href="/tags/CSS%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">CSS笔记</a> <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">ES6阮一峰教程学习笔记</a> <a href="/tags/Javascript%E7%AC%94%E8%AE%B0/" style="font-size: 18.33px;">Javascript笔记</a> <a href="/tags/Typescript%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">Typescript笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">前端动画实现</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" style="font-size: 10px;">前端技术</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" style="font-size: 11.67px;">前端知识积累</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 10px;">字节青训营</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a> <a href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">自用说明</a>
     </div>
   </div>
 
@@ -1239,7 +1128,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
     </div>
   </div>
 
@@ -1252,23 +1141,23 @@
       <ul>
         
           <li>
-            <a href="/2021/08/06/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(3)/">牛客前端刷题（3）</a>
+            <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
           </li>
         
           <li>
-            <a href="/2021/08/04/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(2)/">牛客前端刷题（2）</a>
+            <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
           </li>
         
           <li>
-            <a href="/2021/08/03/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E5%88%B7%E9%A2%98(1)/">牛客前端刷题（1）</a>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
           </li>
         
           <li>
-            <a href="/2021/08/03/github%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F(1)/">github前端面经（1）</a>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
           </li>
         
           <li>
-            <a href="/2021/07/31/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E7%AC%94%E8%AE%B0(31-46)/">《react小书》笔记(31-46)</a>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
           </li>
         
       </ul>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>《CSS世界》笔记(6) | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="可以用margin负值实现等高布局。 12345678.column-box &amp;#123; overflow: hidden;&amp;#125;.column-left,.column-right &amp;#123; margin-bottom: -9999px; padding-bottom: 9999px;&amp;#125;  border和table-cell的优缺点：前者优势在于兼容性好，没有锚点定位的隐">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《CSS世界》笔记(6)">
+<meta property="og:url" content="http://example.com/2021/09/25/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(6)/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="可以用margin负值实现等高布局。 12345678.column-box &amp;#123; overflow: hidden;&amp;#125;.column-left,.column-right &amp;#123; margin-bottom: -9999px; padding-bottom: 9999px;&amp;#125;  border和table-cell的优缺点：前者优势在于兼容性好，没有锚点定位的隐">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-09-25T01:12:41.000Z">
+<meta property="article:modified_time" content="2021-09-25T15:39:41.340Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="CSS笔记">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-《CSS世界》笔记(6)" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/09/25/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(6)/" class="article-date">
+  <time class="dt-published" datetime="2021-09-25T01:12:41.000Z" itemprop="datePublished">2021-09-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      《CSS世界》笔记(6)
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>可以用margin负值实现等高布局。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.column-box</span> &#123;</span><br><span class="line"> <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.column-left</span>,</span><br><span class="line"><span class="selector-class">.column-right</span> &#123;</span><br><span class="line"> <span class="attribute">margin-bottom</span>: -<span class="number">9999px</span>;</span><br><span class="line"> <span class="attribute">padding-bottom</span>: <span class="number">9999px</span>;</span><br><span class="line">&#125; </span><br></pre></td></tr></table></figure></li>
+<li><p>border和table-cell的优缺点：前者优势在于兼容性好，没有锚点定位的隐患，不足在于最多3栏，且由于border不支持百分比宽度，因此只能实现至少一侧定宽的布局；table-cell的优点是天然等高，不足之处在于IE8及以上版本浏览器才支持。</p>
+</li>
+<li><p>和padding不同，内联元素垂直margin是没有任何影响的水平，margin只影响外部尺寸。</p>
+</li>
+<li><p>块级元素的上外边距(margin-top)与下外边距(margin-bottom)有时会合并为单个外边距，这样的现象称为“margin合并”。</p>
+<ul>
+<li>块级元素：不包括可以让元素块状化的浮动和绝对定位。</li>
+<li>只发生在垂直方向：只发生在和当前文档流方向相垂直的方向上，由于默认文档流是水平流，因此发生margin合并的就是垂直方向。</li>
+</ul>
+</li>
+<li><p>margin合并的3种场景：</p>
+<ul>
+<li><p>相邻兄弟元素margin合并。</p>
+</li>
+<li><p>父元素和第一个/最后一个子元素。</p>
+<p>此时，使用getComputedStyle方法获取父元素的margin-top值还是CSS属性中设置值，并非margin合并的表现值。</p>
+<p>阻止合并：1.父元素设置为块状格式化上下文元素</p>
+<p>​                    2.父元素设置对应的border/padding值</p>
+<p>​                    3.在合并元素间添加内联元素进行分隔。</p>
+<p>​                    4.对于margin-bottom，父元素设置height、min-height、max-                    height。</p>
+<p>使用jQuery的$().slideUp()/$().slideDown()方法若跳动，则说明存在margin合并，向对象添加的overflow:hidden设置会阻止margin合并。</p>
+</li>
+<li><p>空块级元素的margin合并。</p>
+<p>阻止空<code>&lt;div&gt;</code>元素的margin合并：</p>
+<p>​    1.设置垂直方向的border/padding。</p>
+<p>​    2.里面添加内联元素（直接Space键空格是没用的）。</p>
+<p>​    3.设置height或者min-height。</p>
+</li>
+</ul>
+</li>
+<li><p>margin合并的计算规则：</p>
+<ul>
+<li>正正取大值。</li>
+<li>正负值相加。</li>
+<li>负负最负值。</li>
+</ul>
+</li>
+<li><p>margin:auto的填充规则如下：</p>
+<ul>
+<li><p>如果一侧定值，一侧auto，则auto为剩余空间大小。</p>
+<p>由于margin的初始值大小为0，当margin-right缺失，margin-left为auto时，实现的是块级元素的右对齐效果。</p>
+</li>
+<li><p>如果两侧均是auto，则平分空间。</p>
+</li>
+</ul>
+</li>
+<li><p>触发margin:auto计算有一个前提条件，就是width或height为auto时，元素是具有对应方向的自动填充特性的。</p>
+</li>
+<li><p>垂直方向margin实现居中，方法有：</p>
+<ul>
+<li><p>使用writing-mode改变文档流的方向。</p>
+</li>
+<li><p>绝对定位元素的margin:auto居中。</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span> &#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">300px</span>; <span class="attribute">height</span>: <span class="number">150px</span>;</span><br><span class="line">    <span class="attribute">position</span>:relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.son</span> &#123; </span><br><span class="line">    <span class="attribute">position</span>: absolute; </span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>; <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>这一居中实现方式在IE8及以上版本浏览器才支持，对于替换元素，如果设置display:block，则margin:auto的计算规则同样适合。</p>
+</li>
+<li><p>margin无效情形：</p>
+<ul>
+<li><p>display计算值inline的非替换元素的垂直margin是无效的。对于内联替换元素，垂直margin有效，并且没有margin合并的问题，所以不会发生margin合并。</p>
+</li>
+<li><p>表格中的<code>&lt;tr&gt; &lt;td&gt;</code>元素或者设置display计算值是table-cell或table-row的元素的margin都是无效的。但是，如果计算值是table-caption、table或者inline-table则没有此问题，可以通过margin控制外间距，甚至::first-letter伪元素也可以解析margin。</p>
+</li>
+<li><p>margin合并的时候，更改margin值可能无效，如大大取大。</p>
+</li>
+<li><p>绝对定位元素非定位方位的margin值“无效”。绝对定位元素独立渲染，其margin不影响兄弟元素定位。但实际margin是作用了的，绝对定位元素任意方位的margin值不论在什么场景下都一直有效。</p>
+</li>
+<li><p>定高容器的子元素的margin-bottom或者宽度定死的子元素的margin-right的定位“失效”。若想使用margin属性改变自身的位置，必须是和当前元素定位方向一样的margin属性才可以，否则，margin只能影响后面的元素或者父元素。</p>
+<p>例如，一个普通元素，在默认流下，其定位方向是左侧以及上方，此时只有margin-left和margin-top可以影响元素的定位。但是，如果通过一些属性改变了定位方向，如float:right或者绝对定位元素的right右侧定位，则反过来margin-right可以影响元素的定位，margin-left只能影响兄弟元素。</p>
+</li>
+<li><p>鞭长莫及导致的margin无效。</p>
+</li>
+<li><p>内联特性导致的margin无效。</p>
+</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/09/25/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(6)/" data-id="ckutzsf6c002n8spt4wigdo51" data-title="《CSS世界》笔记(6)" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/09/26/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(7)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          《CSS世界》笔记(7)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/09/22/%E3%80%8ACSS%E4%B8%96%E7%95%8C%E3%80%8B%E7%AC%94%E8%AE%B0(5)/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">《CSS世界》笔记(5)</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS%E7%AC%94%E8%AE%B0/" rel="tag">CSS笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">ES6阮一峰教程学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Javascript%E7%AC%94%E8%AE%B0/" rel="tag">Javascript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Typescript%E7%AC%94%E8%AE%B0/" rel="tag">Typescript笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">《react小书》学习笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" rel="tag">前端动画实现</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" rel="tag">前端技术</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" rel="tag">前端知识积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" rel="tag">前端面经</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" rel="tag">字节青训营</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" rel="tag">牛客前端题</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" rel="tag">自用说明</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS%E7%AC%94%E8%AE%B0/" style="font-size: 20px;">CSS笔记</a> <a href="/tags/ES6%E9%98%AE%E4%B8%80%E5%B3%B0%E6%95%99%E7%A8%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.33px;">ES6阮一峰教程学习笔记</a> <a href="/tags/Javascript%E7%AC%94%E8%AE%B0/" style="font-size: 18.33px;">Javascript笔记</a> <a href="/tags/Typescript%E7%AC%94%E8%AE%B0/" style="font-size: 16.67px;">Typescript笔记</a> <a href="/tags/%E3%80%8Areact%E5%B0%8F%E4%B9%A6%E3%80%8B%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15px;">《react小书》学习笔记</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E5%8A%A8%E7%94%BB%E5%AE%9E%E7%8E%B0/" style="font-size: 10px;">前端动画实现</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E6%8A%80%E6%9C%AF/" style="font-size: 10px;">前端技术</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E7%9F%A5%E8%AF%86%E7%A7%AF%E7%B4%AF/" style="font-size: 11.67px;">前端知识积累</a> <a href="/tags/%E5%89%8D%E7%AB%AF%E9%9D%A2%E7%BB%8F/" style="font-size: 10px;">前端面经</a> <a href="/tags/%E5%AD%97%E8%8A%82%E9%9D%92%E8%AE%AD%E8%90%A5/" style="font-size: 10px;">字节青训营</a> <a href="/tags/%E7%89%9B%E5%AE%A2%E5%89%8D%E7%AB%AF%E9%A2%98/" style="font-size: 15px;">牛客前端题</a> <a href="/tags/%E8%87%AA%E7%94%A8%E8%AF%B4%E6%98%8E/" style="font-size: 10px;">自用说明</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/10/">October 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/09/">September 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">August 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/07/">July 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/10/16/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(16)/">Javascript学习笔记(16)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/15/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(15)/">Javascript学习笔记(15)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(14)/">Javascript学习笔记(14)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(13)/">Javascript学习笔记(13)</a>
+          </li>
+        
+          <li>
+            <a href="/2021/10/14/Javascript%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0(12)/">Javascript学习笔记(12)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 John Doe<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
